@@ -1,0 +1,117 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [develop, production]
+  pull_request:
+    branches: [develop, production]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  ci-checks:
+    name: Type check and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Validate Compose
+        run: docker compose config --quiet
+
+  build-image:
+    name: Build and push Docker image
+    needs: ci-checks
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.image.outputs.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set lowercase image name
+        id: image
+        run: echo "name=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ steps.image.outputs.name }}:${{ github.sha }}
+            ${{ steps.image.outputs.name }}:${{ github.ref_name }}
+          cache-from: type=gha,scope=${{ github.ref_name }}
+          cache-to: type=gha,mode=max,scope=${{ github.ref_name }}
+
+  deploy:
+    name: Deploy to VPS
+    needs: build-image
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: read
+    env:
+      TARGET_DIR: /opt/ocean-ldp/${{ github.ref_name == 'production' && 'production' || 'staging' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy Compose to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets[github.ref_name == 'production' && 'SSH_HOST_PROD' || 'SSH_HOST'] }}
+          username: ${{ secrets[github.ref_name == 'production' && 'SSH_USER_PROD' || 'SSH_USER'] }}
+          key: ${{ secrets[github.ref_name == 'production' && 'SSH_KEY_PROD' || 'SSH_KEY'] }}
+          port: ${{ secrets[github.ref_name == 'production' && 'SSH_PORT_PROD' || 'SSH_PORT'] || '22' }}
+          source: docker-compose.yml
+          target: ${{ env.TARGET_DIR }}
+      - name: Deploy exact commit and wait for health check
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          ENV_FILE_CONTENT: ${{ secrets[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] }}
+          IMAGE_NAME: ${{ needs.build-image.outputs.image }}
+          IMAGE_TAG: ${{ github.sha }}
+          COMPOSE_PROJECT_NAME: ocean-ldp-${{ github.ref_name }}
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          host: ${{ secrets[github.ref_name == 'production' && 'SSH_HOST_PROD' || 'SSH_HOST'] }}
+          username: ${{ secrets[github.ref_name == 'production' && 'SSH_USER_PROD' || 'SSH_USER'] }}
+          key: ${{ secrets[github.ref_name == 'production' && 'SSH_KEY_PROD' || 'SSH_KEY'] }}
+          port: ${{ secrets[github.ref_name == 'production' && 'SSH_PORT_PROD' || 'SSH_PORT'] || '22' }}
+          envs: TARGET_DIR,ENV_FILE_CONTENT,IMAGE_NAME,IMAGE_TAG,COMPOSE_PROJECT_NAME,GHCR_USER,GHCR_TOKEN
+          script: |
+            set -eu
+            cd "$TARGET_DIR"
+            umask 077
+            printf '%s\n' "$ENV_FILE_CONTENT" > .env
+            chmod 600 .env
+            export IMAGE_NAME IMAGE_TAG COMPOSE_PROJECT_NAME
+            DOCKER_CONFIG=$(mktemp -d)
+            export DOCKER_CONFIG
+            trap 'rm -rf "$DOCKER_CONFIG"' EXIT
+            printf '%s' "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
+            docker compose config --quiet
+            docker compose pull
+            if ! docker compose up -d --no-build --remove-orphans --wait --wait-timeout 120; then
+              docker compose ps -a
+              docker compose logs --tail=100
+              exit 1
+            fi
