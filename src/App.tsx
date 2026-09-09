@@ -14,6 +14,7 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import SchedulePage from './pages/SchedulePage';
 import TeachersPage from './pages/TeachersPage';
 import BranchesPage from './pages/BranchesPage';
+import BranchDetailPage from './pages/BranchDetailPage';
 import StudyAbroadPage from './pages/StudyAbroadPage';
 import ResourcesPage from './pages/ResourcesPage';
 import NewsPage from './pages/NewsPage';
@@ -92,6 +93,14 @@ export default function App(): JSX.Element {
 
           <Route path="/he-thong-co-so">
             <BranchesPage />
+          </Route>
+
+          <Route path="/he-thong-co-so/:id">
+            <BranchDetailPage onOpenLeadModal={handleOpenLeadModal} />
+          </Route>
+
+          <Route path="/co-so/:id">
+            <BranchDetailPage onOpenLeadModal={handleOpenLeadModal} />
           </Route>
 
           <Route path="/du-hoc-trung-quoc">

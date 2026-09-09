@@ -28,7 +28,7 @@
 }
 
 /* =========================================================================
-   DESIGN SYSTEM - THANHMAIHSK VIBRANT & PREMIUM EDUCATION THEME
+   DESIGN SYSTEM - GREEN OCEAN VIBRANT & PREMIUM EDUCATION THEME
    ========================================================================= */
 
 :root {
@@ -94,11 +94,11 @@
   --shadow-glow: 0 0 25px rgba(27, 126, 69, 0.25);
   --shadow-orange-glow: 0 0 25px rgba(243, 112, 33, 0.25);
 
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  /* Radius - Crisp, refined, and professional */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
   --radius-full: 9999px;
 
   /* Fonts (Be Vietnam Pro for Headline, Body, and Label) */
@@ -622,3 +622,32 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* =========================================================================
+   STUDENT ACHIEVERS MARQUEE ANIMATIONS
+   ========================================================================= */
+@keyframes student-marquee-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes student-marquee-right {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.animate-student-marquee-left {
+  animation: student-marquee-left 65s linear infinite;
+  will-change: transform;
+}
+
+.animate-student-marquee-right {
+  animation: student-marquee-right 65s linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .animate-student-marquee-left,
+.marquee-container:hover .animate-student-marquee-right {
+  animation-play-state: paused;
+}
+

@@ -17,7 +17,7 @@ export default function AdminPage(): JSX.Element {
 
   useEffect(() => {
     loadLeads();
-    const storedUrl = localStorage.getItem('thanhmaihsk_google_webhook_url') || '';
+    const storedUrl = localStorage.getItem('greenocean_google_webhook_url') || localStorage.getItem('thanhmaihsk_google_webhook_url') || '';
     setWebhookUrl(storedUrl);
   }, []);
 
@@ -44,7 +44,7 @@ export default function AdminPage(): JSX.Element {
 
   const handleSaveWebhook = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem('thanhmaihsk_google_webhook_url', webhookUrl.trim());
+    localStorage.setItem('greenocean_google_webhook_url', webhookUrl.trim());
     setSavedWebhookMsg(true);
     setTimeout(() => setSavedWebhookMsg(false), 3000);
   };
@@ -83,7 +83,7 @@ export default function AdminPage(): JSX.Element {
               <span style={{ fontSize: '0.85rem', color: '#1B7E45', fontWeight: 700, textTransform: 'uppercase' }}>Hệ Thống CRM Nội Bộ</span>
             </div>
             <h1 style={{ fontSize: '1.8rem', fontWeight: 800, color: '#1E293B', margin: '6px 0 0 0' }}>
-              QUẢN TRỊ TUYỂN SINH THANHMAIHSK
+              QUẢN TRỊ TUYỂN SINH GREEN OCEAN
             </h1>
           </div>
 

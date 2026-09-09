@@ -17,16 +17,16 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
 
   return (
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[1100] flex justify-end" onClick={onClose}>
-      <div 
-        className="w-80 max-w-[85vw] h-full bg-white flex flex-col shadow-2xl animate-in slide-in-from-right duration-200" 
+      <div
+        className="w-80 max-w-[85vw] h-full bg-white flex flex-col shadow-2xl animate-in slide-in-from-right duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between p-4 border-b border-slate-200">
           <div className="flex items-center gap-2">
-            <img 
-              src={logoImg} 
-              alt="THANHMAIHSK"
+            <img
+              src={logoImg}
+              alt="GREEN OCEAN"
               style={{ maxHeight: '36px', width: 'auto' }}
               className="h-9 w-auto object-contain block"
             />
@@ -47,8 +47,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
 
             {/* Giới Thiệu Accordion */}
             <li>
-              <div 
-                className="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-semibold text-sm text-slate-800 hover:bg-slate-50 hover:text-[#1B7E45] transition-colors cursor-pointer" 
+              <div
+                className="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-semibold text-sm text-slate-800 hover:bg-slate-50 hover:text-[#1B7E45] transition-colors cursor-pointer"
                 onClick={() => setAboutExpanded(!aboutExpanded)}
               >
                 <span>Giới Thiệu</span>
@@ -72,8 +72,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
 
             {/* Khóa Học Accordion */}
             <li>
-              <div 
-                className="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-semibold text-sm text-slate-800 hover:bg-slate-50 hover:text-[#1B7E45] transition-colors cursor-pointer" 
+              <div
+                className="flex items-center justify-between px-3.5 py-2.5 rounded-xl font-semibold text-sm text-slate-800 hover:bg-slate-50 hover:text-[#1B7E45] transition-colors cursor-pointer"
                 onClick={() => setCoursesExpanded(!coursesExpanded)}
               >
                 <span>Khóa Học Tiếng Trung</span>
@@ -82,33 +82,38 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
               {coursesExpanded && (
                 <ul className="pl-4 py-1 space-y-1 bg-slate-50 rounded-xl my-1 list-none">
                   <li>
-                    <Link href="/khoa-hoc/khoa-tieng-trung-co-ban-han-ngu-tich-hop-hsk3" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
-                      Khóa Cơ Bản HSK 3 (Tích Hợp 3.0)
+                    <Link href="/khoa-hoc/hsk-1-nen-tang-tieng-trung" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                      HSK 1 – Nền Tảng Tiếng Trung
                     </Link>
                   </li>
                   <li>
-                    <Link href="/khoa-hoc/khoa-hoc-tieng-trung-tich-hop-hsk4" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
-                      Khóa Tích Hợp HSK 4
+                    <Link href="/khoa-hoc/hsk-2-cung-co-nen-tang" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                      HSK 2 – Củng Cố Nền Tảng
                     </Link>
                   </li>
                   <li>
-                    <Link href="/khoa-hoc/khoa-luyen-thi-new-hsk5-chuyen-sau" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
-                      Khóa Luyện Thi New HSK 5 - 6
+                    <Link href="/khoa-hoc/hsk-3-phat-trien-toan-dien" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                      HSK 3 – Phát Triển Toàn Diện
                     </Link>
                   </li>
                   <li>
-                    <Link href="/khoa-hoc?cat=online" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
-                      Khóa Trực Tuyến Online Google Meet
+                    <Link href="/khoa-hoc/hsk-4-nang-cao-nang-luc" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                      HSK 4 – Nâng Cao Năng Lực
                     </Link>
                   </li>
                   <li>
-                    <Link href="/khoa-hoc?cat=giao-tiep" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
-                      Tiếng Trung Giao Tiếp Công Sở
+                    <Link href="/khoa-hoc/hsk-5-thanh-thao-chuyen-sau" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                      HSK 5 – Thành Thạo & Chuyên Sâu
                     </Link>
                   </li>
                   <li>
-                    <Link href="/khoa-hoc?cat=tre-em" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
-                      Khóa Tiếng Trung Trẻ Em (8-14t)
+                    <Link href="/khoa-hoc/khoa-hoc-giao-tiep-cap-toc" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                      Khóa Giao Tiếp Cấp Tốc
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/khoa-hoc/tieng-trung-tre-em" className="block px-3 py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                      Tiếng Trung Trẻ Em (6–15 tuổi)
                     </Link>
                   </li>
                   <li>
@@ -127,9 +132,21 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
             </li>
 
             <li>
-              <Link href="/he-thong-co-so" className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl font-semibold text-sm text-slate-800 hover:bg-slate-50 hover:text-[#1B7E45] transition-colors" onClick={onClose}>
-                <MapPin size={16} className="text-[#F37021]" /> Hệ Thống 20+ Cơ Sở
+              <div className="px-3.5 pt-2 pb-1 text-xs font-bold text-slate-400 uppercase tracking-wider">Hệ thống cơ sở</div>
+              <Link href="/he-thong-co-so" className="flex items-center gap-2.5 px-3.5 py-2 rounded-lg font-bold text-sm text-slate-800 hover:bg-slate-50 hover:text-[#1B7E45] transition-colors" onClick={onClose}>
+                <MapPin size={16} className="text-[#1B7E45]" /> Tất Cả Cơ Sở Đào Tạo
               </Link>
+              <div className="pl-6 space-y-1 mt-1 border-l-2 border-slate-100 ml-5">
+                <Link href="/he-thong-co-so/han-thuyen-bac-ninh" className="block py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                  • Cơ sở 1: Hàn Thuyên – Bắc Ninh
+                </Link>
+                <Link href="/he-thong-co-so/nga-6-dai-phuc" className="block py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                  • Cơ sở 2: Ngã 6 Đại Phúc – Bắc Ninh
+                </Link>
+                <Link href="/he-thong-co-so/online-nationwide" className="block py-1.5 text-xs text-slate-600 hover:text-[#1B7E45]" onClick={onClose}>
+                  • Lớp Học Trực Tuyến Toàn Quốc
+                </Link>
+              </div>
             </li>
 
             <li>
@@ -170,8 +187,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
           </ul>
 
           <div className="pt-4 border-t border-slate-200 flex flex-col gap-3">
-            <button 
-              className="w-full h-11 bg-[#1B7E45] hover:bg-[#156637] text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-sm cursor-pointer" 
+            <button
+              className="w-full h-11 bg-[#1B7E45] hover:bg-[#156637] text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               onClick={onOpenLeadModal}
             >
               <PhoneCall size={16} /> ĐĂNG KÝ TƯ VẤN NGAY

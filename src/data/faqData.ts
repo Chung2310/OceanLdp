@@ -5,13 +5,13 @@ export const faqData: FAQItem[] = [
     id: 'faq-01',
     category: 'khoa-hoc',
     question: 'Người chưa từng học tiếng Trung mất bao lâu để giao tiếp được cơ bản?',
-    answer: 'Với lộ trình Hán ngữ Tích hợp 3.0 tại Thanhmaihsk, chỉ sau 1 khóa cơ bản (36 buổi - 3 tháng), bạn sẽ nắm vững toàn bộ bảng ngữ âm Pinyin, 214 bộ thủ, 600+ từ vựng và tự tin giao tiếp thành thạo các chủ đề thông dụng trong đời sống và du lịch.'
+    answer: 'Với lộ trình Hán ngữ Tích hợp 3.0 tại Green Ocean, chỉ sau 1 khóa cơ bản (36 buổi - 3 tháng), bạn sẽ nắm vững toàn bộ bảng ngữ âm Pinyin, 214 bộ thủ, 600+ từ vựng và tự tin giao tiếp thành thạo các chủ đề thông dụng trong đời sống và du lịch.'
   },
   {
     id: 'faq-02',
     category: 'hoc-online',
     question: 'Học tiếng Trung Trực tuyến (Online) chất lượng có đảm bảo như học Offline tại lớp không?',
-    answer: 'Khóa học Online tại Thanhmaihsk được tổ chức trực tiếp qua Google Meet tương tác 2 chiều với giảng viên (100% Thạc sĩ/Tiến sĩ), sĩ số giới hạn chỉ 12-15 học viên, có giáo vụ kèm cặp chữa bài 24/7 và cam kết chuẩn đầu ra tương đương 100% các lớp học trực tiếp.'
+    answer: 'Khóa học Online tại Green Ocean được tổ chức trực tiếp qua Google Meet tương tác 2 chiều với giảng viên (100% Thạc sĩ/Tiến sĩ), sĩ số giới hạn chỉ 12-15 học viên, có giáo vụ kèm cặp chữa bài 24/7 và cam kết chuẩn đầu ra tương đương 100% các lớp học trực tiếp.'
   },
   {
     id: 'faq-03',
@@ -23,7 +23,7 @@ export const faqData: FAQItem[] = [
     id: 'faq-04',
     category: 'cam-ket',
     question: 'Trung tâm có cam kết chuẩn đầu ra đỗ chứng chỉ HSK không?',
-    answer: 'Thanhmaihsk cam kết chuẩn đầu ra bằng văn bản cho tất cả học viên tham gia đầy đủ từ 80% số buổi học và hoàn thành bài tập định kỳ. Nếu không đạt chứng chỉ mục tiêu trong kỳ thi gần nhất, học viên được học lại hoàn toàn miễn phí 100%.'
+    answer: 'Green Ocean cam kết chuẩn đầu ra bằng văn bản cho tất cả học viên tham gia đầy đủ từ 80% số buổi học và hoàn thành bài tập định kỳ. Nếu không đạt chứng chỉ mục tiêu trong kỳ thi gần nhất, học viên được học lại hoàn toàn miễn phí 100%.'
   },
   {
     id: 'faq-05',

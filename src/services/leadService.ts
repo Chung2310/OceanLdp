@@ -13,7 +13,8 @@ export interface LeadRecord {
   createdAt: string;
 }
 
-const STORAGE_KEY = 'thanhmaihsk_leads_data_v1';
+const STORAGE_KEY = 'greenocean_leads_data_v1';
+const LEGACY_STORAGE_KEY = 'thanhmaihsk_leads_data_v1';
 
 // Mẫu danh sách lead ban đầu để demo cho Admin nếu chưa có data thực tế
 const INITIAL_LEADS: LeadRecord[] = [
@@ -23,7 +24,7 @@ const INITIAL_LEADS: LeadRecord[] = [
     phone: '0988123456',
     email: 'thuylinh.hsk@gmail.com',
     course: 'Khóa Tiếng Trung Cơ Bản Hán Ngữ Tích Hợp HSK 3 3.0',
-    branch: 'Cơ sở Cầu Giấy – HN',
+    branch: 'Cơ sở 1: Hàn Thuyên – Đại Phúc',
     source: 'lead_modal',
     status: 'new',
     createdAt: new Date(Date.now() - 1000 * 60 * 35).toISOString()
@@ -34,7 +35,7 @@ const INITIAL_LEADS: LeadRecord[] = [
     phone: '0912987654',
     email: 'hoangtran.dev@gmail.com',
     course: 'Khóa Luyện Thi HSK 5 Chuyên Sâu Cấp Tốc',
-    branch: 'Cơ sở Quận 1 – HCM',
+    branch: 'Cơ sở 2: Ngã 6 Đại Phúc',
     source: 'hero_form',
     status: 'contacted',
     createdAt: new Date(Date.now() - 1000 * 60 * 180).toISOString()
@@ -45,7 +46,7 @@ const INITIAL_LEADS: LeadRecord[] = [
     phone: '0977345678',
     email: 'hanh.le99@gmail.com',
     course: 'Bài Test Năng Lực Trực Tuyến',
-    branch: 'Cơ sở Mỹ Đình – HN',
+    branch: 'Cơ sở 1: Hàn Thuyên – Đại Phúc',
     source: 'placement_test',
     score: 85,
     level: 'HSK 3 - Trung cấp sơ bộ',
@@ -58,7 +59,7 @@ const INITIAL_LEADS: LeadRecord[] = [
     phone: '0963554433',
     email: 'phuongnga.marketing@gmail.com',
     course: 'Tải trọn bộ 214 Bộ Thủ & Sách Msutong PDF',
-    branch: 'Học Trực Tuyến (Online)',
+    branch: 'Cơ sở Đào Tạo Trực Tuyến Toàn Quốc',
     source: 'download_modal',
     status: 'new',
     createdAt: new Date(Date.now() - 1000 * 60 * 720).toISOString()
@@ -69,10 +70,17 @@ export const leadService = {
   // Lấy toàn bộ danh sách lead
   getLeads(): LeadRecord[] {
     try {
-      const data = localStorage.getItem(STORAGE_KEY);
+      let data = localStorage.getItem(STORAGE_KEY);
       if (!data) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(INITIAL_LEADS));
-        return INITIAL_LEADS;
+        // Kiểm tra fallback từ legacy key nếu có
+        const legacyData = localStorage.getItem(LEGACY_STORAGE_KEY);
+        if (legacyData) {
+          localStorage.setItem(STORAGE_KEY, legacyData);
+          data = legacyData;
+        } else {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(INITIAL_LEADS));
+          return INITIAL_LEADS;
+        }
       }
       return JSON.parse(data);
     } catch (e) {
@@ -142,7 +150,7 @@ export const leadService = {
 
   // Gửi lead ra Webhook bên ngoài (Google Sheet / Telegram)
   async dispatchWebhook(lead: LeadRecord) {
-    const googleWebhookUrl = localStorage.getItem('thanhmaihsk_google_webhook_url');
+    const googleWebhookUrl = localStorage.getItem('greenocean_google_webhook_url') || localStorage.getItem('thanhmaihsk_google_webhook_url');
     if (googleWebhookUrl && googleWebhookUrl.trim() !== '') {
       try {
         await fetch(googleWebhookUrl, {
@@ -196,7 +204,7 @@ export const leadService = {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `Thanhmaihsk_Danh_Sach_Lead_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute('download', `GreenOcean_Danh_Sach_Lead_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

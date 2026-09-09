@@ -1,155 +1,295 @@
 import React from 'react';
 import { Link } from 'wouter';
-import { Phone, Mail, MapPin, Clock, Facebook, Youtube, Send, ShieldCheck, Award } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Youtube, ShieldCheck, Award, Sparkles, Send } from 'lucide-react';
 import logoImg from '../../asset/img/logo.jpg';
 
 export default function Footer(): JSX.Element {
   return (
-    <footer className="w-full bg-[#0f172a] text-slate-400 text-xs mt-auto" aria-label="Footer website">
-      {/* Top Banner Feature Bar */}
-      <div className="bg-[#1E293B] py-6 border-b border-white/10">
-        <div className="max-w-[1280px] mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-center gap-4">
-              <Award className="text-[#F37021] flex-shrink-0" size={28} />
+    <footer className="w-full bg-[#135830] text-emerald-100 text-xs border-t border-white/15 relative overflow-hidden" aria-label="Footer Trung tâm Ngoại ngữ Green Ocean">
+      
+      {/* Decorative Brand Ambient Glow */}
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#2da15e]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-[#F37021]/15 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Top Value Propositions Bar */}
+      <div className="bg-[#0f4a27] border-b border-white/15 py-6 sm:py-7 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 text-[#86efac] group-hover:scale-105 transition-transform shadow-xs">
+                <Award size={24} />
+              </div>
               <div>
-                <div className="text-white font-bold text-sm">15 Năm Phát Triển Vững Mạnh</div>
-                <div className="text-slate-400 text-xs">Hơn 100.000 học viên tin tưởng theo học</div>
+                <h4 className="text-white font-extrabold text-sm sm:text-base">6 Năm Kiến Tạo Giá Trị</h4>
+                <p className="text-emerald-200/90 text-xs mt-0.5">Hơn 5.000 học viên đạt chuẩn đầu ra HSK & tự tin giao tiếp</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <ShieldCheck className="text-[#1B7E45] flex-shrink-0" size={28} />
+
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-white/15 border border-white/25 flex items-center justify-center shrink-0 text-[#86efac] group-hover:scale-105 transition-transform shadow-xs">
+                <ShieldCheck size={24} />
+              </div>
               <div>
-                <div className="text-white font-bold text-sm">100% Giảng Viên ThS - Tiến Sĩ</div>
-                <div className="text-slate-400 text-xs">Đến từ các trường ĐH danh tiếng trong và ngoài nước</div>
+                <h4 className="text-white font-extrabold text-sm sm:text-base">100% Giảng Viên ThS - Tiến Sĩ</h4>
+                <p className="text-emerald-200/90 text-xs mt-0.5">Giảng viên giàu kinh nghiệm từ các trường đại học danh tiếng</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <MapPin className="text-[#F37021] flex-shrink-0" size={28} />
+
+            <div className="flex items-center gap-4 group">
+              <div className="w-12 h-12 rounded-xl bg-[#F37021]/25 border border-[#F37021]/50 flex items-center justify-center shrink-0 text-[#F37021] group-hover:scale-105 transition-transform shadow-xs">
+                <Sparkles size={24} />
+              </div>
               <div>
-                <div className="text-white font-bold text-sm">Hệ Thống 20+ Cơ Sở Toàn Quốc</div>
-                <div className="text-slate-400 text-xs">Hà Nội, TP.HCM, Bắc Ninh, Đà Nẵng...</div>
+                <h4 className="text-white font-extrabold text-sm sm:text-base">Cam Kết Đầu Ra Bằng Văn Bản</h4>
+                <p className="text-emerald-200/90 text-xs mt-0.5">Lộ trình chuẩn New HSK 3.0, học lại miễn phí nếu chưa đạt</p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="py-12">
-        <div className="max-w-[1280px] mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Col 1: Legal & Company Info */}
-            <div className="space-y-3">
-              <div className="inline-block bg-white p-2 rounded-xl mb-2">
+      <div className="py-12 sm:py-16 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
+            
+            {/* Col 1: Brand & Contact Info (4 cols) */}
+            <div className="lg:col-span-4 space-y-4">
+              <div className="inline-block bg-white p-2.5 rounded-2xl shadow-md border border-white/30">
                 <img 
                   src={logoImg} 
-                  alt="THANHMAIHSK" 
-                  style={{ maxHeight: '44px', width: 'auto' }}
-                  className="h-10 w-auto object-contain block"
+                  alt="Trung tâm Ngoại ngữ Green Ocean" 
+                  className="h-11 w-auto object-contain block"
                 />
               </div>
-              <p className="text-xs font-bold text-white leading-relaxed">
-                CÔNG TY TNHH PHÁT TRIỂN GIÁO DỤC VÀ HỢP TÁC QUỐC TẾ THANHMAIHSK
+
+              <div>
+                <h3 className="text-base font-black text-white uppercase tracking-tight">
+                  TRUNG TÂM NGOẠI NGỮ GREEN OCEAN
+                </h3>
+                <p className="text-xs text-[#fbcfe8]/90 font-semibold mt-1 flex items-center gap-1.5">
+                  <span className="inline-block w-2 h-2 rounded-full bg-[#F37021]" />
+                  <span className="text-amber-300 font-bold">Đến Green Ocean - Bứt phá tiếng Trung</span>
+                </p>
+              </div>
+
+              <p className="text-xs text-emerald-100/90 leading-relaxed">
+                Hệ thống đào tạo năng lực tiếng Trung chất lượng cao tại Bắc Ninh và học trực tuyến tương tác hai chiều toàn quốc, định hướng chuẩn New HSK 3.0 và phản xạ thực chiến.
               </p>
-              <ul className="space-y-2 text-xs text-slate-400">
-                <li><strong className="text-slate-200">Số ĐKKD:</strong> 0106852149 do Sở KHĐT TP.Hà Nội cấp ngày 25/05/2015</li>
-                <li><strong className="text-slate-200">Trụ sở:</strong> Số 9 ngõ 49 Huỳnh Thúc Kháng, P. Láng Hạ, Q. Đống Đa, Hà Nội</li>
-                <li className="flex items-center gap-1.5"><Clock size={13} className="text-[#1B7E45]" /> <span>08:00 - 21:30 (Thứ 2 - Chủ Nhật)</span></li>
-                <li className="flex items-center gap-1.5"><Phone size={13} className="text-[#F37021]" /> <strong className="text-white">0931.715.889</strong></li>
-                <li className="flex items-center gap-1.5"><Mail size={13} className="text-[#1B7E45]" /> <span>marketing@tmedu.vn</span></li>
+
+              <ul className="space-y-2.5 text-xs text-emerald-100 pt-1">
+                <li className="flex items-start gap-2.5">
+                  <MapPin size={16} className="text-[#F37021] shrink-0 mt-0.5" />
+                  <div className="space-y-1 leading-snug">
+                    <div>
+                      <strong className="text-white">Cơ sở 1:</strong> Số 567 đường Hàn Thuyên, P. Đại Phúc, TP. Bắc Ninh
+                    </div>
+                    <div>
+                      <strong className="text-white">Cơ sở 2:</strong> Ngã 6 Phường Đại Phúc, TP. Bắc Ninh
+                    </div>
+                  </div>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Phone size={15} className="text-amber-300 shrink-0" />
+                  <span>Hotline tư vấn: <strong className="text-white font-extrabold text-sm tracking-wide">0961.556.677</strong></span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Mail size={15} className="text-emerald-300 shrink-0" />
+                  <span>Email: <span className="text-white">contact@greenocean.edu.vn</span></span>
+                </li>
+                <li className="flex items-center gap-2.5">
+                  <Clock size={15} className="text-[#F37021] shrink-0" />
+                  <span>Giờ làm việc: <strong className="text-white">08:00 - 21:30</strong> (Thứ 2 - Chủ Nhật)</span>
+                </li>
               </ul>
+            </div>
+
+            {/* Col 2: Training Campus Info (3 cols) */}
+            <div className="lg:col-span-3 space-y-4">
+              <h4 className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2 border-b border-white/20 pb-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#F37021]" />
+                CƠ SỞ ĐÀO TẠO
+              </h4>
+
+              <div className="space-y-2.5">
+                <div className="p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 transition-colors shadow-xs">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2 py-0.5 rounded-md bg-white text-[#135830] font-black text-[10px] uppercase shadow-xs">
+                      Cơ sở 1
+                    </span>
+                    <h5 className="font-bold text-white text-xs">Hàn Thuyên – Đại Phúc</h5>
+                  </div>
+                  <p className="text-xs text-white/90 leading-relaxed font-medium">
+                    Số 567 đường Hàn Thuyên, P. Đại Phúc, TP. Bắc Ninh
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 transition-colors shadow-xs">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2 py-0.5 rounded-md bg-emerald-300 text-[#135830] font-black text-[10px] uppercase shadow-xs">
+                      Cơ sở 2
+                    </span>
+                    <h5 className="font-bold text-white text-xs">Ngã 6 Đại Phúc</h5>
+                  </div>
+                  <p className="text-xs text-white/90 leading-relaxed font-medium">
+                    Ngã 6 Phường Đại Phúc, TP. Bắc Ninh
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 transition-colors shadow-xs">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2 py-0.5 rounded-md bg-[#F37021] text-white font-black text-[10px] uppercase shadow-xs">
+                      Trực tuyến
+                    </span>
+                    <h5 className="font-bold text-white text-xs">Lớp Học Online Tương Tác</h5>
+                  </div>
+                  <p className="text-xs text-white/90 leading-relaxed">
+                    Học trực tiếp 100% cùng giảng viên qua nền tảng tương tác hai chiều trên toàn quốc.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Col 3: Courses (2.5 cols) */}
+            <div className="lg:col-span-3 space-y-4">
+              <h4 className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2 border-b border-white/20 pb-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#F37021]" />
+                CHƯƠNG TRÌNH ĐÀO TẠO
+              </h4>
+
+              <ul className="space-y-2 text-xs text-emerald-100">
+                <li>
+                  <Link href="/khoa-hoc" className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1.5">
+                    <span className="text-amber-300 font-bold">&rsaquo;</span> Hán Ngữ Tích Hợp 3.0
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/khoa-hoc" className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1.5">
+                    <span className="text-amber-300 font-bold">&rsaquo;</span> Hán Ngữ Tích Hợp 3.0 Trực Tuyến
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/khoa-hoc" className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1.5">
+                    <span className="text-amber-300 font-bold">&rsaquo;</span> Khóa Luyện Thi HSK / HSKK
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/khoa-hoc" className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1.5">
+                    <span className="text-amber-300 font-bold">&rsaquo;</span> Tiếng Trung Giao Tiếp Thực Chiến
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/khoa-hoc" className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1.5">
+                    <span className="text-amber-300 font-bold">&rsaquo;</span> Tiếng Trung Doanh Nghiệp FDI
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/khoa-hoc" className="hover:text-white hover:translate-x-1 transition-all flex items-center gap-1.5">
+                    <span className="text-amber-300 font-bold">&rsaquo;</span> Khóa Học 1 Kèm 1 Theo Yêu Cầu
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Col 4: Policies & Social (2.5 cols) */}
+            <div className="lg:col-span-2 space-y-4">
+              <h4 className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-2 border-b border-white/20 pb-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#F37021]" />
+                CHÍNH SÁCH
+              </h4>
+
+              <ul className="space-y-2 text-xs text-emerald-100">
+                <li>
+                  <Link href="/chinh-sach" className="hover:text-white hover:translate-x-1 transition-all block">
+                    Cam kết chất lượng
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/chinh-sach" className="hover:text-white hover:translate-x-1 transition-all block">
+                    Chính sách học bù & bảo lưu
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/chinh-sach" className="hover:text-white hover:translate-x-1 transition-all block">
+                    Chính sách thanh toán học phí
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/chinh-sach" className="hover:text-white hover:translate-x-1 transition-all block">
+                    Bảo mật thông tin học viên
+                  </Link>
+                </li>
+              </ul>
+
               <div className="pt-2">
-                <div className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-[11px] text-emerald-400 font-semibold">
-                  <ShieldCheck size={14} className="text-emerald-400" />
-                  <span>Đã thông báo Bộ Công Thương</span>
+                <div className="text-[11px] font-black text-white mb-2 uppercase tracking-wider">
+                  KẾT NỐI VỚI GREEN OCEAN
                 </div>
-              </div>
-            </div>
-
-            {/* Col 2: Hanoi Branches */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">CƠ SỞ TẠI HÀ NỘI</h4>
-              <ul className="space-y-1.5 text-xs text-slate-400">
-                <li><strong className="text-slate-200">Đống Đa:</strong> Số 9 ngõ 49 Huỳnh Thúc Kháng</li>
-                <li><strong className="text-slate-200">Cầu Giấy 1:</strong> Số 8 ngõ 72 Dương Khuê</li>
-                <li><strong className="text-slate-200">Cầu Giấy 2:</strong> Số 25 Phạm Tuấn Tài</li>
-                <li><strong className="text-slate-200">Hai Bà Trưng:</strong> Số 311 Trần Đại Nghĩa</li>
-                <li><strong className="text-slate-200">Hà Đông:</strong> Số 139K Chiến Thắng</li>
-                <li><strong className="text-slate-200">Mỹ Đình:</strong> Số 46 Nguyễn Hoàng</li>
-                <li><strong className="text-slate-200">Gia Lâm:</strong> SP16-79 Ocean Park, Gia Lâm</li>
-                <li><strong className="text-slate-200">Times City:</strong> Số 458 Minh Khai, HBT</li>
-                <li><strong className="text-slate-200">Bách Khoa:</strong> Tầng 1, Tòa C3B ĐH Bách Khoa</li>
-              </ul>
-            </div>
-
-            {/* Col 3: HCM & Province Branches */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">CƠ SỞ TP.HCM & CÁC TỈNH</h4>
-              <ul className="space-y-1.5 text-xs text-slate-400">
-                <li><strong className="text-slate-200">Quận 1:</strong> 345/84 Trần Hưng Đạo, P. Cầu Kho</li>
-                <li><strong className="text-slate-200">Tân Bình:</strong> 67 Nguyễn Thái Bình, P. 4</li>
-                <li><strong className="text-slate-200">Bình Thạnh:</strong> 168/19 Nguyễn Gia Trí, P. 25</li>
-                <li><strong className="text-slate-200">Thuận An:</strong> 262/3A Thủ Khoa Huân, Bình Dương</li>
-                <li><strong className="text-slate-200">Bắc Ninh:</strong> ParkView City, 125 Huyền Quang</li>
-                <li><strong className="text-slate-200">Đà Nẵng:</strong> 186 Nguyễn Thị Minh Khai, Hải Châu</li>
-                <li><strong className="text-slate-200">Thái Bình:</strong> 114 Nguyễn Văn Năng, TP. Thái Bình</li>
-                <li><strong className="text-slate-200">Hưng Yên:</strong> Số 36 Thủy Nguyên, KĐT Ecopark</li>
-              </ul>
-            </div>
-
-            {/* Col 4: Quick Links & Policies */}
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider">QUY ĐỊNH & CHÍNH SÁCH</h4>
-              <ul className="space-y-1.5 text-xs text-slate-400">
-                <li><Link href="/chinh-sach/chinh-sach-thanh-toan" className="hover:text-white transition-colors">Chính sách thanh toán học phí</Link></li>
-                <li><Link href="/chinh-sach/chinh-sach-bao-luu-chuyen-lop" className="hover:text-white transition-colors">Chính sách bảo lưu & chuyển lớp</Link></li>
-                <li><Link href="/chinh-sach/chinh-sach-xu-ly-khieu-nai" className="hover:text-white transition-colors">Chính sách xử lý khiếu nại</Link></li>
-                <li><Link href="/chinh-sach/chinh-sach-bao-mat-thong-tin" className="hover:text-white transition-colors">Chính sách bảo mật thông tin</Link></li>
-                <li><Link href="/gioi-thieu" className="hover:text-white transition-colors">Về Thanhmaihsk (15 năm phát triển)</Link></li>
-                <li><Link href="/nhuong-quyen" className="hover:text-white transition-colors">Hợp tác & Nhượng quyền thương hiệu</Link></li>
-                <li><Link href="/tin-tuc" className="hover:text-white transition-colors">Tin tức & Cẩm nang học tiếng Trung</Link></li>
-              </ul>
-
-              <div className="pt-3">
-                <div className="text-[11px] font-bold text-slate-300 mb-2 uppercase tracking-wider">THEO DÕI CHÚNG TÔI</div>
                 <div className="flex items-center gap-2">
-                  <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#1B7E45] flex items-center justify-center text-white transition-colors" title="Facebook">
-                    <Facebook size={14} />
+                  <a 
+                    href="https://facebook.com" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="w-8 h-8 rounded-lg bg-white/15 hover:bg-[#F37021] border border-white/20 flex items-center justify-center text-white transition-all shadow-xs" 
+                    title="Facebook Green Ocean"
+                  >
+                    <Facebook size={15} />
                   </a>
-                  <a href="https://youtube.com" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-white/10 hover:bg-red-600 flex items-center justify-center text-white transition-colors" title="YouTube">
-                    <Youtube size={14} />
+                  <a 
+                    href="https://youtube.com" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="w-8 h-8 rounded-lg bg-white/15 hover:bg-red-600 border border-white/20 flex items-center justify-center text-white transition-all shadow-xs" 
+                    title="YouTube Green Ocean"
+                  >
+                    <Youtube size={15} />
                   </a>
-                  <a href="https://zalo.me" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-[#0068ff] flex items-center justify-center text-white transition-colors" title="Zalo">
-                    <span className="text-[10px] font-black">Zalo</span>
+                  <a 
+                    href="https://zalo.me" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="w-8 h-8 rounded-lg bg-[#0068ff] hover:brightness-110 flex items-center justify-center text-white transition-all font-bold text-[10px] shadow-xs" 
+                    title="Zalo Green Ocean"
+                  >
+                    Zalo
                   </a>
-                  <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#1B7E45] flex items-center justify-center text-white transition-colors" title="TikTok">
-                    <Send size={13} />
+                  <a 
+                    href="https://tiktok.com" 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="w-8 h-8 rounded-lg bg-white/15 hover:bg-black/60 border border-white/20 flex items-center justify-center text-white transition-all shadow-xs" 
+                    title="TikTok Green Ocean"
+                  >
+                    <Send size={14} />
                   </a>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* Bottom Copyright */}
-      <div className="py-4 bg-[#09101d] border-t border-white/5">
-        <div className="max-w-[1280px] mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left text-[11px] text-slate-500">
+      {/* Bottom Copyright Bar */}
+      <div className="py-4 bg-[#0a311a] border-t border-white/15 relative z-10 text-[11px] text-emerald-200/90">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
           <div>
-            &copy; {new Date().getFullYear()} THANHMAIHSK. Tất cả quyền được bảo lưu.
+            &copy; {new Date().getFullYear()} TRUNG TÂM NGOẠI NGỮ GREEN OCEAN. Tất cả quyền được bảo lưu.
           </div>
-          <div className="flex items-center gap-2">
-            <Link href="/chinh-sach/chinh-sach-bao-mat-thong-tin" className="hover:text-slate-300">Bảo Mật</Link>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-emerald-200/90">
+            <span>CS1: 567 Hàn Thuyên, TP. Bắc Ninh</span>
             <span>•</span>
-            <Link href="/chinh-sach/chinh-sach-thanh-toan" className="hover:text-slate-300">Điều Khoản</Link>
+            <span>CS2: Ngã 6 Phường Đại Phúc, TP. Bắc Ninh</span>
             <span>•</span>
-            <Link href="/he-thong-co-so" className="hover:text-slate-300">Hệ Thống Cơ Sở</Link>
+            <span>Đào tạo Trực tuyến Toàn quốc</span>
             <span>•</span>
-            <Link href="/admin" className="hover:text-slate-300 opacity-60">Quản Trị CRM</Link>
+            <span>Hotline: <strong className="text-white">0961.556.677</strong></span>
           </div>
         </div>
       </div>
+
     </footer>
   );
 }

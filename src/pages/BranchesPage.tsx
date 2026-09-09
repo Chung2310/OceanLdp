@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import { Link } from 'wouter';
+import { MapPin, Phone, Mail, ExternalLink, ArrowRight, Building2 } from 'lucide-react';
 import { branchRegions, branchesData } from '../data/branchesData';
 
 export default function BranchesPage(): JSX.Element {
@@ -14,14 +15,14 @@ export default function BranchesPage(): JSX.Element {
       {/* Hero Banner */}
       <div className="w-full bg-gradient-to-br from-[#1E293B] to-[#0f172a] py-14 px-4 text-center text-white">
         <div className="max-w-[1280px] mx-auto">
-          <span className="inline-block bg-[#1B7E45]/25 text-[#bbf0d2] border border-[#1B7E45]/40 text-xs font-extrabold px-3.5 py-1 rounded-full mb-3 uppercase tracking-wider">
-            MẠNG LƯỚI ĐÀO TẠO
+          <span className="inline-block bg-[#1B7E45]/25 text-[#bbf0d2] border border-[#1B7E45]/40 text-xs font-extrabold px-3.5 py-1 rounded-md mb-3 uppercase tracking-wider">
+            HỆ THỐNG CƠ SỞ
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-            Hệ Thống 20+ Cơ Sở Trên Toàn Quốc
+            Hệ Thống Cơ Sở Đào Tạo Green Ocean
           </h1>
           <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Không gian phòng học tiêu chuẩn cao cấp, phủ sóng khắp các quận trung tâm Hà Nội, TP. Hồ Chí Minh và các tỉnh thành lớn.
+            Hệ thống cơ sở hiện đại tại trung tâm TP. Bắc Ninh kết hợp chương trình đào tạo trực tuyến tương tác hai chiều phục vụ học viên trên toàn quốc.
           </p>
         </div>
       </div>
@@ -30,9 +31,9 @@ export default function BranchesPage(): JSX.Element {
         {/* Region Filter Buttons */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           <button 
-            className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            className={`px-5 py-2.5 rounded-md text-xs font-bold transition-all cursor-pointer ${
               selectedRegion === 'all' 
-                ? 'bg-[#1B7E45] text-white shadow-md' 
+                ? 'bg-[#1B7E45] text-white shadow-xs' 
                 : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
             }`}
             onClick={() => setSelectedRegion('all')}
@@ -42,9 +43,9 @@ export default function BranchesPage(): JSX.Element {
           {branchRegions.map((r) => (
             <button 
               key={r.id} 
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`px-5 py-2.5 rounded-md text-xs font-bold transition-all cursor-pointer ${
                 selectedRegion === r.id 
-                  ? 'bg-[#1B7E45] text-white shadow-md' 
+                  ? 'bg-[#1B7E45] text-white shadow-xs' 
                   : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
               }`}
               onClick={() => setSelectedRegion(r.id)}
@@ -59,9 +60,9 @@ export default function BranchesPage(): JSX.Element {
           {filteredBranches.map((branch) => (
             <div 
               key={branch.id} 
-              className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col group"
+              className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col group"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <Link href={`/he-thong-co-so/${branch.id}`} className="relative aspect-[16/10] overflow-hidden bg-slate-100 block">
                 <img 
                   src={branch.image} 
                   alt={branch.name} 
@@ -70,12 +71,14 @@ export default function BranchesPage(): JSX.Element {
                 <div className="absolute bottom-3 left-3 bg-slate-900/80 text-white text-[11px] font-medium px-2.5 py-1 rounded-md backdrop-blur-sm">
                   {branch.hours}
                 </div>
-              </div>
+              </Link>
 
               <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-base md:text-lg font-bold text-[#1E293B] mb-3 group-hover:text-[#1B7E45] transition-colors leading-snug">
-                  {branch.name}
-                </h3>
+                <Link href={`/he-thong-co-so/${branch.id}`}>
+                  <h3 className="text-base md:text-lg font-bold text-[#1E293B] mb-3 group-hover:text-[#1B7E45] transition-colors leading-snug">
+                    {branch.name}
+                  </h3>
+                </Link>
                 
                 <div className="space-y-2 text-xs text-slate-600 mb-4 flex-grow">
                   <div className="flex items-start gap-2">
@@ -98,21 +101,30 @@ export default function BranchesPage(): JSX.Element {
                   <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Tiện ích:</div>
                   <div className="flex flex-wrap gap-1.5">
                     {branch.facilities.map((fac, fi) => (
-                      <span key={fi} className="bg-slate-100 text-slate-600 text-[11px] font-medium px-2 py-0.5 rounded">
+                      <span key={fi} className="bg-slate-100 text-slate-600 text-[11px] font-medium px-2 py-0.5 rounded-md">
                         ✓ {fac}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <a 
-                  href={branch.mapUrl} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="w-full py-2.5 px-4 rounded-xl border border-slate-200 hover:border-[#1B7E45] text-slate-700 hover:text-[#1B7E45] text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer mt-auto bg-slate-50 hover:bg-[#EAF5EE]"
-                >
-                  <ExternalLink size={14} /> Xem trên Google Maps
-                </a>
+                <div className="mt-auto space-y-2">
+                  <Link 
+                    href={`/he-thong-co-so/${branch.id}`}
+                    className="w-full py-2.5 px-4 rounded-md bg-[#1B7E45] hover:bg-[#156637] text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+                  >
+                    Xem chi tiết cơ sở & môi trường học <ArrowRight size={14} />
+                  </Link>
+
+                  <a 
+                    href={branch.mapUrl} 
+                    target="_blank" 
+                    rel="noreferrer" 
+                    className="w-full py-2 px-4 rounded-md border border-slate-200 hover:border-[#1B7E45] text-slate-600 hover:text-[#1B7E45] text-xs font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer bg-slate-50 hover:bg-[#EAF5EE]"
+                  >
+                    <ExternalLink size={13} /> Chỉ đường Google Maps
+                  </a>
+                </div>
               </div>
             </div>
           ))}

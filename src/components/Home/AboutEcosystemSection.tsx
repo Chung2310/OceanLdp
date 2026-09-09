@@ -8,9 +8,9 @@ interface AboutEcosystemSectionProps {
   customImage?: string;
 }
 
-export default function AboutEcosystemSection({ 
+export default function AboutEcosystemSection({
   onOpenLeadModal,
-  customImage 
+  customImage
 }: AboutEcosystemSectionProps): JSX.Element {
   const introImage = customImage || defaultIntroImg;
 
@@ -52,19 +52,19 @@ export default function AboutEcosystemSection({
 
         {/* 2-Column Showcase Card: Left is narrower (col-span-5), Right is wider (col-span-7), Equal Height */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          
+
           {/* Left Column: Image Card (Chiều cao bằng chính xác 100% khung bên phải) */}
           <div className="lg:col-span-5 relative w-full h-full min-h-[340px] rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 bg-white group flex">
-            <img 
-              src={introImage} 
-              alt="Trung tâm Ngoại ngữ Green Ocean" 
+            <img
+              src={introImage}
+              alt="Trung tâm Ngoại ngữ Green Ocean"
               className="w-full h-full object-cover rounded-3xl transition-transform duration-500 group-hover:scale-105 block"
             />
           </div>
 
           {/* Right Column: Introduction & Features Content Card (Rộng rãi, thoáng, khớp chiều cao) */}
           <div className="lg:col-span-7 h-full relative bg-white rounded-3xl p-6 sm:p-8 md:p-9 border border-slate-200/80 shadow-sm flex flex-col justify-between">
-            
+
             {/* Decorative Dot Matrix in top-right corner */}
             <div className="absolute top-6 right-6 grid grid-cols-6 gap-1.5 opacity-30 pointer-events-none" aria-hidden="true">
               {Array.from({ length: 18 }).map((_, i) => (
@@ -91,15 +91,15 @@ export default function AboutEcosystemSection({
 
               {/* Clean Concise Description Paragraph (No brackets/parentheses) */}
               <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed mb-8">
-                Green Ocean là Hệ sinh thái đào tạo năng lực tiếng Trung toàn diện tại Việt Nam với 6 năm phát triển, 
-                đồng hành cùng hơn 5.000 học viên và mạng lưới cơ sở học tập hiện đại. Chúng tôi định hướng đào tạo thực chất, 
+                Green Ocean là Hệ sinh thái đào tạo năng lực tiếng Trung toàn diện tại Việt Nam với 6 năm phát triển,
+                đồng hành cùng hơn 5.000 học viên và mạng lưới cơ sở học tập hiện đại. Chúng tôi định hướng đào tạo thực chất,
                 ứng dụng và hiệu quả, tập trung vào khả năng sử dụng tiếng Trung tự tin trong học tập, công việc và môi trường quốc tế.
               </p>
 
               {/* 4 Feature Badges (Clean 2x2 Grid) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
                 {features.map((f) => (
-                  <div 
+                  <div
                     key={f.id}
                     className="flex items-center gap-3.5 px-4 py-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:border-[#1B7E45]/40 hover:shadow-md transition-all duration-200"
                   >

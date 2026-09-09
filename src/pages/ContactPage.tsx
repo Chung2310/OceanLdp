@@ -51,20 +51,32 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
           {/* Left: Contact Info */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-black text-[#1E293B] mb-2 tracking-tight">Thông Tin Trụ Sở Chính</h2>
+              <h2 className="text-2xl font-black text-[#1E293B] mb-2 tracking-tight">Hệ Thống Cơ Sở Đào Tạo</h2>
               <p className="text-xs font-bold text-[#1B7E45] uppercase tracking-wider">
-                CÔNG TY TNHH PHÁT TRIỂN GIÁO DỤC VÀ HỢP TÁC QUỐC TẾ THANHMAIHSK
+                TRUNG TÂM NGOẠI NGỮ GREEN OCEAN
               </p>
             </div>
 
             <div className="space-y-4">
+              {/* Cơ sở 1 */}
               <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
                 <div className="w-12 h-12 rounded-xl bg-[#EAF5EE] text-[#1B7E45] flex items-center justify-center flex-shrink-0">
                   <MapPin size={22} />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Địa chỉ trụ sở chính:</div>
-                  <div className="text-sm font-semibold text-slate-800">Số 9 ngõ 49 Huỳnh Thúc Kháng, P. Láng Hạ, Q. Đống Đa, Hà Nội</div>
+                  <div className="text-xs font-bold text-[#1B7E45] uppercase tracking-wider mb-1">Cơ sở 1 (Hàn Thuyên):</div>
+                  <div className="text-sm font-bold text-slate-800">Số 567 đường Hàn Thuyên, P. Đại Phúc, TP. Bắc Ninh</div>
+                </div>
+              </div>
+
+              {/* Cơ sở 2 */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#1B7E45] flex items-center justify-center flex-shrink-0">
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[#1B7E45] uppercase tracking-wider mb-1">Cơ sở 2 (Ngã 6 Đại Phúc):</div>
+                  <div className="text-sm font-bold text-slate-800">Ngã 6 Phường Đại Phúc, TP. Bắc Ninh</div>
                 </div>
               </div>
 
@@ -74,7 +86,7 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Hotline tư vấn tuyển sinh:</div>
-                  <div className="text-sm font-bold text-slate-800">0931.715.889 / 0981.123.456</div>
+                  <div className="text-sm font-bold text-slate-800">0961.556.677</div>
                 </div>
               </div>
 
@@ -84,7 +96,7 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Email hỗ trợ & Học vụ:</div>
-                  <div className="text-sm font-semibold text-slate-800">marketing@tmedu.vn / hocvu@tmedu.vn</div>
+                  <div className="text-sm font-semibold text-slate-800">contact@greenocean.edu.vn</div>
                 </div>
               </div>
 
@@ -103,13 +115,13 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
           {/* Right: Contact Form */}
           <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-xl">
             <h2 className="text-2xl font-black text-[#1E293B] mb-6 tracking-tight">Gửi Tin Nhắn Cho Chúng Tôi</h2>
-            
+
             {submitted ? (
               <div className="py-12 text-center flex flex-col items-center gap-3">
                 <CheckCircle2 size={64} className="text-[#1B7E45]" />
                 <h3 className="text-xl font-bold text-[#1E293B]">GỬI TIN NHẮN THÀNH CÔNG!</h3>
                 <p className="text-sm text-slate-600 max-w-sm">
-                  Cảm ơn bạn <strong className="text-slate-800">{form.name}</strong> đã liên hệ. Ban Tuyển sinh Thanhmaihsk sẽ phản hồi qua số <strong className="text-[#F37021]">{form.phone}</strong> sớm nhất!
+                  Cảm ơn bạn <strong className="text-slate-800">{form.name}</strong> đã liên hệ. Ban Tuyển sinh Green Ocean sẽ phản hồi qua số <strong className="text-[#F37021]">{form.phone}</strong> sớm nhất!
                 </p>
               </div>
             ) : (
@@ -118,10 +130,10 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
                   <label className="block text-xs font-bold text-slate-600 mb-1.5">
                     Họ và tên của bạn <span className="text-red-500">*</span>
                   </label>
-                  <input 
-                    type="text" 
-                    required 
-                    placeholder="Nguyễn Văn A" 
+                  <input
+                    type="text"
+                    required
+                    placeholder="Nguyễn Văn A"
                     className="w-full h-11 px-4 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 outline-none focus:border-[#1B7E45] focus:bg-white transition-all focus:ring-2 focus:ring-[#1B7E45]/20"
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -133,10 +145,10 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
                     <label className="block text-xs font-bold text-slate-600 mb-1.5">
                       Số điện thoại (Zalo) <span className="text-red-500">*</span>
                     </label>
-                    <input 
-                      type="tel" 
-                      required 
-                      placeholder="0912 345 678" 
+                    <input
+                      type="tel"
+                      required
+                      placeholder="0912 345 678"
                       className="w-full h-11 px-4 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 outline-none focus:border-[#1B7E45] focus:bg-white transition-all focus:ring-2 focus:ring-[#1B7E45]/20"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -145,9 +157,9 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
 
                   <div>
                     <label className="block text-xs font-bold text-slate-600 mb-1.5">Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="email@example.com" 
+                    <input
+                      type="email"
+                      placeholder="email@example.com"
                       className="w-full h-11 px-4 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 outline-none focus:border-[#1B7E45] focus:bg-white transition-all focus:ring-2 focus:ring-[#1B7E45]/20"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -157,7 +169,7 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
 
                 <div>
                   <label className="block text-xs font-bold text-slate-600 mb-1.5">Chủ đề cần hỗ trợ</label>
-                  <select 
+                  <select
                     className="w-full h-11 px-4 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 outline-none focus:border-[#1B7E45] focus:bg-white transition-all focus:ring-2 focus:ring-[#1B7E45]/20"
                     value={form.subject}
                     onChange={(e) => setForm({ ...form, subject: e.target.value })}
@@ -172,17 +184,17 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
 
                 <div>
                   <label className="block text-xs font-bold text-slate-600 mb-1.5">Nội dung chi tiết</label>
-                  <textarea 
-                    rows={4} 
-                    placeholder="Nhập nội dung bạn cần hỗ trợ..." 
+                  <textarea
+                    rows={4}
+                    placeholder="Nhập nội dung bạn cần hỗ trợ..."
                     className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 outline-none focus:border-[#1B7E45] focus:bg-white transition-all focus:ring-2 focus:ring-[#1B7E45]/20 resize-none"
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                   ></textarea>
                 </div>
 
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="w-full h-12 bg-[#1B7E45] hover:bg-[#156637] text-white rounded-xl font-extrabold text-sm tracking-wide flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg transition-all active:scale-95 pt-1"
                 >
                   <Send size={18} /> GỬI YÊU CẦU NGAY

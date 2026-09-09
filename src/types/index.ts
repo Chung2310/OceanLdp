@@ -34,6 +34,28 @@ export interface Course {
   curriculum: CurriculumPhase[];
   textbook: string;
   gifts: string[];
+  classCode?: string;
+  totalSessions?: string;
+  sessionDuration?: string;
+  contentPhasesSummary?: string[];
+  scholarshipText?: string;
+  benefits?: string[];
+  objectives?: string[];
+  contentTopics?: string[];
+  skills?: {
+    listen: string;
+    speak: string;
+    read: string;
+    write: string;
+  };
+  kidLevels?: Array<{
+    name: string;
+    age: string;
+    duration: string;
+    objectives: string[];
+    topics: string;
+    outcome: string;
+  }>;
 }
 
 export interface MsutongBook {
@@ -89,7 +111,7 @@ export interface BranchRegion {
 
 export interface Branch {
   id: string;
-  region: 'ha-noi' | 'ho-chi-minh' | 'tinh-thanh';
+  region: string;
   name: string;
   address: string;
   hotline: string;
@@ -98,6 +120,22 @@ export interface Branch {
   mapUrl: string;
   image: string;
   facilities: string[];
+  slug?: string;
+  shortName?: string;
+  city?: string;
+  area?: string;
+  format?: string;
+  targetAudience?: string;
+  introText?: string;
+  environmentTitle?: string;
+  environmentText?: string[];
+  curriculumTitle?: string;
+  curriculumText?: string[];
+  adviceTitle?: string;
+  adviceText?: string[];
+  storefrontImage?: string;
+  classroomImage?: string;
+  teachingImage?: string;
 }
 
 export interface StudyAbroadProgram {
@@ -138,6 +176,10 @@ export interface NewsPost {
   image: string;
   excerpt: string;
   content: string;
+  day?: string;
+  month?: string;
+  layoutType?: 'standard' | 'text-only';
+  infographicImage?: string;
 }
 
 export interface FAQItem {

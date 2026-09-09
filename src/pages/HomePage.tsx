@@ -4,15 +4,9 @@ import AboutEcosystemSection from '../components/Home/AboutEcosystemSection';
 import WhyChooseSection from '../components/Home/WhyChooseSection';
 import HSKRoadmapSection from '../components/Home/HSKRoadmapSection';
 import FeaturedCourses from '../components/Home/FeaturedCourses';
-import MethodAndBookSection from '../components/Home/MethodAndBookSection';
-import StatsCounter from '../components/Home/StatsCounter';
-import HallOfFameSection from '../components/Home/HallOfFameSection';
+import LeadBannerSection from '../components/Home/LeadBannerSection';
 import TeachersSection from '../components/Home/TeachersSection';
-import TestimonialsSection from '../components/Home/TestimonialsSection';
-import BranchMapSection from '../components/Home/BranchMapSection';
-import FreeResourcesSection from '../components/Home/FreeResourcesSection';
-import LatestNewsSection from '../components/Home/LatestNewsSection';
-import FAQSection from '../components/Home/FAQSection';
+import HallOfFameSection from '../components/Home/HallOfFameSection';
 import { ResourceItem } from '../types';
 
 interface HomePageProps {
@@ -25,61 +19,39 @@ export default function HomePage({ onOpenLeadModal, onOpenDownloadModal, onShowT
   return (
     <main className="home-page-container">
       {/* 1. Hero Carousel Slider & Lead Form */}
-      <HeroSlider 
-        onOpenLeadModal={() => onOpenLeadModal()} 
+      <HeroSlider
+        onOpenLeadModal={() => onOpenLeadModal()}
         onShowToast={onShowToast}
       />
 
-      {/* 2. Hệ sinh thái Đào tạo Năng lực Tiếng Trung Toàn Diện (Chuẩn layout Thanhmaihsk) */}
-      <AboutEcosystemSection 
+      {/* 2. Hệ sinh thái Đào tạo Năng lực Tiếng Trung Toàn Diện */}
+      <AboutEcosystemSection
         onOpenLeadModal={() => onOpenLeadModal('Tư vấn Giới thiệu Hệ sinh thái Green Ocean')}
       />
 
-      {/* 3. 6 Lý Do Nên Chọn Green Ocean (Interactive Reasons Showcase) */}
+      {/* 3. 6 Lý Do Nên Chọn Green Ocean */}
       <WhyChooseSection />
 
       {/* 4. Lộ trình chinh phục New HSK 3.0 Chuẩn Khảo Thí */}
-      <HSKRoadmapSection 
+      <HSKRoadmapSection
         onOpenLeadModal={() => onOpenLeadModal('Tư vấn Lộ trình Chinh phục New HSK 3.0')}
       />
 
-      {/* 5. Featured Courses Tabbed Filter */}
-      <FeaturedCourses 
-        onOpenLeadModal={(courseTitle) => onOpenLeadModal(courseTitle)} 
+      {/* 5. Featured Courses Display Showcase */}
+      <FeaturedCourses
+        onOpenLeadModal={(courseTitle) => onOpenLeadModal(courseTitle)}
       />
 
-      {/* 6. Bảng vàng thành tích học viên HSK 6 & HSK 5 cao điểm */}
-      <HallOfFameSection />
-
-      {/* 7. Phương pháp Mcontask & Bộ sách Msutong */}
-      <MethodAndBookSection 
-        onOpenDownloadModal={onOpenDownloadModal} 
+      {/* 6. Form Đăng Ký Tư Vấn Ngay Hôm Nay (Banner + Form) */}
+      <LeadBannerSection
+        onShowToast={onShowToast}
       />
 
-      {/* 8. Impressive Numbers & Stats Counter */}
-      <StatsCounter />
-
-      {/* 9. Top Faculty & Teachers Thạc sĩ/Tiến sĩ */}
+      {/* 7. Đội Ngũ Chuyên Gia, Giảng Viên Hán Ngữ Đầu Ngành */}
       <TeachersSection />
 
-      {/* 10. Student Scores & Testimonials */}
-      <TestimonialsSection />
-
-      {/* 11. 20+ Branches Interactive Viewer */}
-      <BranchMapSection />
-
-      {/* 12. Free Downloadable Resources & Ebooks */}
-      <FreeResourcesSection 
-        onOpenDownloadModal={onOpenDownloadModal} 
-      />
-
-      {/* 13. Latest News, Seminars & Articles */}
-      <LatestNewsSection />
-
-      {/* 14. FAQ Accordion Section */}
-      <FAQSection 
-        onOpenLeadModal={() => onOpenLeadModal()} 
-      />
+      {/* 8. Bảng vàng thành tích học viên HSK 6 & HSK 5 cao điểm (Dual Marquee) */}
+      <HallOfFameSection />
     </main>
   );
 }

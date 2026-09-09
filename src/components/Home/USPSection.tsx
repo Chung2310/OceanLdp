@@ -26,14 +26,14 @@ const usps = [
 
 export default function USPSection(): JSX.Element {
   return (
-    <section className="w-full bg-white py-16" aria-label="Lý do chọn Thanhmaihsk">
+    <section className="w-full bg-white py-16" aria-label="Lý do chọn Green Ocean">
       <div className="max-w-[1280px] mx-auto px-4">
         <div className="text-center mb-12">
           <span className="inline-block bg-[#EAF5EE] text-[#1B7E45] font-extrabold text-xs px-3.5 py-1 rounded-full uppercase tracking-wider mb-2">
             VÌ SAO CHỌN CHÚNG TÔI
           </span>
           <h2 className="text-2xl md:text-3xl font-black text-[#1E293B] tracking-tight">
-            4 Giá Trị Khác Biệt Tại Thanhmaihsk
+            4 Giá Trị Khác Biệt Tại Green Ocean
           </h2>
           <p className="text-sm text-slate-500 max-w-xl mx-auto mt-2">
             Hệ sinh thái đào tạo Hán ngữ toàn diện nhất Việt Nam với chất lượng học thuật chuẩn quốc tế.

@@ -8,14 +8,14 @@ export default function Topbar(): JSX.Element {
         <div className="flex items-center justify-between h-9">
           {/* Left info */}
           <div className="flex items-center gap-3">
-            <a href="tel:0931715889" className="inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
+            <a href="tel:0961556677" className="inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
               <Phone size={13} className="text-[#F37021]" />
-              <span>Hotline: <strong className="text-white">0931.715.889</strong></span>
+              <span>Hotline: <strong className="text-white">0961.556.677</strong></span>
             </a>
             <span className="text-white/20 hidden sm:inline">|</span>
-            <a href="mailto:marketing@tmedu.vn" className="hidden sm:inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
+            <a href="mailto:contact@greenocean.edu.vn" className="hidden sm:inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
               <Mail size={13} className="text-[#1B7E45]" />
-              <span>marketing@tmedu.vn</span>
+              <span>contact@greenocean.edu.vn</span>
             </a>
             <span className="text-white/20 hidden lg:inline">|</span>
             <div className="hidden lg:inline-flex items-center gap-1.5 text-slate-400">

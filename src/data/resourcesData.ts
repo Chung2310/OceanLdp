@@ -16,7 +16,7 @@ export const resourcesData: ResourceItem[] = [
     format: 'PDF Ebook (Màu)',
     size: '28 MB',
     downloads: '45.200+',
-    author: 'Ban Chuyên Môn Thanhmaihsk',
+    author: 'Ban Chuyên Môn Green Ocean',
     image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop',
     desc: 'Tổng hợp 214 bộ thủ chữ Hán từ 1 đến 17 nét, có phiên âm pinyin, giải nghĩa Hán Việt, câu chuyện nhớ chữ và các từ ghép thông dụng nhất.'
   },

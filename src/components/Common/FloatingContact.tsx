@@ -20,9 +20,9 @@ export default function FloatingContact(): JSX.Element {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-center">
       {/* Hotline Call Button */}
       <a 
-        href="tel:0931715889" 
+        href="tel:0961556677" 
         className="relative w-12 h-12 rounded-full bg-[#1B7E45] hover:bg-[#156637] text-white flex items-center justify-center shadow-xl transition-all hover:scale-110" 
-        title="Gọi Hotline: 0931.715.889"
+        title="Gọi Hotline: 0961.556.677"
       >
         <Phone size={22} />
         <span className="absolute inset-0 rounded-full bg-[#1B7E45] opacity-50 animate-ping pointer-events-none"></span>
