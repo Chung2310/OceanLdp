@@ -4,7 +4,7 @@ import { Phone, Mail, Clock, Facebook, Youtube, Send, Sparkles } from 'lucide-re
 export default function Topbar(): JSX.Element {
   return (
     <div className="w-full bg-[#1E293B] text-slate-300 text-xs border-b border-white/10 relative z-50">
-      <div className="max-w-[1280px] mx-auto px-4">
+      <div className="max-w-[1360px] mx-auto px-6">
         <div className="flex items-center justify-between h-9">
           {/* Left info */}
           <div className="flex items-center gap-3">

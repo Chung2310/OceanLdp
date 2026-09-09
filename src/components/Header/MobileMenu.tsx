@@ -173,11 +173,11 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
               </Link>
             </li>
 
-            <li>
+            {/* <li>
               <Link href="/nhuong-quyen" className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl font-bold text-sm text-[#1B7E45] hover:bg-slate-50 transition-colors" onClick={onClose}>
                 Hợp Tác Nhượng Quyền
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <Link href="/lien-he" className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl font-semibold text-sm text-slate-800 hover:bg-slate-50 hover:text-[#1B7E45] transition-colors" onClick={onClose}>
