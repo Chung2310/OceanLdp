@@ -27,7 +27,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
       <header className={`bg-white border-b border-slate-100 sticky top-0 z-[990] w-full transition-all duration-200 ${isScrolled ? 'shadow-md' : 'shadow-[0_1px_3px_rgba(0,0,0,0.04)]'}`}>
         <div className={`max-w-[1360px] mx-auto px-6 flex items-center justify-between transition-all duration-200 ${isScrolled ? 'min-h-[72px] py-2' : 'min-h-[95px] py-3'}`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0 mr-8 lg:mr-11">
+          <Link href="/" className="flex items-center shrink-0">
             <img
               src={logoImg}
               alt="GREEN OCEAN"
@@ -36,15 +36,14 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          {/* Desktop Navigation */}
-          <nav className="hidden xl:flex items-center">
-            <ul className="flex items-center list-none m-0 p-0 gap-1 font-['Montserrat',sans-serif]">
+          {/* Desktop Navigation - Centered with balanced spacing */}
+          <nav className="hidden xl:flex items-center justify-center flex-1 mx-4 2xl:mx-8">
+            <ul className="flex items-center list-none m-0 p-0 gap-1.5 2xl:gap-3 font-['Montserrat',sans-serif]">
               {/* 1. TRANG CHỦ */}
               <li className="relative">
                 <Link
                   href="/"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-[13px] 2xl:text-[13.5px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
                     }`}
                 >
                   TRANG CHỦ
@@ -59,7 +58,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
               >
                 <Link
                   href="/gioi-thieu"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location.startsWith('/gioi-thieu') || location.startsWith('/doi-ngu-giang-vien') ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-[13px] 2xl:text-[13.5px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location.startsWith('/gioi-thieu') || location.startsWith('/doi-ngu-giang-vien') ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
                     }`}
                 >
                   GIỚI THIỆU <ChevronDown size={12} strokeWidth={2.2} className="opacity-60 group-hover:text-[#1B7E45] group-hover:opacity-100 transition-opacity" />
@@ -89,7 +88,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
               >
                 <Link
                   href="/khoa-hoc"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location.startsWith('/khoa-hoc') ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-[13px] 2xl:text-[13.5px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location.startsWith('/khoa-hoc') ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
                     }`}
                 >
                   KHÓA HỌC <ChevronDown size={12} strokeWidth={2.2} className="opacity-60 group-hover:text-[#1B7E45] group-hover:opacity-100 transition-opacity" />
@@ -141,7 +140,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
               <li className="relative">
                 <Link
                   href="/lich-khai-giang"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/lich-khai-giang' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-[13px] 2xl:text-[13.5px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/lich-khai-giang' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
                     }`}
                 >
                   LỊCH KHAI GIẢNG
@@ -156,7 +155,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
               >
                 <Link
                   href="/he-thong-co-so"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/he-thong-co-so' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-[13px] 2xl:text-[13.5px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/he-thong-co-so' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
                     }`}
                 >
                   HỆ THỐNG CƠ SỞ <ChevronDown size={12} strokeWidth={2.2} className="opacity-60 group-hover:text-[#1B7E45] group-hover:opacity-100 transition-opacity" />
@@ -214,7 +213,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
               >
                 <Link
                   href="/tin-tuc"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location.startsWith('/tin-tuc') ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-[13px] 2xl:text-[13.5px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location.startsWith('/tin-tuc') ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
                     }`}
                 >
                   TIN TỨC <ChevronDown size={12} strokeWidth={2.2} className="opacity-60 group-hover:text-[#1B7E45] group-hover:opacity-100 transition-opacity" />
@@ -233,57 +232,46 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
               </li>
 
               {/* 7. THƯ VIỆN */}
-              <li
+              <li 
                 className="relative group"
                 onMouseEnter={() => setActiveDropdown('library')}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <Link
-                  href="/thu-vien-tai-lieu"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/thu-vien-tai-lieu' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
-                    }`}
+                <Link 
+                  href="/thu-vien-tai-lieu" 
+                  className={`inline-flex items-center gap-1 px-3 py-2 text-[13px] 2xl:text-[13.5px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${
+                    location.startsWith('/thu-vien-tai-lieu') ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
+                  }`}
                 >
                   THƯ VIỆN <ChevronDown size={12} strokeWidth={2.2} className="opacity-60 group-hover:text-[#1B7E45] group-hover:opacity-100 transition-opacity" />
                 </Link>
 
                 {activeDropdown === 'library' && (
-                  <ul className="absolute top-full left-0 bg-white shadow-xl border border-slate-100 rounded-xl py-2 list-none m-0 min-w-[240px] z-[1000] animate-in fade-in duration-150">
-                    <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">HSK và HSKK</Link></li>
-                    <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Từ Vựng Tiếng Trung</Link></li>
-                    <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Ngữ Pháp Tiếng Trung</Link></li>
-                    <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Thành Ngữ Tiếng Trung</Link></li>
-                    <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Phương pháp học tiếng Trung</Link></li>
-                    <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Kho sách, tài liệu học tiếng Trung</Link></li>
+                  <ul className="absolute top-full left-0 bg-white shadow-xl border border-slate-100 rounded-md py-2 list-none m-0 min-w-[240px] z-[1000] animate-in fade-in duration-150">
+                    <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Tất Cả Tài Liệu</Link></li>
+                    <li><Link href="/thu-vien-tai-lieu?cat=tu-vung" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Từ Vựng Tiếng Trung</Link></li>
+                    <li><Link href="/thu-vien-tai-lieu?cat=ngu-phap" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Ngữ Pháp Tiếng Trung</Link></li>
+                    <li><Link href="/thu-vien-tai-lieu?cat=bo-thu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>214 Bộ Thủ & Quy Tắc Viết</Link></li>
+                    <li><Link href="/thu-vien-tai-lieu?cat=hsk" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Tài Liệu Luyện Thi HSK</Link></li>
                   </ul>
                 )}
-              </li>
-
-              {/* 8. NHƯỢNG QUYỀN */}
-              <li className="relative">
-                <Link
-                  href="/nhuong-quyen"
-                  className={`inline-flex items-center gap-1 px-2.5 py-2 text-[12.8px] font-semibold uppercase tracking-[0.25px] whitespace-nowrap transition-colors leading-tight ${location === '/nhuong-quyen' ? 'text-[#1B7E45]' : 'text-[#1E293B] hover:text-[#1B7E45]'
-                    }`}
-                >
-                  NHƯỢNG QUYỀN
-                </Link>
-              </li>
-
-              {/* 9. ĐĂNG KÝ */}
-              <li className="relative ml-2">
-                <button
-                  onClick={() => onOpenLeadModal()}
-                  className="bg-[#1B7E45] hover:bg-[#156637] text-white px-3.5 py-1.5 rounded-full font-bold text-[12.8px] tracking-[0.25px] shadow-sm hover:shadow transition-all active:scale-95 cursor-pointer uppercase"
-                >
-                  ĐĂNG KÝ
-                </button>
               </li>
             </ul>
           </nav>
 
+          {/* Desktop Right Action: ĐĂNG KÝ */}
+          <div className="hidden xl:flex items-center shrink-0">
+            <button
+              onClick={() => onOpenLeadModal()}
+              className="bg-[#1B7E45] hover:bg-[#156637] text-white px-5 py-2.5 rounded-full font-bold text-[13px] tracking-[0.3px] shadow-sm hover:shadow-md transition-all active:scale-95 cursor-pointer uppercase inline-flex items-center justify-center"
+            >
+              ĐĂNG KÝ
+            </button>
+          </div>
+
           {/* Mobile Hamburger Button */}
           <button
-            className="xl:hidden p-2 text-[#1E293B] cursor-pointer"
+            className="xl:hidden p-2 text-[#1E293B] cursor-pointer ml-auto"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Mở Menu"
           >

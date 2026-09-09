@@ -155,13 +155,20 @@ export interface StudyAbroadProgram {
 export interface ResourceItem {
   id: string;
   category: string;
+  categoryName?: string;
   title: string;
+  slug?: string;
   format: string;
   size: string;
   downloads: string;
   author: string;
   image: string;
   desc: string;
+  day?: string;
+  month?: string;
+  date?: string;
+  views?: string;
+  content?: string;
 }
 
 export interface NewsPost {
