@@ -193,8 +193,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
             >
               <PhoneCall size={16} /> ĐĂNG KÝ TƯ VẤN NGAY
             </button>
-            <a href="tel:0931715889" className="flex items-center justify-center gap-2 text-xs text-slate-700 font-medium">
-              <Phone size={14} className="text-[#F37021]" /> Hotline: <strong className="text-slate-900">0931.715.889</strong>
+            <a href="tel:0824713789" className="flex items-center justify-center gap-2 text-xs text-slate-700 font-medium">
+              <Phone size={14} className="text-[#F37021]" /> Hotline: <strong className="text-slate-900">082 471 3789</strong>
             </a>
           </div>
         </div>

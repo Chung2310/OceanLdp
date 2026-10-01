@@ -93,7 +93,7 @@ export default function Footer(): JSX.Element {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Phone size={15} className="text-amber-300 shrink-0" />
-                  <span>Hotline tư vấn: <strong className="text-white font-extrabold text-sm tracking-wide">0961.556.677</strong></span>
+                  <span>Hotline tư vấn: <strong className="text-white font-extrabold text-sm tracking-wide">082 471 3789</strong></span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Mail size={15} className="text-emerald-300 shrink-0" />
@@ -285,7 +285,7 @@ export default function Footer(): JSX.Element {
             <span>•</span>
             <span>Đào tạo Trực tuyến Toàn quốc</span>
             <span>•</span>
-            <span>Hotline: <strong className="text-white">0961.556.677</strong></span>
+            <span>Hotline: <strong className="text-white">082 471 3789</strong></span>
           </div>
         </div>
       </div>

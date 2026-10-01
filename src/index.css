@@ -22,6 +22,7 @@
   --color-neutral-bg: #f8fafc;
 
   --font-heading: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-soft: 'Lexend', 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-label: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-nav: 'Montserrat', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -650,4 +651,11 @@
 .marquee-container:hover .animate-student-marquee-right {
   animation-play-state: paused;
 }
+
+/* Soft, elegant heading typography utility */
+.font-soft {
+  font-family: 'Lexend', 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  letter-spacing: -0.012em;
+}
+
 

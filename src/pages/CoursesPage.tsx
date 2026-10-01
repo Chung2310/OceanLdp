@@ -210,7 +210,7 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              {c.classCode || c.title.split('–')[0].trim()}
+              {c.title.split('–')[0].trim()}
             </button>
           ))}
         </div>
@@ -247,10 +247,10 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
                     <thead>
                       <tr className="bg-slate-100 border-b border-slate-300">
                         <th className="w-1/4 min-w-[130px] sm:min-w-[160px] p-3 sm:p-4 font-black text-slate-900 border-r border-slate-300 uppercase tracking-wider text-[11px] sm:text-xs">
-                          Mã lớp
+                          Tiêu chí
                         </th>
-                        <th className="w-3/4 p-3 sm:p-4 font-extrabold text-[#1B7E45] uppercase tracking-wider text-xs sm:text-sm">
-                          {course.classCode || 'HSK'}
+                        <th className="w-3/4 p-3 sm:p-4 font-black text-slate-900 uppercase tracking-wider text-[11px] sm:text-xs">
+                          Nội dung chi tiết
                         </th>
                       </tr>
                     </thead>
@@ -429,7 +429,7 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
                     onClick={() => onOpenLeadModal(course.title)}
                     className="px-5 py-2.5 rounded-md bg-[#1B7E45] hover:bg-[#156637] text-white text-xs sm:text-sm font-bold shadow-xs transition-all cursor-pointer inline-flex items-center gap-2"
                   >
-                    Đăng ký tư vấn {course.classCode || course.title} <ChevronRight size={14} />
+                    Đăng ký tư vấn khóa học <ChevronRight size={14} />
                   </button>
                   <a
                     href={`/khoa-hoc/${course.slug}`}

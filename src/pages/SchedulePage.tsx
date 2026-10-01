@@ -87,11 +87,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
       <section className="w-full bg-gradient-to-br from-[#1E293B] via-[#164E33] to-[#1B7E45] py-12 md:py-16 px-4 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] opacity-10 pointer-events-none" />
         <div className="max-w-[1280px] mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-[#EAF5EE]/20 border border-[#bbf0d2]/30 px-3.5 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider text-[#bbf0d2] mb-3">
-            <Calendar size={14} className="text-[#F37021]" />
-            TRUNG TÂM NGOẠI NGỮ GREEN OCEAN
-          </div>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4 text-white">
+          <h1 className="font-soft text-3xl md:text-5xl font-bold tracking-normal mb-4 text-white leading-tight">
             Lịch Khai Giảng Khóa Học Tiếng Trung Tháng 9/2026
           </h1>
           <p className="text-sm md:text-base text-slate-200 max-w-3xl mx-auto leading-relaxed">
@@ -115,10 +111,11 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
 
         {/* 3. Section Headings */}
         <div className="mb-8">
-          <h2 className="text-2xl md:text-3xl font-black text-[#1E293B] tracking-tight mb-2">
+          <h2 className="font-soft text-2xl md:text-3xl font-bold text-slate-800 tracking-normal mb-2 leading-snug">
             Lịch khai giảng khóa học tháng 9/2026 tại GREEN OCEAN
           </h2>
-          <h3 className="text-lg md:text-xl font-bold text-[#1B7E45]">
+          <h3 className="font-soft text-base md:text-lg font-semibold text-[#1B7E45] flex items-center gap-2">
+            <Sparkles size={16} className="text-[#F37021] shrink-0" />
             {getSubheadingText()}
           </h3>
         </div>
@@ -218,11 +215,11 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
 
                   {/* Main Title Banner & Campus Badge */}
                   <div className="flex items-center justify-between gap-3">
-                    <div className="inline-flex items-center gap-2 bg-[#F37021] text-white px-3 py-1 rounded-md text-xs md:text-sm font-black uppercase tracking-wider shadow-sm">
+                    <div className="font-soft inline-flex items-center gap-2 bg-[#F37021] text-white px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold shadow-xs">
                       <Calendar size={14} />
                       LỊCH KHAI GIẢNG THÁNG 9
                     </div>
-                    <div className="bg-white text-[#1B7E45] font-black text-xs md:text-sm px-3 py-1 rounded-md shadow border border-emerald-100 uppercase tracking-wide">
+                    <div className="font-soft bg-white text-[#1B7E45] font-bold text-xs md:text-sm px-3.5 py-1.5 rounded-lg shadow-xs border border-emerald-100 uppercase tracking-wide">
                       {campus.badgeName}
                     </div>
                   </div>
@@ -232,7 +229,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse min-w-[580px]">
                     <thead>
-                      <tr className="bg-[#1B7E45] text-white text-[11px] md:text-xs font-black uppercase tracking-wider text-center">
+                      <tr className="font-soft bg-[#1B7E45] text-white text-[11px] md:text-xs font-bold uppercase tracking-wider text-center">
                         <th className="py-2.5 px-2 border-r border-[#156637] w-[26%]">KHÓA HỌC</th>
                         <th className="py-2.5 px-2 border-r border-[#156637] w-[18%]">NGÀY KHAI GIẢNG DỰ KIẾN</th>
                         <th className="py-2.5 px-2 border-r border-[#156637] w-[18%]">LỊCH HỌC</th>
@@ -264,7 +261,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
                                     rowSpan={visibleRows.length}
                                     className="p-3 text-center align-middle font-bold text-[#1B7E45] border-r border-[#1B7E45]/20 bg-slate-50/60 leading-snug"
                                   >
-                                    <div className="font-extrabold uppercase">
+                                    <div className="font-soft font-bold uppercase text-xs sm:text-[13px]">
                                       {course.courseName}
                                     </div>
                                   </td>
@@ -332,7 +329,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
 
         {/* 6. Section "Tại sao nên học tiếng Trung tại GREEN OCEAN?" */}
         <section className="bg-white rounded-lg p-6 md:p-10 border border-slate-200 shadow-sm mb-14">
-          <h2 className="text-2xl md:text-3xl font-black text-[#1E293B] mb-6 tracking-tight">
+          <h2 className="font-soft text-2xl md:text-3xl font-bold text-slate-800 mb-6 tracking-normal leading-snug">
             Tại sao nên học tiếng Trung tại GREEN OCEAN?
           </h2>
 
@@ -367,7 +364,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
             <div className="flex items-start gap-2.5 pl-2">
               <CheckCircle2 size={18} className="text-[#1B7E45] shrink-0 mt-0.5" />
               <p>
-                <strong className="text-[#1E293B]">Đội ngũ giảng viên chất lượng cao:</strong> thạc sĩ, tiến sĩ được bảo chứng chuyên môn bởi Viện nghiên cứu Ứng dụng Ngôn ngữ Bác Nhã.
+                <strong className="text-[#1E293B]">Đội ngũ giảng viên chất lượng cao:</strong> 100% thạc sĩ, tiến sĩ Hán ngữ tốt nghiệp từ các trường đại học danh tiếng trong nước và quốc tế.
               </p>
             </div>
 
@@ -382,10 +379,10 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
           {/* 3 Msutong Textbook Sets Showcase (Matching Screenshot 2) */}
           <div className="pt-6 border-t border-slate-100">
             <div className="text-center mb-8">
-              <span className="text-xs font-extrabold uppercase text-[#1B7E45] tracking-wider bg-[#EAF5EE] px-3.5 py-1 rounded-md">
+              <span className="font-soft text-xs font-bold uppercase text-[#1B7E45] tracking-wider bg-[#EAF5EE] px-3.5 py-1 rounded-md">
                 GIÁO TRÌNH ĐỘC QUYỀN CHUẨN ĐẠI HỌC BẮC KINH
               </span>
-              <h3 className="text-xl md:text-2xl font-black text-[#1E293B] mt-2">
+              <h3 className="font-soft text-xl md:text-2xl font-bold text-slate-800 mt-2">
                 Bộ Sách Giáo Trình Hán Ngữ Msutong
               </h3>
             </div>
@@ -403,7 +400,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
                     Bản Quyền
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-[#1E293B] group-hover:text-[#1B7E45] transition-colors mb-1">
+                <h4 className="font-soft text-base font-bold text-slate-800 group-hover:text-[#1B7E45] transition-colors mb-1">
                   Hán ngữ Msutong sơ cấp
                 </h4>
                 <p className="text-xs text-slate-500">Trọn bộ 4 tập - Cho người mới bắt đầu</p>
@@ -421,7 +418,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
                     HSK 4 - 5
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-[#1E293B] group-hover:text-[#1B7E45] transition-colors mb-1">
+                <h4 className="font-soft text-base font-bold text-slate-800 group-hover:text-[#1B7E45] transition-colors mb-1">
                   Hán ngữ Msutong trung cấp
                 </h4>
                 <p className="text-xs text-slate-500">Trọn bộ 4 tập - Ngữ cảnh giao tiếp thực chiến</p>
@@ -439,7 +436,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
                     HSK 6
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-[#1E293B] group-hover:text-[#1B7E45] transition-colors mb-1">
+                <h4 className="font-soft text-base font-bold text-slate-800 group-hover:text-[#1B7E45] transition-colors mb-1">
                   Hán ngữ Msutong cao cấp
                 </h4>
                 <p className="text-xs text-slate-500">Trọn bộ chuyên sâu - Thương mại & dịch thuật</p>

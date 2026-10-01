@@ -221,11 +221,10 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
 
                 {activeDropdown === 'news' && (
                   <ul className="absolute top-full left-0 bg-white shadow-xl border border-slate-100 rounded-xl py-2 list-none m-0 min-w-[220px] z-[1000] animate-in fade-in duration-150">
-                    <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Green Ocean</Link></li>
-                    <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Viện Bác Nhã</Link></li>
-                    <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Hội Thảo Khoa Học</Link></li>
-                    <li><Link href="/du-hoc-trung-quoc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Du học Trung Quốc</Link></li>
-                    <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Khám Phá Trung Quốc</Link></li>
+                    <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Tin Tức Green Ocean</Link></li>
+                    <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Cẩm Nang Học Tiếng Trung</Link></li>
+                    <li><Link href="/du-hoc-trung-quoc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Du Học Trung Quốc</Link></li>
+                    <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Hoạt Động & Sự Kiện</Link></li>
                     <li><Link href="/tin-tuc" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors">Tuyển Dụng</Link></li>
                   </ul>
                 )}
@@ -251,7 +250,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
                     <li><Link href="/thu-vien-tai-lieu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Tất Cả Tài Liệu</Link></li>
                     <li><Link href="/thu-vien-tai-lieu?cat=tu-vung" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Từ Vựng Tiếng Trung</Link></li>
                     <li><Link href="/thu-vien-tai-lieu?cat=ngu-phap" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Ngữ Pháp Tiếng Trung</Link></li>
-                    <li><Link href="/thu-vien-tai-lieu?cat=bo-thu" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>214 Bộ Thủ & Quy Tắc Viết</Link></li>
+                    <li><Link href="/thu-vien-tai-lieu?cat=sach" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Sách Tiếng Trung</Link></li>
                     <li><Link href="/thu-vien-tai-lieu?cat=hsk" className="block px-4 py-2 text-[13px] font-medium text-[#1E293B] hover:bg-[#EAF5EE] hover:text-[#1B7E45] transition-colors" onClick={() => setActiveDropdown(null)}>Tài Liệu Luyện Thi HSK</Link></li>
                   </ul>
                 )}

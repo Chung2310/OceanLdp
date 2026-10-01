@@ -6,6 +6,9 @@ import thumb214BoThu from '../asset/library/thumb_214_bo_thu.png';
 import thumbQuyTacViet from '../asset/library/thumb_quy_tac_viet.png';
 import photoThienTai from '../asset/library/photo_thien_tai.png';
 import photoDongChi from '../asset/library/photo_dong_chi.png';
+import msutongSocap from '../asset/books/msutong_socap.jpg';
+import msutongTrungcap from '../asset/books/msutong_trungcap.jpg';
+import msutongCaocap from '../asset/books/msutong_caocap.jpg';
 
 export const resourceCategories = [
   { 
@@ -24,9 +27,9 @@ export const resourceCategories = [
     description: 'Hệ thống hóa toàn bộ các điểm ngữ pháp trọng điểm từ HSK 1 đến HSK 6, cấu trúc câu đặc biệt và bài tập củng cố có đáp án.'
   },
   { 
-    id: 'bo-thu', 
-    name: 'Bộ Thủ & Quy Tắc Viết',
-    description: 'Trọn bộ 214 bộ thủ chữ Hán, quy tắc bút thuận và phương pháp ghi nhớ chữ Hán qua hình ảnh và câu chuyện trực quan.'
+    id: 'sach', 
+    name: 'Sách Tiếng Trung',
+    description: 'Tổng hợp sách học tiếng Trung, giáo trình Msutong bản quyền, giáo trình Hán ngữ tích hợp, sách từ vựng & ngữ pháp tiếng Trung chính thống.'
   },
   { 
     id: 'hsk', 
@@ -201,64 +204,81 @@ export const resourcesData: ResourceItem[] = [
     `
   },
   {
-    id: 'full-214-bo-thu-tieng-trung',
-    category: 'bo-thu',
-    categoryName: 'Bộ Thủ & Quy Tắc Viết',
-    title: 'Full 214 Bộ thủ tiếng Trung: Ý nghĩa chi tiết từng bộ thủ và cách học',
-    slug: 'full-214-bo-thu-tieng-trung',
-    day: '30',
-    month: 'Th7',
-    date: '30/07/2025',
-    author: 'TS. Trần Thị Hoàng Anh',
-    views: '45.800',
-    format: 'PDF Ebook (Màu)',
-    size: '28 MB',
-    downloads: '45.200+',
-    image: thumb214BoThu,
-    desc: '214 bộ thủ là hệ thống thường được sử dụng để phân loại, tra cứu và giải nghĩa chữ Hán từ cổ chí kim...',
+    id: 'giao-trinh-msutong-so-cap-pdf-mp3',
+    category: 'sach',
+    categoryName: 'Sách Tiếng Trung',
+    title: 'Trọn Bộ Giáo Trình Msutong Sơ Cấp (Bản Quyền Đầy Đủ File Nghe MP3 & Bài Tập)',
+    slug: 'giao-trinh-msutong-so-cap-pdf-mp3',
+    day: '20',
+    month: 'Th8',
+    date: '20/08/2025',
+    author: 'NXB Đại Học Ngôn Ngữ Bắc Kinh & Green Ocean',
+    views: '54.200',
+    format: 'PDF Ebook + MP3',
+    size: '128 MB',
+    downloads: '52.100+',
+    image: msutongSocap,
+    desc: 'Giáo trình Msutong sơ cấp được biên soạn hiện đại, bám sát các tình huống giao tiếp đời sống thực tế, tích hợp mã QR nghe audio tiện lợi...',
     content: `
       <p class="text-slate-700 leading-relaxed mb-4">
-        214 bộ thủ Khang Hy là hệ thống phân loại chữ Hán chuẩn mực được sử dụng rộng rãi nhất. Việc học bộ thủ không chỉ giúp bạn tra từ điển nhanh chóng mà còn là chìa khóa giải mã ý nghĩa và câu chuyện đằng sau mỗi ký tự chữ Hán.
+        Giáo trình Msutong Sơ cấp là bộ sách học tiếng Trung giao tiếp và nền tảng HSK được ưa chuộng hàng đầu hiện nay. Bộ sách gồm 4 tập (Sơ cấp 1, 2, 3, 4), kết hợp đồng bộ giữa phát âm Pinyin chuẩn mực, từ vựng hiện đại và ngữ pháp ứng dụng cao.
       </p>
-      <h2 class="text-lg sm:text-xl font-black text-slate-800 tracking-tight mt-6 mb-3">Tại sao người mới học bắt buộc phải học bộ thủ?</h2>
+      <h2 class="text-lg sm:text-xl font-black text-slate-800 tracking-tight mt-6 mb-3">Ưu điểm vượt trội của Giáo trình Msutong:</h2>
       <ul class="list-disc pl-5 space-y-2 text-slate-700 mb-6">
-        <li><strong>Phán đoán ý nghĩa chữ Hán:</strong> Chữ có bộ Thủy (氵) thường liên quan đến nước (hồ, biển, sông, tắm); chữ có bộ Mộc (木) liên quan đến cây cối...</li>
-        <li><strong>Nhớ chữ nhanh gấp 3 lần:</strong> Thay vì nhớ 10-15 nét rời rạc, bạn chỉ cần ghép 2-3 bộ thủ lại với nhau theo một câu chuyện gợi nhớ.</li>
-        <li><strong>Tra từ điển chính xác:</strong> Dù dùng từ điển giấy hay từ điển điện tử Pleco, tra theo bộ thủ luôn là kỹ năng cơ bản của người học tiếng Trung.</li>
+        <li><strong>Hình ảnh minh họa trực quan 100% in màu:</strong> Kích thích thị giác, giúp học viên nhớ chữ Hán và ngữ cảnh đàm thoại tự nhiên.</li>
+        <li><strong>Phương pháp học giao tiếp Mcontask:</strong> Học qua nhiệm vụ cụ thể, luyện nói ngay từ bài đầu tiên.</li>
+        <li><strong>Tích hợp Audio giọng đọc chuẩn Bắc Kinh:</strong> File nghe chất lượng cao, có thể quét mã QR luyện nghe bất cứ lúc nào.</li>
       </ul>
     `
   },
   {
-    id: 'quy-tac-viet-chu-han-8-nguyen-tac',
-    category: 'bo-thu',
-    categoryName: 'Bộ Thủ & Quy Tắc Viết',
-    title: 'Quy Tắc Viết Chữ Hán Và 8 Nguyên Tắc Cơ Bản Cần Nhớ',
-    slug: 'quy-tac-viet-chu-han-va-8-nguyen-tac-co-ban',
-    day: '30',
-    month: 'Th7',
-    date: '30/07/2025',
+    id: 'giao-trinh-msutong-trung-cap-pdf-mp3',
+    category: 'sach',
+    categoryName: 'Sách Tiếng Trung',
+    title: 'Giáo Trình Msutong Trung Cấp: Phát Triển Kỹ Năng Đàm Thoại & Dịch Thuật Thực Chiến',
+    slug: 'giao-trinh-msutong-trung-cap-pdf-mp3',
+    day: '15',
+    month: 'Th8',
+    date: '15/08/2025',
     author: 'Ban Chuyên Môn Green Ocean',
-    views: '28.900',
-    format: 'PDF Ebook',
-    size: '8 MB',
-    downloads: '21.500+',
-    image: thumbQuyTacViet,
-    desc: 'Chữ Hán được hình thành từ nhiều nét cơ bản kết hợp theo một cấu trúc chặt chẽ. Nắm vững 8 quy tắc viết thuận bút giúp bạn viết đẹp và nhớ lâu...',
+    views: '36.800',
+    format: 'PDF Ebook + MP3',
+    size: '145 MB',
+    downloads: '31.400+',
+    image: msutongTrungcap,
+    desc: 'Nâng cao năng lực ngữ pháp chuyên sâu, mở rộng vốn từ vựng HSK 4 - HSK 5 và rèn luyện kỹ năng dịch thuật Trung - Việt chuẩn xác...',
     content: `
       <p class="text-slate-700 leading-relaxed mb-4">
-        Quy tắc bút thuận (trật tự viết nét chữ Hán) là nguyên tắc cốt lõi giúp các nét chữ Hán cân đối, vuông vắn và đạt tốc độ viết tự nhiên nhất.
+        Tiếp nối bộ sơ cấp, Msutong Trung cấp đưa học viên tiếp cận các chủ đề chuyên sâu: thương mại, kinh tế, đời sống xã hội và văn hóa Trung Hoa. Sách đặc biệt chú trọng rèn luyện kỹ năng diễn đạt thành đoạn văn và phản xạ giao tiếp nâng cao.
       </p>
-      <h2 class="text-lg sm:text-xl font-black text-slate-800 tracking-tight mt-6 mb-3">8 Quy tắc thuận bút vàng trong tiếng Trung:</h2>
-      <ol class="list-decimal pl-5 space-y-2 text-slate-700 mb-6">
-        <li><strong>Ngang trước sổ sau:</strong> Viết nét ngang trước rồi mới kéo nét sổ (VD: Chữ Thập 十).</li>
-        <li><strong>Phẩy trước mác sau:</strong> Nét xiên trái trước, nét xiên phải sau (VD: Chữ Nhân 人, Bát 八).</li>
-        <li><strong>Trên trước dưới sau:</strong> Viết từ phần đỉnh xuống phần đáy (VD: Chữ Nhị 二, Tam 三).</li>
-        <li><strong>Trái trước phải sau:</strong> Viết từ mảng bên trái sang bên phải (VD: Chữ Minh 明, Hảo 好).</li>
-        <li><strong>Ngoài trước trong sau:</strong> Viết khung bao quanh trước, viết ruột bên trong sau (VD: Chữ Nguyệt 月).</li>
-        <li><strong>Vào trước đóng sau:</strong> Viết ruột xong rồi mới khóa đáy hộp (VD: Chữ Quốc 国, Nhật 日).</li>
-        <li><strong>Giữa trước hai bên sau:</strong> Nét trục chính giữa viết trước, hai nét hai bên viết sau (VD: Chữ Tiểu 小, Thủy 水).</li>
-        <li><strong>Nét bao quanh đáy viết sau cùng:</strong> Bộ Quai xước (辶) hoặc Dẫn (廴) luôn viết cuối cùng (VD: Chữ Tiến 进, Quá 过).</li>
-      </ol>
+      <h2 class="text-lg sm:text-xl font-black text-slate-800 tracking-tight mt-6 mb-3">Nội dung cốt lõi của bộ sách:</h2>
+      <ul class="list-disc pl-5 space-y-2 text-slate-700 mb-6">
+        <li>Hơn 1.200 từ vựng và cụm từ cố định thuộc khung New HSK 4 - 5.</li>
+        <li>Hệ thống bài tập đọc hiểu và dịch thuật có đáp án chi tiết.</li>
+        <li>Các bài đàm thoại thực tế trong môi trường doanh nghiệp và công sở.</li>
+      </ul>
+    `
+  },
+  {
+    id: 'giao-trinh-msutong-cao-cap-pdf-mp3',
+    category: 'sach',
+    categoryName: 'Sách Tiếng Trung',
+    title: 'Giáo Trình Msutong Cao Cấp: Chinh Phục HSK 5 – HSK 6 & Đàm Thoại Học Thuật',
+    slug: 'giao-trinh-msutong-cao-cap-pdf-mp3',
+    day: '10',
+    month: 'Th8',
+    date: '10/08/2025',
+    author: 'Ban Chuyên Môn Green Ocean',
+    views: '29.500',
+    format: 'PDF Ebook + MP3',
+    size: '160 MB',
+    downloads: '24.800+',
+    image: msutongCaocap,
+    desc: 'Tài liệu học tập cao cấp dành cho học viên luyện thi HSK 5, HSK 6, dịch thuật chuyên nghiệp và chuẩn bị hành trang du học thạc sĩ/tiến sĩ...',
+    content: `
+      <p class="text-slate-700 leading-relaxed mb-4">
+        Bộ sách Msutong Cao cấp tập trung vào phong cách ngôn ngữ viết, nghị luận và học thuật. Đây là chìa khóa giúp người học vượt qua ngưỡng trung cấp để sử dụng tiếng Trung như người bản xứ.
+      </p>
     `
   }
 ];

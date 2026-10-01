@@ -4,7 +4,7 @@ import { ChevronRight, Calendar, ArrowRight, BookOpen } from 'lucide-react';
 import { newsCategories, newsData } from '../data/newsData';
 
 export default function NewsPage(): JSX.Element {
-  const [selectedCat, setSelectedCat] = useState<string>('bac-nha');
+  const [selectedCat, setSelectedCat] = useState<string>('all');
 
   const currentCategory = newsCategories.find(c => c.id === selectedCat) || newsCategories[0];
 

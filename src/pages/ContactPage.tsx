@@ -86,7 +86,7 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Hotline tư vấn tuyển sinh:</div>
-                  <div className="text-sm font-bold text-slate-800">0961.556.677</div>
+                  <a href="tel:0824713789" className="text-sm font-bold text-slate-800 hover:text-[#1B7E45] transition-colors">082 471 3789</a>
                 </div>
               </div>
 

@@ -92,7 +92,7 @@ export default function PolicyPage(): JSX.Element {
                 <p>Green Ocean cam kết chuẩn đầu ra đỗ chứng chỉ HSK bằng văn bản. Quy trình xử lý khiếu nại:</p>
                 <ul className="space-y-2 list-disc pl-5">
                   <li>Học viên tham gia tối thiểu 80% thời lượng khóa học và hoàn thành bài tập định kỳ nếu không đạt điểm chuẩn trong kỳ thi mục tiêu sẽ được <strong>học lại hoàn toàn miễn phí 100%</strong>.</li>
-                  <li>Mọi ý kiến đóng góp về chất lượng giảng viên, cơ sở vật chất sẽ được bộ phận Chăm sóc khách hàng phản hồi và xử lý trong vòng <strong>24 giờ làm việc</strong> qua hotline 0961.556.677.</li>
+                  <li>Mọi ý kiến đóng góp về chất lượng giảng viên, cơ sở vật chất sẽ được bộ phận Chăm sóc khách hàng phản hồi và xử lý trong vòng <strong>24 giờ làm việc</strong> qua hotline 082 471 3789.</li>
                 </ul>
               </div>
             )}
