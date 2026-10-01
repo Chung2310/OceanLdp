@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import lyXuanNam from '../../asset/teachers/ly-xuan-nam_4.webp';
-import leQuangThanh from '../../asset/teachers/le-quang-thanh_2.webp';
-import leXuanKhai from '../../asset/teachers/le-xuan-khai_3.webp';
-import doHoangKhanhHuyen from '../../asset/teachers/do-hoang-khanh-huyen_1.webp';
-import nguyenXuanNhat from '../../asset/teachers/nguyen-xuan-nhat_5.webp';
-import phamThanhVan from '../../asset/teachers/pham-thanh-van_6.webp';
-import tranDaiAn from '../../asset/teachers/tran-dai-an_7.webp';
-import tranHoaiThu from '../../asset/teachers/tran-hoai-thu_8.webp';
-import tranThiHoangAnh from '../../asset/teachers/tran-thi-hoang-anh_9.webp';
-import trinhThiThuHuong from '../../asset/teachers/trinh-thi-thu-huong_10.webp';
-import vuNgocAnh from '../../asset/teachers/vu-ngoc-anh_11.webp';
+import teacher1 from '../../asset/teachers/1.jpg';
+import teacher2 from '../../asset/teachers/2.jpg';
+import teacher3 from '../../asset/teachers/3.jpg';
+import teacher4 from '../../asset/teachers/4.jpg';
+import teacher5 from '../../asset/teachers/5.jpg';
 
 interface Expert {
   id: string;
@@ -22,160 +16,79 @@ interface Expert {
 
 const experts: Expert[] = [
   {
-    id: 'ly-xuan-nam',
-    name: 'TS. Lý Xuân Nam',
+    id: 'nguyen-xuan-quang',
+    name: 'ThS. Nguyễn Xuân Quảng',
     trinhDo: [
-      'Tiến sĩ Đại học Khoa học Công nghệ Nam Kinh',
-      'Giảng viên Trường Đại học Công nghiệp Hà Nội'
+      'Thạc sỹ chuyên ngành Ngôn ngữ học & Ngôn ngữ học ứng dụng – Đại học Tương Đàm, Hồ Nam, Trung Quốc',
+      '6 năm học tập và nghiên cứu chuyên sâu tại Trung Quốc',
+      'Cố vấn chuyên môn & Giám đốc đào tạo tại Green Ocean'
     ],
     kinhNghiem: [
-      'Tác giả của nhiều bài báo có chỉ số SCI, trong đó có 2 bài là tác giả chính đăng trên tờ báo quốc tế Surface & Coatings Technology (Top 1 chuyên ngành), tổng chỉ số IF (impact) báo đã đăng đạt ngưỡng 20.',
-      'Hiện đang là phản biện chính của 2 tờ báo quốc tế SN Applied Sciences và Journal of Military Science and Technology.',
-      'Giảng viên 5 sao Green Ocean'
+      '28 năm học tập và làm việc với tiếng Trung, hơn 10 năm giảng dạy tại các trường Đại học chính quy',
+      'Chuyên gia xây dựng lộ trình đào tạo tiếng Trung mọi cấp độ: từ cơ bản đến tiếng Trung thương mại thực chiến',
+      'Đào tạo thành công hàng nghìn học viên đạt chứng chỉ HSK và thành thạo giao tiếp'
     ],
-    image: lyXuanNam
+    image: teacher3
   },
   {
-    id: 'le-quang-thanh',
-    name: 'Ths. Lê Quang Thành',
+    id: 'ngo-hoang-linh',
+    name: 'Cô Ngô Hoàng Linh',
     trinhDo: [
-      'Thạc sĩ Chuyên ngành Ngôn ngữ và Ứng dụng Ngôn ngữ Trung Quốc, Trường Đại học Ngoại ngữ Bắc Kinh (Trung Quốc)',
-      'Cử nhân Ngoại ngữ ngành Tiếng Trung Quốc tại trường Đại học Ngoại ngữ, Đại học Quốc gia Hà Nội',
-      'Phó tổ trưởng bộ môn Tiếng Trung, Khoa Ngoại ngữ tại Học viện Cảnh sát Nhân dân'
+      'Cử nhân Ngôn ngữ Trung – Trường Đại học Sư phạm Thái Nguyên',
+      'Nền tảng kiến thức sư phạm bài bản, phương pháp giảng dạy hiện đại và linh hoạt',
+      'Giảng viên chuyên môn kỳ cựu tại Green Ocean'
     ],
     kinhNghiem: [
-      'Kinh nghiệm trên 15 năm giảng dạy tiếng Trung Quốc mọi trình độ trực tiếp và trực tuyến, luyện thi HSK, giảng dạy tiếng Trung doanh nghiệp',
-      'Giảng viên 5 sao Green Ocean'
+      'Hơn 20 năm kinh nghiệm giảng dạy và làm việc thực tế với tiếng Trung',
+      'Chuyên sâu đào tạo tiếng Trung thương mại, dịch thuật, đàm phán hợp đồng và xuất nhập khẩu',
+      'Phương pháp trực quan sinh động, thấu hiểu tâm lý học viên, xóa tan nỗi sợ ngoại ngữ'
     ],
-    image: leQuangThanh
+    image: teacher4
   },
   {
-    id: 'le-xuan-khai',
-    name: 'TS. Lê Xuân Khai',
+    id: 'nguyen-thi-thu-thuy',
+    name: 'ThS. Nguyễn Thị Thu Thủy',
     trinhDo: [
-      'Tiến sĩ trường Đại học Sư phạm Quốc gia Đài Loan ngành Ngôn ngữ học và Văn hóa Trung Hoa',
-      'Giảng viên Khoa Ngôn ngữ và Văn hoá Trung Quốc, trường Đại học Ngoại ngữ, Đại học Quốc gia Hà Nội'
+      'Thạc sỹ chuyên ngành Quản lý du lịch – Đại học Giao thông Tây Nam, Thành Đô, Trung Quốc',
+      'Tốt nghiệp chuyên ngành Ngôn ngữ và Văn học Trung Quốc – Đại học Quảng Tây, Nam Ninh, Trung Quốc',
+      'Nhiều năm học tập, nghiên cứu và làm việc thực tế tại Trung Quốc'
     ],
     kinhNghiem: [
-      'Trên 10 năm kinh nghiệm giảng dạy tiếng Trung các trình độ, luyện thi HSK, tiếng Trung giao tiếp,...',
-      'Giảng viên 5 sao Green Ocean'
+      'Hơn 20 năm kinh nghiệm giảng dạy và làm việc với tiếng Trung',
+      'Phương pháp giảng dạy trực quan sinh động, giàu năng lượng, truyền cảm hứng mạnh mẽ',
+      'Đồng hành sát sao, xây dựng phản xạ giao tiếp tự tin và tự nhiên cho từng học viên'
     ],
-    image: leXuanKhai
+    image: teacher5
   },
   {
-    id: 'do-hoang-khanh-huyen',
-    name: 'Ths. Đỗ Hoàng Khánh Huyền',
+    id: 'do-thanh-trung',
+    name: 'Thầy Đỗ Thành Trung',
     trinhDo: [
-      'Thạc sĩ Sư phạm Hán ngữ Quốc tế, Đại học Sư phạm Thiên Tân, Trung Quốc',
-      'Cử nhân Đông phương học, Đại học Khoa học Xã hội và Nhân văn',
-      'Giảng viên thỉnh giảng tại Đại học Khoa học Xã hội và Nhân văn, Đại học FPT'
+      'Tốt nghiệp chuyên ngành Ngôn ngữ Trung – Trường Đại học Hà Nội (HANU)',
+      'Chuyên sâu thuật ngữ đàm phán kinh tế, quản trị văn phòng và kỹ thuật sản xuất nhà xưởng',
+      'Giảng viên thực chiến tiếng Trung Doanh nghiệp tại Green Ocean'
     ],
     kinhNghiem: [
-      'Hơn 5 năm kinh nghiệm giảng dạy tiếng Trung cho sinh viên, người đi làm và doanh nhân, đồng thời cung cấp dịch vụ luyện thi HSK và biên phiên dịch',
-      'Giảng viên 5 sao Green Ocean'
+      'Hơn 20 năm kinh nghiệm giảng dạy và làm việc thực tế trong các doanh nghiệp FDI lớn',
+      'Phương pháp dạy thực dụng, lược bỏ lý thuyết suông, chú trọng phản xạ giao tiếp và thương thảo',
+      'Huấn luyện thành thạo cho cán bộ quản lý, kỹ sư và nhân sự làm việc với đối tác Trung Quốc'
     ],
-    image: doHoangKhanhHuyen
+    image: teacher2
   },
   {
-    id: 'nguyen-xuan-nhat',
-    name: 'Ths. Nguyễn Xuân Nhật',
+    id: 'nguyen-ngoc-anh',
+    name: 'Cô Nguyễn Ngọc Anh',
     trinhDo: [
-      'Thạc sỹ chuyên ngành Lý luận và Lịch sử kiến trúc, Đại học Thanh Hoa',
-      'Cử nhân ngành Kiến trúc, Đại học Thanh Hoa',
-      'Giảng viên Trường Đại học Kiến trúc Hà Nội',
-      'Cán bộ Viện Khoa học và Giáo dục Đông Nam Á',
-      'Giảng viên Khoa Chính sách công, Học viện Chính sách và Phát triển',
-      'Cán bộ Viện Nghiên cứu Phát triển Giáo dục và Đào tạo Hướng nghiệp Đông Nam Á',
-      'Cán bộ khoa Quốc tế – Đại học Quốc gia Hà Nội'
+      'Tốt nghiệp chuyên ngành Ngôn ngữ Trung Quốc – Trường Đại học Kinh doanh & Công nghệ Hà Nội',
+      'Chứng chỉ HSK 6 điểm cao, phương pháp sư phạm chuẩn hóa theo khung HSK mới',
+      'Chuyên gia luyện thi New HSK cấp tốc tại Green Ocean'
     ],
     kinhNghiem: [
-      'Trên 10 năm giảng dạy tiếng Trung Quốc, có nhiều lớp đạt thành tích 5 sao tại trung tâm',
-      'Giảng viên 5 sao Green Ocean'
+      '05 năm chuyên sâu giảng dạy và luyện thi New HSK điểm số tối ưu',
+      'Sở hữu kho đề thi cập nhật liên tục và các mẹo làm bài (tips) độc quyền',
+      'Phương pháp tư duy logic, ghi nhớ chữ Hán qua hình ảnh, sát sao tiến độ từng buổi học'
     ],
-    image: nguyenXuanNhat
-  },
-  {
-    id: 'pham-thanh-van',
-    name: 'TS. Phạm Thị Thanh Vân',
-    trinhDo: [
-      'Cử nhân Sư phạm tiếng Trung Quốc',
-      'Thạc sĩ ngôn ngữ Hán',
-      'Tiến sĩ ngôn ngữ Trung Quốc, trường đại học Ngoại ngữ, đại học Quốc gia Hà Nội',
-      'Hiện đang giảng dạy tại khoa Ngoại ngữ, trường đại học Bách khoa Hà Nội'
-    ],
-    kinhNghiem: [
-      'Kinh nghiệm trên 15 năm giảng dạy tiếng Trung Quốc',
-      'Giảng viên 5 sao Green Ocean'
-    ],
-    image: phamThanhVan
-  },
-  {
-    id: 'tran-dai-an',
-    name: 'TS. Trần Đại An',
-    trinhDo: [
-      'Tốt nghiệp Thạc sĩ, tiến sĩ Hán Nôm, Đại học Sư phạm Hà Nội',
-      'Giảng viên khoa Ngoại ngữ, Trường Đại học Phương Đông'
-    ],
-    kinhNghiem: [
-      'Trên 10 năm giảng dạy tiếng Trung Quốc, có nhiều lớp đạt thành tích 5 sao tại trung tâm',
-      'Giảng viên 5 sao Green Ocean'
-    ],
-    image: tranDaiAn
-  },
-  {
-    id: 'tran-hoai-thu',
-    name: 'Ths. Trần Hoài Thu',
-    trinhDo: [
-      'Cử nhân chuyên ngành tiếng Trung, Đại học Hà Nội',
-      'Thạc sĩ chuyên ngành tiếng Hán, Đại học Hà Nội',
-      'Giảng viên Viện Quản trị kinh doanh, Đại học FPT',
-      'Giảng viên ĐH Đại Nam, Đại học Hà Nội, Đại học Đông Đô'
-    ],
-    kinhNghiem: [
-      'Tác giả, đồng tác giả, dịch giả nhiều đầu sách tiếng Trung, trong đó có cuốn Sổ tay từ vựng NEW HSK4',
-      'Giảng viên 5 sao Green Ocean'
-    ],
-    image: tranHoaiThu
-  },
-  {
-    id: 'tran-thi-hoang-anh',
-    name: 'TS. Trần Thị Hoàng Anh',
-    trinhDo: [
-      'Tiến sĩ Ngôn ngữ học Trường đại học Ngoại ngữ, Đại học Quốc gia Hà Nội',
-      'Ủy viên Hội đồng Khoa học Viện Nghiên cứu Ứng dụng Ngôn ngữ Bác Nhã',
-      'Cố vấn chuyên môn và giảng viên tại Green Ocean'
-    ],
-    kinhNghiem: [
-      '30 năm kinh nghiệm giảng dạy và nghiên cứu tiếng Trung',
-      'Giảng viên 5 sao Green Ocean'
-    ],
-    image: tranThiHoangAnh
-  },
-  {
-    id: 'trinh-thi-thu-huong',
-    name: 'Ths. Trịnh Thị Thu Hương',
-    trinhDo: [
-      'Thạc sĩ chuyên ngành tiếng Trung Quốc, trường Đại học Ngoại ngữ, Đại học Quốc gia Hà Nội',
-      'Giảng viên thỉnh giảng trường Đại học Hà Nội'
-    ],
-    kinhNghiem: [
-      'Có nhiều năm kinh nghiệm giảng dạy tiếng Trung mọi trình độ, kinh nghiệm nhiều năm luyện thi THPTQG môn tiếng Trung',
-      'Giảng viên 5 sao Green Ocean'
-    ],
-    image: trinhThiThuHuong
-  },
-  {
-    id: 'vu-ngoc-anh',
-    name: 'Ths. Vũ Ngọc Anh',
-    trinhDo: [
-      'Thạc sĩ chuyên ngành Giáo dục Hán ngữ Quốc tế, trường Đại học Tây Nam (Trùng Khánh - Trung Quốc)',
-      'Cử nhân ngôn ngữ Trung Quốc, Đại học Kinh doanh và Công nghệ Hà Nội'
-    ],
-    kinhNghiem: [
-      'Trên 10 năm kinh nghiệm giảng dạy tiếng Trung Quốc tổng hợp, luyện thi HSK/HSKK luyện thi THPT QG, tiếng Trung trẻ em, tiếng Trung doanh nghiệp,...',
-      'Giảng viên 5 sao Green Ocean'
-    ],
-    image: vuNgocAnh
+    image: teacher1
   }
 ];
 
@@ -296,7 +209,7 @@ export default function TeachersSection(): JSX.Element {
                       alt={item.name}
                       width={150}
                       height={150}
-                      className="w-full h-full object-cover object-center"
+                      className="w-full h-full object-cover object-[center_18%]"
                       loading="lazy"
                     />
                   </div>

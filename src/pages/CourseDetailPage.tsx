@@ -3,7 +3,8 @@ import { useRoute, Link } from 'wouter';
 import { 
   ArrowLeft, CheckCircle2, ChevronRight, GraduationCap, 
   BookOpen, Sparkles, Send, MapPin, Award, Headphones,
-  MessageSquare, BookMarked, PenTool, Target, Calendar
+  MessageSquare, BookMarked, PenTool, Target, Calendar,
+  Gift, ArrowRight, Clock
 } from 'lucide-react';
 import { coursesData } from '../data/coursesData';
 import reason06 from '../asset/reasons/reason06.png';
@@ -75,47 +76,103 @@ export default function CourseDetailPage({ onOpenLeadModal }: CourseDetailPagePr
           </h1>
         </header>
 
-        {/* 3. Campaign & Scholarship Banner matching Screenshot 1 */}
-        <div className="relative w-full rounded-lg overflow-hidden shadow-xl border border-red-100 bg-gradient-to-br from-[#8C1515] via-[#B82222] to-[#730D0D] text-white p-6 sm:p-10 mb-10 text-center">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+        {/* 3. Campaign & Scholarship Banner Redesigned */}
+        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-emerald-500/25 bg-gradient-to-br from-[#0B2E1C] via-[#14532D] to-[#0A2316] text-white p-6 sm:p-10 md:p-12 mb-12">
+          {/* Ambient Lighting Orbs */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.06)_0%,transparent_70%)] pointer-events-none" />
 
-          <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-md text-xs font-bold tracking-wider uppercase text-amber-200 border border-amber-300/30 mb-4">
-              <GraduationCap size={16} /> GREEN OCEAN | HỆ SINH THÁI ĐÀO TẠO TIẾNG TRUNG TOÀN DIỆN
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
+            {/* Top Brand Pill */}
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider text-emerald-200 border border-emerald-400/30 mb-4 shadow-xs">
+              <Sparkles size={14} className="text-amber-300" />
+              <span>GREEN OCEAN • HỆ SINH THÁI ĐÀO TẠO TIẾNG TRUNG TOÀN DIỆN</span>
             </div>
 
-            <div className="text-xs sm:text-sm font-extrabold tracking-[0.2em] text-amber-300 uppercase mb-1">
-              ƯU ĐÃI TUYỂN SINH MỚI NHẤT
+            {/* Campaign Subtitle */}
+            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-[0.2em] text-amber-300 uppercase mb-2">
+              <Gift size={16} className="text-amber-300" />
+              <span>CHƯƠNG TRÌNH HỌC BỔNG KHUYẾN HỌC</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-6 drop-shadow-md">
-              HỌC CHĂM CHỈ – NHẬN HỌC BỔNG KHỦNG
+
+            {/* Main Headline */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-white uppercase tracking-tight mb-3 leading-tight drop-shadow-sm">
+              Học Chăm Chỉ – Nhận Học Bổng Khủng
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
-              <div className="bg-white/10 backdrop-blur-md border border-amber-300/40 rounded-lg p-4 sm:p-5 flex flex-col items-center text-center hover:bg-white/15 transition-all">
-                <span className="text-[11px] uppercase tracking-wider text-amber-200 font-bold">TẶNG HỌC BỔNG</span>
-                <span className="text-3xl sm:text-4xl font-black text-amber-300 my-0.5">1.500K</span>
-                <span className="text-xs sm:text-[13px] text-white/90 leading-snug">
-                  Khi đăng ký khóa Offline tiếng Trung tích hợp HSK 4 - HSK 5
-                </span>
+            {/* Supporting description */}
+            <p className="text-xs sm:text-sm text-emerald-100/85 max-w-xl mx-auto mb-8 font-normal leading-relaxed">
+              Tạo động lực bứt phá mục tiêu Hán ngữ với các suất học bổng tài trợ trực tiếp học phí cho học viên đăng ký lộ trình sớm nhất.
+            </p>
+
+            {/* 2 Premium Scholarship Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 w-full mb-8">
+              {/* Card 1: HSK 4 - 5 */}
+              <div className="relative bg-white/[0.08] hover:bg-white/[0.12] backdrop-blur-md border border-white/20 hover:border-amber-300/60 rounded-2xl p-5 sm:p-6 flex flex-col justify-between text-left transition-all duration-300 hover:-translate-y-1 shadow-lg group">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider text-amber-300 bg-amber-400/20 border border-amber-400/40 px-2.5 py-1 rounded-full">
+                    <Sparkles size={12} /> HỌC BỔNG CAO CẤP
+                  </span>
+                  <span className="text-[11px] text-emerald-200/80 font-medium">HSK 4 – HSK 5</span>
+                </div>
+
+                <div className="my-1">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-3xl sm:text-4xl lg:text-[42px] font-black text-amber-300 tracking-tight">1.500.000₫</span>
+                  </div>
+                  <p className="text-sm font-bold text-white mt-1">Lộ trình Nâng cao & Luyện thi</p>
+                  <p className="text-xs text-emerald-100/80 mt-1 leading-relaxed">
+                    Áp dụng khi đăng ký khóa Offline tiếng Trung tích hợp lộ trình HSK 4 – HSK 5.
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-emerald-200 font-semibold">
+                  <span className="flex items-center gap-1"><CheckCircle2 size={13} className="text-amber-300" /> Tặng trọn bộ giáo trình</span>
+                  <span className="text-amber-300 font-bold">Số lượng có hạn</span>
+                </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-md border border-amber-300/40 rounded-lg p-4 sm:p-5 flex flex-col items-center text-center hover:bg-white/15 transition-all">
-                <span className="text-[11px] uppercase tracking-wider text-amber-200 font-bold">TẶNG HỌC BỔNG</span>
-                <span className="text-3xl sm:text-4xl font-black text-amber-300 my-0.5">1.200K</span>
-                <span className="text-xs sm:text-[13px] text-white/90 leading-snug">
-                  Khi đăng ký khóa Offline tiếng Trung tích hợp HSK 1 - HSK 3
-                </span>
+              {/* Card 2: HSK 1 - 3 */}
+              <div className="relative bg-white/[0.08] hover:bg-white/[0.12] backdrop-blur-md border border-white/20 hover:border-amber-300/60 rounded-2xl p-5 sm:p-6 flex flex-col justify-between text-left transition-all duration-300 hover:-translate-y-1 shadow-lg group">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider text-amber-300 bg-amber-400/20 border border-amber-400/40 px-2.5 py-1 rounded-full">
+                    <Sparkles size={12} /> HỌC BỔNG NỀN TẢNG
+                  </span>
+                  <span className="text-[11px] text-emerald-200/80 font-medium">HSK 1 – HSK 3</span>
+                </div>
+
+                <div className="my-1">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-3xl sm:text-4xl lg:text-[42px] font-black text-amber-300 tracking-tight">1.200.000₫</span>
+                  </div>
+                  <p className="text-sm font-bold text-white mt-1">Lộ trình Cơ bản & Toàn diện</p>
+                  <p className="text-xs text-emerald-100/80 mt-1 leading-relaxed">
+                    Áp dụng khi đăng ký khóa Offline tiếng Trung tích hợp lộ trình HSK 1 – HSK 3.
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-emerald-200 font-semibold">
+                  <span className="flex items-center gap-1"><CheckCircle2 size={13} className="text-amber-300" /> Tặng sổ tay 214 Bộ Thủ</span>
+                  <span className="text-amber-300 font-bold">Số lượng có hạn</span>
+                </div>
               </div>
             </div>
 
-            <button
-              onClick={() => onOpenLeadModal(course.title)}
-              className="inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-red-950 font-black text-base sm:text-lg px-8 py-3.5 rounded-md shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer active:scale-95 uppercase tracking-wide"
-            >
-              ▶ BẮT ĐẦU NGAY
-            </button>
+            {/* CTA Button */}
+            <div className="flex flex-col items-center">
+              <button
+                onClick={() => onOpenLeadModal(course.title)}
+                className="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#F37021] to-[#f59e0b] hover:from-[#d95e14] hover:to-[#d97706] text-white font-extrabold text-sm sm:text-base px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl shadow-xl hover:shadow-2xl hover:shadow-orange-500/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer uppercase tracking-wider"
+              >
+                <Gift size={18} className="animate-bounce" />
+                <span>ĐĂNG KÝ NHẬN HỌC BỔNG NGAY</span>
+                <ArrowRight size={18} />
+              </button>
+              <p className="text-[11px] text-emerald-200/75 mt-3 flex items-center gap-1.5">
+                <Clock size={12} /> Ưu đãi chỉ áp dụng cho 30 học viên đăng ký sớm nhất trong tháng này
+              </p>
+            </div>
           </div>
         </div>
 
@@ -310,16 +367,6 @@ export default function CourseDetailPage({ onOpenLeadModal }: CourseDetailPagePr
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-300 bg-white">
-                {/* Mã lớp */}
-                <tr>
-                  <td className="p-3.5 sm:p-4 font-bold bg-slate-50 text-slate-800 border-r border-slate-300 align-top">
-                    Mã lớp
-                  </td>
-                  <td className="p-3.5 sm:p-4 font-extrabold text-[#1B7E45]">
-                    {course.classCode || 'HSK'}
-                  </td>
-                </tr>
-
                 {/* Đối tượng */}
                 <tr>
                   <td className="p-3.5 sm:p-4 font-bold bg-slate-50 text-slate-800 border-r border-slate-300 align-top">
@@ -449,9 +496,6 @@ export default function CourseDetailPage({ onOpenLeadModal }: CourseDetailPagePr
             {relatedCourses.map((item) => (
               <div key={item.id} className="bg-slate-50 p-5 rounded-lg border border-slate-200 flex flex-col justify-between hover:shadow-md transition-all">
                 <div>
-                  <span className="inline-block bg-white text-[#1B7E45] border border-[#1B7E45]/30 text-[11px] font-black px-2.5 py-0.5 rounded-md mb-2">
-                    Mã: {item.classCode || 'HSK'}
-                  </span>
                   <h4 className="text-sm font-bold text-slate-900 mb-2 leading-snug">
                     <Link href={`/khoa-hoc/${item.slug}`} className="hover:text-[#1B7E45] transition-colors">
                       {item.title}

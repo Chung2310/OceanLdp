@@ -35,7 +35,7 @@ export const campusScheduleCards: CampusScheduleCard[] = [
     region: 'co-so-1',
     regionLabel: 'Cơ sở 1 (Hàn Thuyên)',
     address: 'Số 567 đường Hàn Thuyên, P. Đại Phúc, TP. Bắc Ninh',
-    hotline: '0961.556.677',
+    hotline: '082 471 3789',
     courses: [
       {
         courseName: 'TIẾNG TRUNG TÍCH HỢP HSK3 3.0',
@@ -98,7 +98,7 @@ export const campusScheduleCards: CampusScheduleCard[] = [
     region: 'co-so-2',
     regionLabel: 'Cơ sở 2 (Ngã 6)',
     address: 'Ngã 6 Phường Đại Phúc, TP. Bắc Ninh',
-    hotline: '0961.556.677',
+    hotline: '082 471 3789',
     courses: [
       {
         courseName: 'TIẾNG TRUNG TÍCH HỢP HSK3 3.0',
@@ -151,7 +151,7 @@ export const campusScheduleCards: CampusScheduleCard[] = [
     region: 'online',
     regionLabel: 'Online Toàn Quốc',
     address: 'Nền tảng học trực tuyến tương tác 2 chiều (Học viên 63 tỉnh thành & Quốc tế)',
-    hotline: '0961.556.677',
+    hotline: '082 471 3789',
     courses: [
       {
         courseName: 'TIẾNG TRUNG TÍCH HỢP HSK3 3.0 TRỰC TUYẾN',

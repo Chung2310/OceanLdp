@@ -19,11 +19,6 @@ export default function CourseCard({ course, onOpenConsult }: CourseCardProps): 
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
           loading="lazy" 
         />
-        {course.classCode && (
-          <span className="absolute top-3 left-3 bg-[#1B7E45] text-white text-[11px] font-black px-3 py-1 rounded-full shadow-md uppercase tracking-wider">
-            MÃ: {course.classCode}
-          </span>
-        )}
         <div className="absolute bottom-3 right-3 bg-slate-900/85 backdrop-blur-sm text-white text-[11px] font-medium px-2.5 py-1 rounded-md">
           {course.format.includes('Online') ? 'Trực tiếp & Online' : 'Trực tiếp tại cơ sở'}
         </div>

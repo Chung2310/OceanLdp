@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Heart, X, PhoneCall, LayoutGrid, SlidersHorizontal } from 'lucide-react';
 import logoImg from '../../asset/img/logo.jpg';
 
-import teacherQuang from '../../asset/teachers/ly-xuan-nam_4.webp';
-import teacherLinh from '../../asset/teachers/pham-thanh-van_6.webp';
-import teacherThuy from '../../asset/teachers/tran-thi-hoang-anh_9.webp';
-import teacherTrung from '../../asset/teachers/le-quang-thanh_2.webp';
-import teacherNgocAnh from '../../asset/teachers/vu-ngoc-anh_11.webp';
+import teacherQuang from '../../asset/teachers/3.jpg';
+import teacherLinh from '../../asset/teachers/4.jpg';
+import teacherThuy from '../../asset/teachers/5.jpg';
+import teacherTrung from '../../asset/teachers/2.jpg';
+import teacherNgocAnh from '../../asset/teachers/1.jpg';
 
 export interface TeacherItem {
   id: string;
@@ -315,11 +315,11 @@ export default function TeachersSection({ onOpenLeadModal }: TeachersSectionProp
                           </div>
 
                           {/* Teacher Portrait Image */}
-                          <div className="relative w-full flex-1 flex items-end justify-center overflow-hidden pt-1">
+                          <div className="relative w-full flex-1 flex items-center justify-center overflow-hidden">
                             <img
                               src={t.image}
                               alt={t.badgeName}
-                              className="w-full h-full object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
+                              className="w-full h-full object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-105"
                               loading="lazy"
                             />
                           </div>
@@ -409,11 +409,11 @@ export default function TeachersSection({ onOpenLeadModal }: TeachersSectionProp
                     </div>
 
                     {/* Teacher Portrait Image */}
-                    <div className="relative w-full flex-1 flex items-end justify-center overflow-hidden pt-1">
+                    <div className="relative w-full flex-1 flex items-center justify-center overflow-hidden">
                       <img
                         src={t.image}
                         alt={t.badgeName}
-                        className="w-full h-full object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                     </div>
@@ -496,11 +496,11 @@ export default function TeachersSection({ onOpenLeadModal }: TeachersSectionProp
                 </div>
 
                 {/* Teacher Portrait */}
-                <div className="relative w-full flex-1 flex items-end justify-center overflow-hidden pt-1">
+                <div className="relative w-full flex-1 flex items-center justify-center overflow-hidden">
                   <img
                     src={selectedTeacher.image}
                     alt={selectedTeacher.badgeName}
-                    className="w-full h-full object-contain object-bottom"
+                    className="w-full h-full object-cover object-[center_15%]"
                   />
                 </div>
 

@@ -667,7 +667,7 @@ export const msutongBooks: MsutongBook[] = [
     category: 'Luyện thi Đại học',
     price: 320000,
     salePrice: 250000,
-    publisher: 'Green Ocean & Viện Bác Nhã',
+    publisher: 'Green Ocean & NXB Giáo Dục Hán Ngữ',
     image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600&auto=format&fit=crop',
     desc: 'Tuyển tập đề thi thử có lời giải chi tiết, phân tích ma trận bẫy điểm 9+ môn tiếng Trung.'
   }

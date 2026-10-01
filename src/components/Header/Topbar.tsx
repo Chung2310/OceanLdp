@@ -8,9 +8,9 @@ export default function Topbar(): JSX.Element {
         <div className="flex items-center justify-between h-9">
           {/* Left info */}
           <div className="flex items-center gap-3">
-            <a href="tel:0961556677" className="inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
+            <a href="tel:0824713789" className="inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
               <Phone size={13} className="text-[#F37021]" />
-              <span>Hotline: <strong className="text-white">0961.556.677</strong></span>
+              <span>Hotline: <strong className="text-white">082 471 3789</strong></span>
             </a>
             <span className="text-white/20 hidden sm:inline">|</span>
             <a href="mailto:contact@greenocean.edu.vn" className="hidden sm:inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
