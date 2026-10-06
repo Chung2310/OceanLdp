@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'wouter';
-import { MapPin, Phone, Mail, ExternalLink, ArrowRight, Building2 } from 'lucide-react';
+import { MapPin, Phone, Mail, ExternalLink, ArrowRight, Building2, ChevronRight } from 'lucide-react';
 import { branchRegions, branchesData } from '../data/branchesData';
 
 export default function BranchesPage(): JSX.Element {
@@ -11,23 +11,29 @@ export default function BranchesPage(): JSX.Element {
     : branchesData.filter(b => b.region === selectedRegion);
 
   return (
-    <div className="w-full bg-[#f8fafc] min-h-screen">
-      {/* Hero Banner */}
-      <div className="w-full bg-gradient-to-br from-[#1E293B] to-[#0f172a] py-14 px-4 text-center text-white">
-        <div className="max-w-[1280px] mx-auto">
-          <span className="inline-block bg-[#1B7E45]/25 text-[#bbf0d2] border border-[#1B7E45]/40 text-xs font-extrabold px-3.5 py-1 rounded-md mb-3 uppercase tracking-wider">
+    <div className="w-full bg-[#fafbfc] min-h-screen font-sans pb-16">
+      
+      <div className="max-w-[1280px] mx-auto px-4 py-6 sm:py-10">
+        
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-6" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-[#1B7E45] transition-colors">Trang Chủ</Link>
+          <ChevronRight size={13} className="text-slate-400 shrink-0" />
+          <span className="text-[#1B7E45] font-semibold">Hệ Thống Cơ Sở</span>
+        </nav>
+
+        {/* Page Header */}
+        <div className="text-center mb-10 pb-6 border-b border-slate-200/80">
+          <span className="inline-block bg-[#EAF5EE] text-[#1B7E45] border border-[#1B7E45]/20 text-xs font-extrabold px-3.5 py-1 rounded-md mb-3 uppercase tracking-wider">
             HỆ THỐNG CƠ SỞ
           </span>
-          <h1 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 mb-3 tracking-tight">
             Hệ Thống Cơ Sở Đào Tạo Green Ocean
           </h1>
-          <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Hệ thống cơ sở hiện đại tại trung tâm TP. Bắc Ninh kết hợp chương trình đào tạo trực tuyến tương tác hai chiều phục vụ học viên trên toàn quốc.
           </p>
         </div>
-      </div>
-
-      <div className="max-w-[1280px] mx-auto px-4 py-10">
         {/* Region Filter Buttons */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           <button 

@@ -36,20 +36,18 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
 
   return (
     <div className="w-full bg-[#fafbfc] min-h-screen pb-16 font-sans">
-      
-      {/* 1. Breadcrumbs Bar */}
-      <div className="w-full bg-white border-b border-slate-200 py-3 px-4 shadow-xs">
-        <div className="max-w-[980px] mx-auto flex items-center gap-1.5 text-xs text-slate-500 font-medium overflow-x-auto whitespace-nowrap">
+
+      {/* Main Editorial Article Container matching Thanhmaihsk/Green Ocean reference */}
+      <article className="max-w-[980px] mx-auto px-4 py-6 sm:py-10">
+
+        {/* Breadcrumbs Navigation */}
+        <nav className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-6 overflow-x-auto whitespace-nowrap" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-[#1B7E45] transition-colors">Trang Chủ</Link>
           <ChevronRight size={13} className="text-slate-400 shrink-0" />
           <Link href="/he-thong-co-so" className="hover:text-[#1B7E45] transition-colors">Hệ Thống Cơ Sở</Link>
           <ChevronRight size={13} className="text-slate-400 shrink-0" />
-          <span className="text-slate-800 font-semibold truncate">{branch.name}</span>
-        </div>
-      </div>
-
-      {/* Main Editorial Article Container matching Thanhmaihsk/Green Ocean reference */}
-      <article className="max-w-[980px] mx-auto px-4 py-8 sm:py-12">
+          <span className="text-[#1B7E45] font-semibold truncate">{branch.name}</span>
+        </nav>
 
         {/* 2. Top Lead Paragraph (Screenshot 1) */}
         <div className="mb-6">
