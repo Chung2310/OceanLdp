@@ -27,22 +27,20 @@ export default function ResourceDetailPage(): JSX.Element {
 
   return (
     <div className="w-full bg-[#fafbfc] min-h-screen font-sans pb-16">
-      
-      {/* 1. Breadcrumbs Bar */}
-      <div className="w-full bg-white border-b border-slate-200 py-3 px-4 shadow-xs">
-        <div className="max-w-[880px] mx-auto flex items-center gap-1.5 text-xs text-slate-500 font-medium overflow-x-auto whitespace-nowrap">
+
+      {/* Main Editorial Container */}
+      <article className="max-w-[880px] mx-auto px-4 py-6 sm:py-10">
+
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-6 overflow-x-auto whitespace-nowrap" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-[#1B7E45] transition-colors">Trang Chủ</Link>
           <ChevronRight size={13} className="text-slate-400 shrink-0" />
           <Link href="/thu-vien-tai-lieu" className="hover:text-[#1B7E45] transition-colors">Thư Viện</Link>
           <ChevronRight size={13} className="text-slate-400 shrink-0" />
           <span className="text-[#1B7E45] font-semibold">{item.categoryName || 'Tài Liệu'}</span>
           <ChevronRight size={13} className="text-slate-400 shrink-0" />
-          <span className="text-slate-800 font-semibold truncate max-w-[280px] sm:max-w-md">{item.title}</span>
-        </div>
-      </div>
-
-      {/* Main Editorial Container */}
-      <article className="max-w-[880px] mx-auto px-4 py-8 sm:py-12">
+          <span className="text-slate-700 font-semibold truncate max-w-[280px] sm:max-w-md">{item.title}</span>
+        </nav>
         
         {/* Back Link */}
         <Link 

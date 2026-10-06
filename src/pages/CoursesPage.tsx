@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  CheckCircle2, ChevronRight, GraduationCap, 
+import {
+  CheckCircle2, ChevronRight,
   BookOpen, Sparkles, Send, MapPin, Award, Headphones,
   MessageSquare, BookMarked, PenTool, Target, Calendar
 } from 'lucide-react';
@@ -27,23 +27,16 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
 
   return (
     <div className="w-full bg-white min-h-screen text-slate-800 font-sans">
-      
-      {/* 1. Solid Top Brand Strip & Breadcrumb */}
-      <div className="w-full bg-[#1B7E45] text-white py-3 px-4 border-b border-[#156637]">
-        <div className="max-w-[980px] mx-auto flex items-center justify-between text-xs sm:text-sm font-medium">
-          <div className="flex items-center gap-2">
-            <a href="/" className="hover:underline opacity-90">Trang chủ</a>
-            <ChevronRight size={14} className="opacity-60" />
-            <span className="font-bold opacity-100">Các khóa học tiếng Trung</span>
-          </div>
-          <span className="hidden sm:inline text-xs text-white/80">
-            Hệ thống đào tạo năng lực Hán ngữ toàn diện
-          </span>
-        </div>
-      </div>
 
-      {/* Main Editorial Article Container matching Green Ocean Standards */}
-      <article className="max-w-[980px] mx-auto px-4 py-8 sm:py-12">
+      {/* Main Editorial Article Container */}
+      <article className="max-w-[980px] mx-auto px-4 py-6 sm:py-10">
+
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium mb-5" aria-label="Breadcrumb">
+          <a href="/" className="hover:text-[#1B7E45] transition-colors">Trang chủ</a>
+          <ChevronRight size={13} className="text-slate-400" />
+          <span className="text-[#1B7E45] font-semibold">Các khóa học tiếng Trung</span>
+        </nav>
 
         {/* 2. Top Intro Header matching Screenshot */}
         <div className="mb-6">
@@ -56,49 +49,6 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
           </h1>
         </div>
 
-        {/* 3. Campaign & Scholarship Banner matching Screenshot 1 */}
-        <div className="relative w-full rounded-lg overflow-hidden shadow-xl border border-red-100 bg-gradient-to-br from-[#8C1515] via-[#B82222] to-[#730D0D] text-white p-6 sm:p-10 mb-8 text-center">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-md text-xs font-bold tracking-wider uppercase text-amber-200 border border-amber-300/30 mb-4">
-              <GraduationCap size={16} /> GREEN OCEAN | HỆ SINH THÁI ĐÀO TẠO TIẾNG TRUNG TOÀN DIỆN
-            </div>
-
-            <div className="text-xs sm:text-sm font-extrabold tracking-[0.2em] text-amber-300 uppercase mb-1">
-              ƯU ĐÃI TUYỂN SINH MỚI NHẤT
-            </div>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase tracking-tight mb-6 drop-shadow-md">
-              HỌC CHĂM CHỈ – NHẬN HỌC BỔNG KHỦNG
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full mb-8">
-              <div className="bg-white/10 backdrop-blur-md border border-amber-300/40 rounded-lg p-4 sm:p-5 flex flex-col items-center text-center hover:bg-white/15 transition-all">
-                <span className="text-[11px] uppercase tracking-wider text-amber-200 font-bold">TẶNG HỌC BỔNG</span>
-                <span className="text-3xl sm:text-4xl font-black text-amber-300 my-0.5">1.500K</span>
-                <span className="text-xs sm:text-[13px] text-white/90 leading-snug">
-                  Khi đăng ký khóa Offline tiếng Trung tích hợp HSK 4 - HSK 5
-                </span>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-md border border-amber-300/40 rounded-lg p-4 sm:p-5 flex flex-col items-center text-center hover:bg-white/15 transition-all">
-                <span className="text-[11px] uppercase tracking-wider text-amber-200 font-bold">TẶNG HỌC BỔNG</span>
-                <span className="text-3xl sm:text-4xl font-black text-amber-300 my-0.5">1.200K</span>
-                <span className="text-xs sm:text-[13px] text-white/90 leading-snug">
-                  Khi đăng ký khóa Offline tiếng Trung tích hợp HSK 1 - HSK 3
-                </span>
-              </div>
-            </div>
-
-            <button
-              onClick={() => onOpenLeadModal('Khóa học tiếng Trung toàn diện')}
-              className="inline-flex items-center justify-center bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-red-950 font-black text-base sm:text-lg px-8 py-3.5 rounded-md shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer active:scale-95 uppercase tracking-wide"
-            >
-              ▶ BẮT ĐẦU NGAY
-            </button>
-          </div>
-        </div>
 
         {/* 4. Contextual Narrative matching Screenshot 2 */}
         <section className="space-y-4 text-[15px] sm:text-base leading-relaxed text-slate-700 mb-6">
@@ -204,11 +154,10 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
             <button
               key={c.id}
               onClick={() => scrollToCourse(c.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                activeTab === c.id
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${activeTab === c.id
                   ? 'bg-[#1B7E45] text-white shadow-xs'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
+                }`}
             >
               {c.title.split('–')[0].trim()}
             </button>
@@ -224,7 +173,7 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
           <div className="space-y-16">
             {coursesData.map((course, index) => (
               <section key={course.id} id={course.id} className="scroll-mt-32 pt-2">
-                
+
                 {/* Course Title Header */}
                 <div className="mb-4">
                   <span className="text-xs font-extrabold text-[#1B7E45] uppercase tracking-wider">
@@ -255,7 +204,7 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-300 bg-white">
-                      
+
                       {/* Đối tượng */}
                       <tr>
                         <td className="p-3 sm:p-4 font-bold bg-slate-50 text-slate-800 border-r border-slate-300 align-top">
