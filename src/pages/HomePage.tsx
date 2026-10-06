@@ -50,8 +50,8 @@ export default function HomePage({ onOpenLeadModal, onOpenDownloadModal, onShowT
       {/* 7. Đội Ngũ Chuyên Gia, Giảng Viên Hán Ngữ Đầu Ngành */}
       <TeachersSection />
 
-      {/* 8. Bảng vàng thành tích học viên HSK 6 & HSK 5 cao điểm (Dual Marquee) */}
-      <HallOfFameSection />
+      {/* 8. Bảng vàng thành tích học viên (Tạm ẩn do chưa đồng bộ hình ảnh & logo trung tâm) */}
+      {/* <HallOfFameSection /> */}
     </main>
   );
 }
