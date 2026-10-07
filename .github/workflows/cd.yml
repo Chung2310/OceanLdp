@@ -85,7 +85,7 @@ jobs:
       - name: Deploy exact commit and wait for health check
         uses: appleboy/ssh-action@v1.0.3
         env:
-          ENV_FILE_CONTENT: ${{ secrets[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] }}
+          ENV_FILE_CONTENT: ${{ vars[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] }}
           IMAGE_NAME: ${{ needs.build-image.outputs.image }}
           IMAGE_TAG: ${{ github.sha }}
           COMPOSE_PROJECT_NAME: ocean-ldp-${{ github.ref_name }}
