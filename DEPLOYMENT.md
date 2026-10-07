@@ -33,6 +33,11 @@ Each deployment rewrites .env from its secret; an empty secret uses defaults.
 Image name: ghcr.io/<owner>/<repository> in lowercase. The workflow uses the
 built-in GITHUB_TOKEN for GHCR; the repository must have package access.
 Deploy succeeds only when the container passes its health check.
+The deployment stops the previous Compose stack before starting the new commit,
+so a deploy can cause a short interruption while preventing stale/orphaned
+containers from retaining the published port. If startup still reports that a
+port is already allocated, inspect the container shown in the workflow log and
+either stop that unrelated service or assign this deployment a different PORT.
 
 The VPS .env configures Compose only. This is a static frontend; future VITE_*
 variables must be supplied at build time to change the generated JavaScript.
