@@ -110,8 +110,13 @@ jobs:
             printf '%s' "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
             docker compose config --quiet
             docker compose pull
+            # Remove the previous stack (including renamed/orphaned services) before
+            # starting the replacement. Otherwise an orphan can keep the published
+            # port and make the new container fail with "port is already allocated".
+            docker compose down --remove-orphans
             if ! docker compose up -d --no-build --remove-orphans --wait --wait-timeout 120; then
               docker compose ps -a
+              docker ps -a --format 'table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}'
               docker compose logs --tail=100
               exit 1
             fi
