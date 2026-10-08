@@ -12,7 +12,7 @@ docker compose up -d --build --wait
 
 Open http://localhost:3010. Set PORT in .env and rerun Compose to change the host
 port. Missing .env, missing PORT or empty PORT defaults to 3010. Shell variables
-have priority over .env. Nginx listens on port 80 inside the container.
+have priority over .env. Nginx listens on port 3013 inside the container.
 Vite dev and preview also read PORT from the environment or Vite env files.
 
 ## GitHub repository secrets and variables
