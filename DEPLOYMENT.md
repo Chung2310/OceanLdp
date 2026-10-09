@@ -28,20 +28,22 @@ SSH values below as repository secrets or secrets in the matching Environment:
 | SSH_KEY | SSH_KEY_PROD | SSH private key |
 | SSH_PORT | SSH_PORT_PROD | Optional SSH port, default 22 |
 
-Configure the deployment environment as repository variables or variables in
-the matching Environment under **Settings > Secrets and variables > Actions**:
+Configure the deployment environment as secrets (recommended if it contains
+sensitive values) or as variables under **Settings > Secrets and variables >
+Actions**. The workflow checks the matching secret first, then the variable:
 
 | Staging (develop) | Production (production) | Value |
 | --- | --- | --- |
-| ENV_FILE | ENV_FILE_PROD | Full .env contents, e.g. PORT=3010; optional |
+| ENV_FILE | ENV_FILE_PROD | Required .env contents, including a valid PORT |
 
 Repository variables are not secret. Keep passwords, tokens, and other
-sensitive values in GitHub secrets rather than ENV_FILE or ENV_FILE_PROD.
+sensitive values in `ENV_FILE` or `ENV_FILE_PROD` only when they are secrets.
 
 Install Docker Engine and Compose v2 supporting up --wait on the VPS.
 Deployment directories: /opt/ocean-ldp/staging and /opt/ocean-ldp/production.
 Use different PORT values if both environments share one VPS.
-Each deployment rewrites .env from its variable; an empty variable uses defaults.
+Each deployment rewrites .env from its secret or variable and requires a valid
+`PORT` entry before stopping the previous container.
 Any `PORT` inherited by the VPS login shell is cleared so the value in this file
 is used by Compose.
 
