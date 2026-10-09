@@ -38,7 +38,7 @@ export default function FranchisePage({ onShowToast }: FranchisePageProps): JSX.
             HỢP TÁC NHƯỢNG QUYỀN
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-            Cùng Thanhmaihsk Kiến Tạo Doanh Thu Đột Phá
+            Cùng Green Ocean Kiến Tạo Doanh Thu Đột Phá
           </h1>
           <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
             Nhượng quyền thương hiệu đào tạo tiếng Trung số 1 Việt Nam với mô hình vận hành tinh gọn, giáo trình độc quyền và tỷ lệ hoàn vốn nhanh chỉ từ 6 - 12 tháng.
@@ -115,7 +115,7 @@ export default function FranchisePage({ onShowToast }: FranchisePageProps): JSX.
               <CheckCircle2 size={64} className="text-[#1B7E45]" />
               <h3 className="text-xl font-bold text-[#1E293B]">TIẾP NHẬN HỒ SƠ THÀNH CÔNG!</h3>
               <p className="text-sm text-slate-600 max-w-md">
-                Cảm ơn đối tác <strong className="text-slate-800">{partnerForm.name}</strong>. Giám đốc phát triển mạng lưới Thanhmaihsk sẽ liên hệ trực tiếp để trao đổi chi tiết kế hoạch hợp tác.
+                Cảm ơn đối tác <strong className="text-slate-800">{partnerForm.name}</strong>. Giám đốc phát triển mạng lưới Green Ocean sẽ liên hệ trực tiếp để trao đổi chi tiết kế hoạch hợp tác.
               </p>
             </div>
           ) : (

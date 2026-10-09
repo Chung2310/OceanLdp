@@ -49,7 +49,7 @@ export default function TestimonialsSection(): JSX.Element {
             Cảm Nhận & Thành Tích <span className="text-[#1B7E45]">Học Viên Xuất Sắc</span>
           </h2>
           <p className="text-sm text-slate-500 max-w-xl mx-auto mt-2">
-            Hàng chục nghìn học viên đã bứt phá thành công cùng Thanhmaihsk để du học, thăng tiến sự nghiệp và đạt điểm tuyệt đối.
+            Hàng chục nghìn học viên đã bứt phá thành công cùng Green Ocean để du học, thăng tiến sự nghiệp và đạt điểm tuyệt đối.
           </p>
         </div>
 

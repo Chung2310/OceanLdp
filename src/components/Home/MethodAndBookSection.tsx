@@ -24,7 +24,7 @@ export default function MethodAndBookSection({ onOpenDownloadModal }: MethodAndB
               Phương Pháp Tích Hợp <span className="text-[#1B7E45]">MCONTASK 3.0</span>
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Khác với phương pháp truyền thống chỉ chú trọng ngữ pháp lý thuyết, phương pháp Mcontask tại Thanhmaihsk tập trung xây dựng năng lực ngôn ngữ toàn diện thông qua 3 trụ cột:
+              Khác với phương pháp truyền thống chỉ chú trọng ngữ pháp lý thuyết, phương pháp Mcontask tại Green Ocean tập trung xây dựng năng lực ngôn ngữ toàn diện thông qua 3 trụ cột:
             </p>
 
             <div className="space-y-4 pt-2">

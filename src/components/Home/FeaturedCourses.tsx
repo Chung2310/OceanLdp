@@ -1,72 +1,116 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Menu } from 'lucide-react';
 import { Link } from 'wouter';
-import { ArrowRight } from 'lucide-react';
-import { courseCategories, coursesData } from '../../data/coursesData';
-import CourseCard from '../Common/CourseCard';
+import course01 from '../../asset/courses/course01.png';
+import course02 from '../../asset/courses/course02.png';
+import course03 from '../../asset/courses/course03.png';
+import course04 from '../../asset/courses/course04.png';
+import course05 from '../../asset/courses/course05.png';
+import course06 from '../../asset/courses/course06.png';
 
 interface FeaturedCoursesProps {
-  onOpenLeadModal: (courseTitle?: string) => void;
+  onOpenLeadModal?: (courseTitle?: string) => void;
 }
 
+interface ProgramDisplayItem {
+  id: string;
+  title: string;
+  slug: string;
+  desc: string;
+  image: string;
+}
+
+const programsData: ProgramDisplayItem[] = [
+  {
+    id: '01',
+    title: 'HÁN NGỮ TÍCH HỢP 3.0',
+    slug: 'hsk-1-nen-tang-tieng-trung',
+    desc: 'Đào tạo bài bản 4 kỹ năng nghe – nói, đọc – viết đạt chuẩn đầu ra theo tiêu chuẩn 3.0',
+    image: course01
+  },
+  {
+    id: '02',
+    title: 'HÁN NGỮ TÍCH HỢP 3.0 TRỰC TUYẾN',
+    slug: 'hsk-2-cung-co-nen-tang',
+    desc: 'Học trực tuyến từ xa trên nền tảng Google Meet, cam kết đầu ra như các lớp Offline',
+    image: course02
+  },
+  {
+    id: '03',
+    title: 'KHÓA LUYỆN THI HSK/ HSKK',
+    slug: 'hsk-3-phat-trien-toan-dien',
+    desc: 'Lộ trình luyện thi chinh phục HSK sau 1 khóa học HSKK cao cấp với số điểm cao 70+ điểm',
+    image: course03
+  },
+  {
+    id: '04',
+    title: 'KHÓA TIẾNG TRUNG TRẺ EM',
+    slug: 'tieng-trung-tre-em',
+    desc: 'Lộ trình bám sát chương trình phổ thông hiện hành, phù hợp cho trẻ từ 6-15 tuổi',
+    image: course04
+  },
+  {
+    id: '05',
+    title: 'KHÓA DOANH NGHIỆP',
+    slug: 'khoa-hoc-giao-tiep-cap-toc',
+    desc: 'Khóa tiếng Trung với lộ trình học thiết kế riêng theo nhu cầu của Doanh nghiệp',
+    image: course05
+  },
+  {
+    id: '06',
+    title: 'KHÓA HỌC THEO YÊU CẦU',
+    slug: 'khoa-hoc-giao-tiep-cap-toc',
+    desc: 'Khóa học VIP 1 kèm 1, 1 kèm 3 theo yêu cầu có thời gian học linh hoạt',
+    image: course06
+  }
+];
+
 export default function FeaturedCourses({ onOpenLeadModal }: FeaturedCoursesProps): JSX.Element {
-  const [selectedCat, setSelectedCat] = useState<string>('all');
-
-  const filteredCourses = selectedCat === 'all' 
-    ? coursesData.slice(0, 6) 
-    : coursesData.filter(c => c.category === selectedCat);
-
   return (
-    <section className="w-full bg-[#f8fafc] py-16" aria-label="Khóa học nổi bật">
-      <div className="max-w-[1280px] mx-auto px-4">
-        <div className="text-center mb-10">
-          <span className="inline-block bg-[#EAF5EE] text-[#1B7E45] font-extrabold text-xs px-3.5 py-1 rounded-full uppercase tracking-wider mb-2">
-            CHƯƠNG TRÌNH ĐÀO TẠO
-          </span>
-          <h2 className="text-2xl md:text-3xl font-black text-[#1E293B] tracking-tight">
-            Khóa Học Tiếng Trung <span className="text-[#1B7E45]">Chuẩn New HSK 3 Cấp 9 Bậc</span>
-          </h2>
-          <p className="text-sm text-slate-500 max-w-xl mx-auto mt-2">
-            Lộ trình học bài bản, tinh gọn từ cơ bản đến nâng cao, đáp ứng toàn diện mọi mục tiêu: du học, giao tiếp công sở và luyện thi chứng chỉ quốc tế.
-          </p>
+    <section className="w-full bg-white py-12 sm:py-16 border-b border-slate-100" aria-label="Các khóa học tiếng Trung">
+      <div className="max-w-[1240px] mx-auto px-4">
+
+        {/* Section Header */}
+        <div className="flex items-center justify-center gap-3 sm:gap-6 mb-10 sm:mb-14">
+          <div className="h-[1.5px] bg-slate-200 flex-1 max-w-[80px] sm:max-w-[200px]" />
+          <div className="flex items-center gap-2 sm:gap-2.5 text-[#1B7E45] font-black text-base sm:text-xl md:text-2xl uppercase tracking-tight text-center">
+            <Menu size={22} className="stroke-[3] shrink-0" />
+            <span>CÁC KHÓA HỌC TIẾNG TRUNG TẠI GREEN OCEAN</span>
+          </div>
+          <div className="h-[1.5px] bg-slate-200 flex-1 max-w-[80px] sm:max-w-[200px]" />
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {courseCategories.slice(0, 6).map((cat) => (
-            <button
-              key={cat.id}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                selectedCat === cat.id 
-                  ? 'bg-[#1B7E45] text-white shadow-md' 
-                  : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
-              }`}
-              onClick={() => setSelectedCat(cat.id)}
+        {/* Courses Display Grid - Clean Style like Thanh Mai HSK */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-9 sm:gap-y-12">
+          {programsData.map((item) => (
+            <Link
+              key={item.id}
+              href={`/khoa-hoc/${item.slug}`}
+              className="group block text-center cursor-pointer"
             >
-              {cat.name}
-            </button>
+              {/* Poster Image Frame */}
+              <div className="w-full aspect-[720/490] rounded-2xl overflow-hidden bg-slate-50 shadow-[0_2px_12px_rgba(0,0,0,0.06)] group-hover:shadow-[0_8px_26px_rgba(27,126,69,0.18)] group-hover:scale-[1.02] transition-all duration-300">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover block"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Title */}
+              <h3 className="mt-4 font-black text-base sm:text-lg text-[#1B7E45] group-hover:text-[#145A32] uppercase tracking-tight transition-colors">
+                {item.title}
+              </h3>
+
+              {/* Short description */}
+              <p className="mt-1.5 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-sm mx-auto">
+                {item.desc}
+              </p>
+            </Link>
           ))}
         </div>
 
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCourses.map((course) => (
-            <CourseCard 
-              key={course.id} 
-              course={course} 
-              onOpenConsult={(title) => onOpenLeadModal(title)} 
-            />
-          ))}
-        </div>
-
-        {/* View All Button */}
-        <div className="text-center mt-12">
-          <Link 
-            href="/khoa-hoc" 
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-[#1B7E45] text-[#1B7E45] hover:bg-[#EAF5EE] font-extrabold text-xs tracking-wide transition-colors cursor-pointer"
-          >
-            Xem tất cả 10+ khóa học tiếng Trung <ArrowRight size={16} />
-          </Link>
-        </div>
       </div>
     </section>
   );

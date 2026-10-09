@@ -86,7 +86,7 @@ export default function LeadModal({ isOpen, onClose, defaultCourse = '', onShowT
             <CheckCircle2 size={64} className="text-emerald-500 animate-float" />
             <h3 className="text-2xl font-black text-neutral">ĐĂNG KÝ THÀNH CÔNG!</h3>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-md mx-auto">
-              Cảm ơn bạn <strong className="text-neutral font-bold">{formData.name}</strong> đã để lại thông tin. Chuyên viên học vụ Thanhmaihsk sẽ liên hệ qua SĐT <strong className="text-primary font-bold">{formData.phone}</strong> trong vòng 15 phút để tư vấn lộ trình và ưu đãi học phí tốt nhất!
+              Cảm ơn bạn <strong className="text-neutral font-bold">{formData.name}</strong> đã để lại thông tin. Chuyên viên tư vấn Green Ocean sẽ liên hệ qua SĐT <strong className="text-primary font-bold">{formData.phone}</strong> trong vòng 15 phút để tư vấn lộ trình và ưu đãi học phí tốt nhất!
             </p>
           </div>
         ) : (

@@ -1,148 +1,129 @@
-import React, { useState } from 'react';
-import { Award, Star, Quote, ChevronRight, CheckCircle2 } from 'lucide-react';
+import React from 'react';
 
-interface StudentAchievement {
-  id: string;
+import vinhDanh1 from '../../asset/achievers/vinh-danh-hoc-vien1_a-1.webp';
+import vinhDanh2 from '../../asset/achievers/vinh-danh-hoc-vien1_a-2.webp';
+import vinhDanh3 from '../../asset/achievers/vinh-danh-hoc-vien1_a-3.webp';
+import vinhDanh4 from '../../asset/achievers/vinh-danh-hoc-vien1_a-4.webp';
+import vinhDanh5 from '../../asset/achievers/vinh-danh-hoc-vien1_a-5.webp';
+import vinhDanh6 from '../../asset/achievers/vinh-danh-hoc-vien1_a-6.webp';
+import vinhDanh7 from '../../asset/achievers/vinh-danh-hoc-vien1_a-7.webp';
+import vinhDanh8 from '../../asset/achievers/vinh-danh-hoc-vien1_a-8.webp';
+import vinhDanh9 from '../../asset/achievers/vinh-danh-hoc-vien1_a-9.webp';
+import vinhDanh10 from '../../asset/achievers/vinh-danh-hoc-vien1_a-10.webp';
+import vinhDanh11 from '../../asset/achievers/vinh-danh-hoc-vien1_a-11.webp';
+import vinhDanh12 from '../../asset/achievers/vinh-danh-hoc-vien1_a-12.webp';
+import vinhDanh13 from '../../asset/achievers/vinh-danh-hoc-vien1_a-13.webp';
+import vinhDanh14 from '../../asset/achievers/vinh-danh-hoc-vien1_a-14.webp';
+import vinhDanh15 from '../../asset/achievers/vinh-danh-hoc-vien1_a-15.webp';
+
+interface Achiever {
   name: string;
-  avatar: string;
-  score: string;
-  hskLevel: string;
-  courseTaken: string;
-  quote: string;
-  currentRole: string;
+  level: string;
+  img: string;
 }
 
-const hallOfFameData: StudentAchievement[] = [
-  {
-    id: '1',
-    name: 'Nguyễn Diệu Linh',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
-    score: '286/300',
-    hskLevel: 'HSK 6 Cấp 9 Bậc',
-    courseTaken: 'Lớp Luyện thi HSK 6 Chuyên Sâu Cầu Giấy',
-    quote: 'Phương pháp giảng dạy của cô Mai và các thầy cô Viện Bác Nhã rất logic, rèn tư duy tiếng Trung tự nhiên chứ không học vẹt ngữ pháp. Em đã đỗ học bổng CIS Thạc sĩ ĐH Phúc Đán!',
-    currentRole: 'Học bổng Toàn phần ĐH Phúc Đán (Fudan University)'
-  },
-  {
-    id: '2',
-    name: 'Phạm Minh Quân',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop',
-    score: '292/300',
-    hskLevel: 'HSK 5 & HSKK Cao Cấp',
-    courseTaken: 'Khóa Tích Hợp HSK 3 - 5 Trực Tuyến',
-    quote: 'Mặc dù học Online nhưng tương tác với giảng viên rất sát sao, có trợ giảng chấm chữa bài nói và viết từng câu chữ. Sau 6 tháng em đã đạt HSK 5 phục vụ công việc tại công ty FDI.',
-    currentRole: 'Chuyên viên Mua hàng Cty Goertek Vina'
-  },
-  {
-    id: '3',
-    name: 'Đặng Mai Phương',
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400&auto=format&fit=crop',
-    score: '279/300',
-    hskLevel: 'HSK 6 Xuất Sắc',
-    courseTaken: 'Khóa Luyện Thi HSK 6 Offline Quận 1 HCM',
-    quote: 'Giáo trình Msutong và bộ tài liệu đề thi thử sát với đề thi thật 99%. Đội ngũ Thanhmaihsk luôn đồng hành tận tâm từ lúc học đến khi đăng ký thi và nhận chứng chỉ.',
-    currentRole: 'Biên phiên dịch viên tiếng Trung Cao cấp'
-  }
+const row1Students: Achiever[] = [
+  { name: 'PHẠM THỊ MAI HOA', level: 'HSK3', img: vinhDanh1 },
+  { name: 'LÊ THỊ LAN', level: 'HSK3', img: vinhDanh2 },
+  { name: 'NGUYỄN THỊ NGỌC HÀ', level: 'HSK3', img: vinhDanh3 },
+  { name: 'QUÁCH HẢI YẾN', level: 'HSK4', img: vinhDanh4 },
+  { name: 'ĐÀM HOÀNG PHƯƠNG THẢO', level: 'HSK3', img: vinhDanh5 },
+  { name: 'VŨ THỊ NGỌC ANH', level: 'HSK3', img: vinhDanh6 },
+  { name: 'NGUYỄN THỊ BÌNH', level: 'HSK3', img: vinhDanh7 },
+  { name: 'TRƯƠNG THỊ MINH CHÂU', level: 'HSK3', img: vinhDanh8 }
 ];
 
-export default function HallOfFameSection(): JSX.Element {
-  const [activeTab, setActiveTab] = useState<'hsk6' | 'hsk5' | 'scholarship'>('hsk6');
+const row2Students: Achiever[] = [
+  { name: 'TRẦN QUANG HUY', level: 'HSK4', img: vinhDanh9 },
+  { name: 'CHU MINH PHƯƠNG', level: 'HSK3', img: vinhDanh10 },
+  { name: 'BÙI THỊ DIỆU ANH', level: 'HSK3', img: vinhDanh11 },
+  { name: 'HÀ NGỌC VI', level: 'HSK4', img: vinhDanh12 },
+  { name: 'VÕ PHƯƠNG DUNG', level: 'HSK3', img: vinhDanh13 },
+  { name: 'TRỊNH THẢO NGUYÊN', level: 'HSK4', img: vinhDanh14 },
+  { name: 'LÊ HẢI AN', level: 'HSK4', img: vinhDanh15 }
+];
 
+function StudentCard({ student }: { student: Achiever }) {
   return (
-    <section className="hall-of-fame-section" style={{ padding: '60px 0', backgroundColor: '#ffffff' }}>
-      <div className="container">
-        {/* Section Header */}
-        <div className="text-center" style={{ marginBottom: '40px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#fef3c7', color: '#b45309', padding: '6px 16px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 700, marginBottom: '12px' }}>
-            <Award size={16} /> BẢNG VÀNG THÀNH TÍCH HỌC VIÊN
-          </div>
-          <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#0f2942', textTransform: 'uppercase', margin: '0 0 12px 0' }}>
-            KẾT QUẢ ĐẦU RA <span style={{ color: '#a71c20' }}>THỰC TẾ & VƯỢT TRỘI</span>
-          </h2>
-          <p style={{ color: '#64748b', maxWidth: '720px', margin: '0 auto', fontSize: '1.05rem' }}>
-            Hơn 100.000+ học viên đã tin tưởng lựa chọn Thanhmaihsk trong 15 năm qua, với tỷ lệ đỗ chứng chỉ quốc tế HSK/HSKK ngay lần thi đầu tiên đạt trên 98.6%.
-          </p>
-        </div>
+    <article className="w-[220px] sm:w-[240px] h-[300px] sm:h-[320px] shrink-0 rounded-2xl overflow-hidden relative shadow-lg select-none hover:scale-102 transition-transform duration-300 bg-white">
+      <img
+        src={student.img}
+        alt={`Học viên ${student.name} đạt ${student.level}`}
+        width={240}
+        height={320}
+        className="w-full h-full object-cover block"
+        loading="lazy"
+        decoding="async"
+      />
+      <div className="absolute left-2.5 right-2.5 bottom-2.5 min-h-[44px] px-3 py-2 rounded-xl bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-between gap-2 shadow-sm">
+        <span className="font-bold text-[11px] sm:text-[12px] text-white uppercase tracking-tight line-clamp-1">
+          {student.name}
+        </span>
+        <span className="shrink-0 px-2.5 py-0.5 rounded-full bg-white/25 text-[10px] sm:text-[11px] font-black text-white border border-white/30">
+          {student.level}
+        </span>
+      </div>
+    </article>
+  );
+}
 
-        {/* Cards Grid */}
-        <div 
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '24px'
-          }}
-        >
-          {hallOfFameData.map((student) => (
-            <div 
-              key={student.id}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #e2e8f0',
-                borderRadius: '16px',
-                padding: '28px',
-                boxShadow: '0 4px 20px rgba(15, 41, 66, 0.06)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-            >
-              {/* Gold Ribbon Tag */}
-              <div 
-                style={{
-                  position: 'absolute',
-                  top: '16px',
-                  right: '16px',
-                  backgroundColor: '#fee2e2',
-                  color: '#a71c20',
-                  padding: '4px 12px',
-                  borderRadius: '20px',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px'
-                }}
-              >
-                <Star size={14} fill="#a71c20" color="#a71c20" /> {student.hskLevel}
-              </div>
-
-              <div>
-                {/* Profile Header */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '18px' }}>
-                  <img 
-                    src={student.avatar} 
-                    alt={student.name}
-                    style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: '3px solid #fecdd3' }}
-                  />
-                  <div>
-                    <h4 style={{ margin: '0 0 4px 0', fontSize: '1.15rem', fontWeight: 700, color: '#0f2942' }}>{student.name}</h4>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-                      <span style={{ fontSize: '1.35rem', fontWeight: 800, color: '#a71c20' }}>{student.score}</span>
-                      <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Điểm tổng</span>
-                    </div>
-                  </div>
+export default function HallOfFameSection(): JSX.Element {
+  return (
+    <section className="w-full bg-white py-10 sm:py-14 md:py-18 overflow-hidden" aria-label="Bảng vinh danh học viên">
+      <div className="w-full max-w-[1320px] mx-auto px-4 sm:px-6">
+        
+        {/* Main Panel */}
+        <div className="marquee-container relative overflow-hidden bg-[#941A25] rounded-[32px] md:rounded-[40px] px-2 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 shadow-[0_25px_60px_-15px_rgba(148,26,37,0.35)]">
+          
+          {/* Two Marquee Rows */}
+          <div className="flex flex-col gap-5 sm:gap-6 md:gap-7 mb-10 sm:mb-14 overflow-hidden">
+            
+            {/* Row 1: Scrolling Left */}
+            <div className="w-full overflow-hidden h-[300px] sm:h-[320px]">
+              <div className="flex w-max animate-student-marquee-left">
+                <div className="flex shrink-0 gap-5 sm:gap-6 pr-5 sm:pr-6">
+                  {row1Students.map((st, i) => (
+                    <StudentCard key={`r1-a-${i}`} student={st} />
+                  ))}
                 </div>
-
-                {/* Course Info */}
-                <div style={{ backgroundColor: '#f8fafc', padding: '8px 12px', borderRadius: '8px', fontSize: '0.85rem', color: '#475569', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <CheckCircle2 size={15} color="#10b981" /> {student.courseTaken}
+                <div className="flex shrink-0 gap-5 sm:gap-6 pr-5 sm:pr-6" aria-hidden="true">
+                  {row1Students.map((st, i) => (
+                    <StudentCard key={`r1-b-${i}`} student={st} />
+                  ))}
                 </div>
-
-                {/* Quote */}
-                <div style={{ position: 'relative', paddingLeft: '16px', borderLeft: '3px solid #a71c20', fontStyle: 'italic', color: '#334155', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '20px' }}>
-                  "{student.quote}"
-                </div>
-              </div>
-
-              {/* Footer Badge */}
-              <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: '14px', fontSize: '0.85rem', color: '#64748b', fontWeight: 600 }}>
-                🎯 Hiện tại: <span style={{ color: '#0f2942' }}>{student.currentRole}</span>
               </div>
             </div>
-          ))}
+
+            {/* Row 2: Scrolling Right */}
+            <div className="w-full overflow-hidden h-[300px] sm:h-[320px]">
+              <div className="flex w-max animate-student-marquee-right">
+                <div className="flex shrink-0 gap-5 sm:gap-6 pr-5 sm:pr-6">
+                  {row2Students.map((st, i) => (
+                    <StudentCard key={`r2-a-${i}`} student={st} />
+                  ))}
+                </div>
+                <div className="flex shrink-0 gap-5 sm:gap-6 pr-5 sm:pr-6" aria-hidden="true">
+                  {row2Students.map((st, i) => (
+                    <StudentCard key={`r2-b-${i}`} student={st} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom Heading */}
+          <div className="text-center text-white px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black text-white tracking-tight leading-tight mb-2">
+              Hành trình bứt phá tiếng Trung rực rỡ
+            </h2>
+            <p className="text-base sm:text-lg md:text-2xl text-white/90 font-medium tracking-normal">
+              của học viên tại Green Ocean
+            </p>
+          </div>
+
         </div>
+
       </div>
     </section>
   );

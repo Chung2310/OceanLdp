@@ -14,8 +14,10 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import SchedulePage from './pages/SchedulePage';
 import TeachersPage from './pages/TeachersPage';
 import BranchesPage from './pages/BranchesPage';
+import BranchDetailPage from './pages/BranchDetailPage';
 import StudyAbroadPage from './pages/StudyAbroadPage';
 import ResourcesPage from './pages/ResourcesPage';
+import ResourceDetailPage from './pages/ResourceDetailPage';
 import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import FranchisePage from './pages/FranchisePage';
@@ -94,12 +96,28 @@ export default function App(): JSX.Element {
             <BranchesPage />
           </Route>
 
+          <Route path="/he-thong-co-so/:id">
+            <BranchDetailPage onOpenLeadModal={handleOpenLeadModal} />
+          </Route>
+
+          <Route path="/co-so/:id">
+            <BranchDetailPage onOpenLeadModal={handleOpenLeadModal} />
+          </Route>
+
           <Route path="/du-hoc-trung-quoc">
             <StudyAbroadPage onOpenLeadModal={handleOpenLeadModal} />
           </Route>
 
           <Route path="/thu-vien-tai-lieu">
-            <ResourcesPage onOpenDownloadModal={handleOpenDownloadModal} />
+            <ResourcesPage />
+          </Route>
+
+          <Route path="/thu-vien-tai-lieu/:slug">
+            <ResourceDetailPage />
+          </Route>
+
+          <Route path="/thu-vien/:slug">
+            <ResourceDetailPage />
           </Route>
 
           <Route path="/tin-tuc">

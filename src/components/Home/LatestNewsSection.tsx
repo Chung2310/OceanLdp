@@ -15,7 +15,7 @@ export default function LatestNewsSection(): JSX.Element {
             Tin Tức & Cẩm Nang <span className="text-[#1B7E45]">Hán Ngữ Mới Nhất</span>
           </h2>
           <p className="text-sm text-slate-500 max-w-xl mx-auto mt-2">
-            Cập nhật những chuyển động mới nhất về kỳ thi New HSK, kinh nghiệm săn học bổng và hoạt động học thuật Viện Bác Nhã.
+            Cập nhật những chuyển động mới nhất về kỳ thi New HSK, kinh nghiệm săn học bổng và phương pháp học tiếng Trung hiệu quả tại Green Ocean.
           </p>
         </div>
 

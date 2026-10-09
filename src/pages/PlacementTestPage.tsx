@@ -308,7 +308,7 @@ export default function PlacementTestPage({ onOpenLeadModal }: PlacementTestPage
               {leadSent ? (
                 <div style={{ backgroundColor: '#EAF5EE', color: '#1B7E45', padding: '20px', borderRadius: '12px', fontWeight: 600, marginBottom: '20px' }}>
                   <CheckCircle2 size={32} style={{ margin: '0 auto 8px auto', display: 'block' }} />
-                  Đã gửi chi tiết bảng phân tích năng lực về số Zalo {leadForm.phone}! Chuyên viên học vụ Thanhmaihsk sẽ kết nối hỗ trợ bạn ngay.
+                  Đã gửi chi tiết bảng phân tích năng lực về số Zalo {leadForm.phone}! Chuyên viên học vụ Green Ocean sẽ kết nối hỗ trợ bạn ngay.
                 </div>
               ) : (
                 <form onSubmit={handleSendResultLead} style={{ backgroundColor: '#fff', border: '1px solid rgba(243, 112, 33, 0.3)', borderRadius: '14px', padding: '20px', marginBottom: '24px', textAlign: 'left' }}>

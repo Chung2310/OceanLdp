@@ -6,10 +6,10 @@ RUN --mount=type=cache,target=/root/.npm npm ci
 COPY . .
 RUN npm run build
 
-FROM nginx:stable-alpine AS runner
-# Keep client-side routes working with the image's default Nginx configuration.
-RUN sed -i '/location \/ {/a\        try_files $uri $uri/ /index.html;' /etc/nginx/conf.d/default.conf
+FROM alpine:3.22 AS runner
+RUN apk add --no-cache nginx
+COPY nginx.conf /etc/nginx/http.d/default.conf
 COPY --from=builder /app/dist /usr/share/nginx/html
-EXPOSE 80
-HEALTHCHECK --interval=15s --timeout=3s --start-period=10s --retries=3 CMD wget -q -O /dev/null http://127.0.0.1/ || exit 1
+EXPOSE 3013
+HEALTHCHECK --interval=15s --timeout=3s --start-period=10s --retries=3 CMD wget -q -O /dev/null http://127.0.0.1:3013/ || exit 1
 CMD ["nginx", "-g", "daemon off;"]

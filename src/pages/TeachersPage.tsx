@@ -1,6 +1,6 @@
 import React from 'react';
-import { Award, GraduationCap, Star, PhoneCall } from 'lucide-react';
-import { teachersData } from '../data/teachersData';
+import { Sparkles, GraduationCap, Award, Users, BookOpen, PhoneCall } from 'lucide-react';
+import TeachersSection from '../components/Teachers/TeachersSection';
 
 interface TeachersPageProps {
   onOpenLeadModal: () => void;
@@ -9,90 +9,96 @@ interface TeachersPageProps {
 export default function TeachersPage({ onOpenLeadModal }: TeachersPageProps): JSX.Element {
   return (
     <div className="w-full bg-[#f8fafc] min-h-screen">
-      {/* Hero Banner */}
-      <div className="w-full bg-gradient-to-br from-[#1E293B] to-[#0f172a] py-14 px-4 text-center text-white">
-        <div className="max-w-[1280px] mx-auto">
-          <span className="inline-block bg-[#1B7E45]/25 text-[#bbf0d2] border border-[#1B7E45]/40 text-xs font-extrabold px-3.5 py-1 rounded-full mb-3 uppercase tracking-wider">
+      {/* Hero Header */}
+      <div className="w-full bg-gradient-to-br from-[#1E293B] to-[#0f172a] py-14 md:py-16 px-4 text-center text-white relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#1B7E45]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-[1280px] mx-auto relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/10 text-[#86efac] border border-white/15 text-xs font-black px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider shadow-xs">
+            <Sparkles size={14} className="text-[#F37021]" />
             ĐỘI NGŨ GIẢNG VIÊN
-          </span>
-          <h1 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-            100% Giảng Viên Trình Độ Thạc Sĩ – Tiến Sĩ
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+            ĐỘI NGŨ GIẢNG VIÊN GREEN OCEAN
           </h1>
+          <p className="text-base sm:text-lg text-[#fcd34d] font-bold mb-3 tracking-wide">
+            "Chuyên môn cao – Giàu tâm huyết – Phương pháp chuẩn mực"
+          </p>
           <p className="text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Đội ngũ chuyên gia học thuật đầu ngành tốt nghiệp các trường Đại học danh tiếng tại Việt Nam và Trung Quốc.
+            Quy tụ các Thạc sĩ, Cử nhân tốt nghiệp từ các trường Đại học danh tiếng tại Việt Nam và Trung Quốc, với từ 5 đến 28 năm kinh nghiệm giảng dạy và thực chiến ngôn ngữ.
           </p>
         </div>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-4 py-12">
-        <div className="space-y-8 mb-16">
-          {teachersData.map((t) => (
-            <div 
-              key={t.id} 
-              className="bg-white rounded-3xl p-6 md:p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 items-start"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden mb-4 shadow-md bg-slate-100">
-                  <img src={t.image} alt={t.name} className="w-full h-full object-cover object-top" />
-                </div>
-                <div className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full text-xs font-bold text-amber-700">
-                  <Star size={14} fill="#f59e0b" color="#f59e0b" />
-                  <span>{t.rating}.0 / 5.0 (Đánh giá học viên)</span>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex flex-wrap items-start justify-between gap-3 pb-3 border-b border-slate-100">
-                  <div>
-                    <h2 className="text-2xl font-black text-[#1E293B] tracking-tight">{t.name}</h2>
-                    <div className="text-sm font-semibold text-[#1B7E45]">{t.role}</div>
-                  </div>
-                  <span className="bg-[#EAF5EE] text-[#1B7E45] border border-[#1B7E45]/30 text-xs font-black px-3.5 py-1 rounded-full">
-                    {t.degree}
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
-                  <div className="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl">
-                    <GraduationCap size={16} className="text-[#1B7E45] flex-shrink-0" />
-                    <span><strong>Tốt nghiệp:</strong> {t.university}</span>
-                  </div>
-                  <div className="flex items-center gap-2 bg-slate-50 p-2.5 rounded-xl">
-                    <Award size={16} className="text-[#F37021] flex-shrink-0" />
-                    <span><strong>Chứng chỉ:</strong> {t.certificates}</span>
-                  </div>
-                </div>
-
-                <p className="text-sm text-slate-600 leading-relaxed">{t.bio}</p>
-
-                <div className="bg-[#EAF5EE] p-4 rounded-xl border border-[#1B7E45]/20 text-xs italic text-[#1B7E45] font-medium">
-                  "{t.quote}"
-                </div>
-
-                <div className="flex flex-wrap items-center gap-2 pt-2">
-                  <span className="text-xs font-bold text-slate-500">Các khóa phụ trách:</span>
-                  {t.courses.map((c, ci) => (
-                    <span key={ci} className="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-lg">
-                      {c}
-                    </span>
-                  ))}
-                </div>
-              </div>
+      {/* 4 Pillars Highlights */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 -mt-8 relative z-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-md flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-[#EAF5EE] text-[#1B7E45] flex items-center justify-center shrink-0">
+              <GraduationCap size={24} />
             </div>
-          ))}
-        </div>
+            <div>
+              <div className="text-xs text-slate-500 font-semibold">Trình độ học vấn</div>
+              <div className="text-sm font-black text-[#1E293B]">100% ĐH & Thạc sĩ uy tín</div>
+            </div>
+          </div>
 
-        {/* Consulting Callout */}
-        <div className="bg-[#1E293B] text-white p-8 md:p-10 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-          <div className="space-y-2">
-            <h3 className="text-xl md:text-2xl font-black text-white">Muốn học thử cùng Giảng viên Thạc sĩ / Tiến sĩ?</h3>
-            <p className="text-xs md:text-sm text-slate-300">Đăng ký tham gia ngay buổi học thử miễn phí để trải nghiệm phương pháp Mcontask độc quyền.</p>
+          <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-md flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-amber-50 text-[#F37021] flex items-center justify-center shrink-0">
+              <Award size={24} />
+            </div>
+            <div>
+              <div className="text-xs text-slate-500 font-semibold">Kinh nghiệm thực chiến</div>
+              <div className="text-sm font-black text-[#1E293B]">Từ 5 đến 28 năm</div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-md flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#1B7E45] flex items-center justify-center shrink-0">
+              <BookOpen size={24} />
+            </div>
+            <div>
+              <div className="text-xs text-slate-500 font-semibold">Phương châm đào tạo</div>
+              <div className="text-sm font-black text-[#1E293B]">Thực chất – Ứng dụng</div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-md flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+              <Users size={24} />
+            </div>
+            <div>
+              <div className="text-xs text-slate-500 font-semibold">Học viên tin tưởng</div>
+              <div className="text-sm font-black text-[#1E293B]">Hơn 5.000+ học viên</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Teachers Showcase (Arched Frame Cards + Carousel / Grid + Modal Detail) */}
+      <div className="pt-8">
+        <TeachersSection onOpenLeadModal={onOpenLeadModal} />
+      </div>
+
+      {/* Action Callout */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 pb-16">
+        <div className="bg-[#135830] text-white p-8 md:p-10 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden">
+          <div className="space-y-2.5 relative z-10">
+            <span className="px-3 py-1 rounded-md bg-[#F37021] text-white font-extrabold text-[11px] uppercase tracking-wider">
+              Đồng Hành Cùng Chuyên Gia
+            </span>
+            <h3 className="text-xl md:text-2xl font-black text-white">
+              Đăng Ký Xếp Lớp & Tư Vấn Cùng Giảng Viên Green Ocean
+            </h3>
+            <p className="text-xs md:text-sm text-emerald-100 max-w-xl leading-relaxed">
+              Trải nghiệm buổi đánh giá năng lực đầu vào miễn phí để được các thầy cô tư vấn lộ trình học tối ưu và phù hợp nhất với mục tiêu của bạn.
+            </p>
           </div>
           <button 
+            type="button"
             onClick={onOpenLeadModal} 
-            className="inline-flex items-center gap-2 bg-[#F37021] hover:bg-[#d95e14] text-white font-extrabold text-sm px-6 py-3.5 rounded-xl shadow-lg transition-all cursor-pointer whitespace-nowrap active:scale-95"
+            className="inline-flex items-center gap-2 bg-[#F37021] hover:bg-[#d95e14] text-white font-black text-sm px-7 py-4 rounded-2xl shadow-lg transition-all cursor-pointer whitespace-nowrap active:scale-95 shrink-0"
           >
-            <PhoneCall size={18} /> Đăng Ký Học Thử Miễn Phí
+            <PhoneCall size={18} /> Nhận Tư Vấn Miễn Phí
           </button>
         </div>
       </div>
