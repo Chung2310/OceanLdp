@@ -15,7 +15,12 @@ port. Missing .env, missing PORT or empty PORT defaults to 3010. Shell variables
 have priority over .env. Nginx listens on port 80 inside the container.
 Vite dev and preview also read PORT from the environment or Vite env files.
 
-## GitHub repository secrets
+## GitHub deployment secrets
+
+The deploy job uses the `staging` GitHub Environment for the `develop` branch and
+the `production` GitHub Environment for the `production` branch. Configure the
+following as Environment secrets. Repository secrets with the same names also
+work when an Environment secret does not override them.
 
 | Staging (develop) | Production (production) | Value |
 | --- | --- | --- |
@@ -29,6 +34,8 @@ Install Docker Engine and Compose v2 supporting up --wait on the VPS.
 Deployment directories: /opt/ocean-ldp/staging and /opt/ocean-ldp/production.
 Use different PORT values if both environments share one VPS.
 Each deployment rewrites .env from its secret; an empty secret uses defaults.
+Any `PORT` inherited by the VPS login shell is cleared so the value in this file
+is used by Compose.
 
 Image name: ghcr.io/<owner>/<repository> in lowercase. The workflow uses the
 built-in GITHUB_TOKEN for GHCR; the repository must have package access.

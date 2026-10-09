@@ -65,6 +65,7 @@ jobs:
     name: Deploy to VPS
     needs: build-image
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'production' && 'production' || 'staging' }}
     timeout-minutes: 15
     permissions:
       contents: read
@@ -103,6 +104,8 @@ jobs:
             umask 077
             printf '%s\n' "$ENV_FILE_CONTENT" > .env
             chmod 600 .env
+            # Ensure values inherited by the remote shell cannot override .env.
+            unset PORT
             export IMAGE_NAME IMAGE_TAG COMPOSE_PROJECT_NAME
             DOCKER_CONFIG=$(mktemp -d)
             export DOCKER_CONFIG
