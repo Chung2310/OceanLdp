@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { CONTACT, CONTACT_LINKS } from '../config/contact';
 import confetti from 'canvas-confetti';
 
 interface ContactPageProps {
@@ -86,7 +87,7 @@ export default function ContactPage({ onShowToast }: ContactPageProps): JSX.Elem
                 </div>
                 <div>
                   <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Hotline tư vấn tuyển sinh:</div>
-                  <a href="tel:0824713789" className="text-sm font-bold text-slate-800 hover:text-[#1B7E45] transition-colors">082 471 3789</a>
+                  <a href={CONTACT_LINKS.hotline} className="text-sm font-bold text-slate-800 hover:text-[#1B7E45] transition-colors">{CONTACT.hotlineDisplay}</a>
                 </div>
               </div>
 

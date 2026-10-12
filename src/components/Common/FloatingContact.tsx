@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, ArrowUp, MessageCircle } from 'lucide-react';
+import { Phone, ArrowUp, Facebook } from 'lucide-react';
+import { CONTACT, CONTACT_LINKS } from '../../config/contact';
 
 export default function FloatingContact(): JSX.Element {
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
@@ -20,9 +21,9 @@ export default function FloatingContact(): JSX.Element {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-center">
       {/* Hotline Call Button */}
       <a 
-        href="tel:0824713789" 
+        href={CONTACT_LINKS.hotline}
         className="relative w-12 h-12 rounded-full bg-[#1B7E45] hover:bg-[#156637] text-white flex items-center justify-center shadow-xl transition-all hover:scale-110" 
-        title="Gọi Hotline: 082 471 3789"
+        title={`Gọi Hotline: ${CONTACT.hotlineDisplay}`}
       >
         <Phone size={22} />
         <span className="absolute inset-0 rounded-full bg-[#1B7E45] opacity-50 animate-ping pointer-events-none"></span>
@@ -30,24 +31,34 @@ export default function FloatingContact(): JSX.Element {
 
       {/* Zalo Chat Button */}
       <a 
-        href="https://zalo.me" 
+        href={CONTACT_LINKS.zaloPrimary}
         target="_blank" 
         rel="noreferrer" 
-        className="w-12 h-12 rounded-full bg-[#0068ff] hover:bg-blue-700 text-white flex items-center justify-center shadow-xl transition-all hover:scale-110 text-xs font-black" 
-        title="Chat Zalo Tư Vấn"
+        className="w-12 h-12 rounded-full bg-[#0068ff] hover:bg-blue-700 text-white flex items-center justify-center shadow-xl transition-all hover:scale-110 text-xs font-black"
+        title={`Chat Zalo: ${CONTACT.zaloPrimary}`}
       >
-        <span>Zalo</span>
+        <span>Zalo 1</span>
       </a>
 
-      {/* Messenger Chat Button */}
+      {/* Secondary personal Zalo */}
       <a 
-        href="https://m.me" 
+        href={CONTACT_LINKS.zaloSecondary}
         target="_blank" 
         rel="noreferrer" 
-        className="w-12 h-12 rounded-full bg-[#0084ff] hover:bg-[#0070da] text-white flex items-center justify-center shadow-xl transition-all hover:scale-110" 
-        title="Chat Facebook Messenger"
+        className="w-12 h-12 rounded-full bg-[#0068ff] hover:bg-blue-700 text-white flex items-center justify-center shadow-xl transition-all hover:scale-110 text-xs font-black"
+        title={`Chat Zalo: ${CONTACT.zaloSecondary}`}>
+        <span>Zalo 2</span>
+      </a>
+
+      {/* Facebook Page */}
+      <a
+        href={CONTACT_LINKS.facebookPage}
+        target="_blank"
+        rel="noreferrer"
+        className="w-12 h-12 rounded-full bg-[#1877F2] hover:bg-[#1264d6] text-white flex items-center justify-center shadow-xl transition-all hover:scale-110"
+        title="Facebook Green Ocean"
       >
-        <MessageCircle size={22} />
+        <Facebook size={22} />
       </a>
 
       {/* Back to Top */}
