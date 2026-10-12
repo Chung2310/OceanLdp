@@ -47,7 +47,8 @@ SSH values below as repository secrets or secrets in the matching Environment:
 
 Configure the deployment environment as secrets (recommended if it contains
 sensitive values) or as variables under **Settings > Secrets and variables >
-Actions**. The workflow checks the matching secret first, then the variable:
+Actions**. The workflow checks the matching variable first, then falls back to
+the secret:
 
 | Staging (develop) | Production (production) | Value |
 | --- | --- | --- |
