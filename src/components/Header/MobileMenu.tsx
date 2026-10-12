@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { X, ChevronRight, Phone, Calendar, MapPin, BookOpen, GraduationCap, HelpCircle, PhoneCall } from 'lucide-react';
+import { CONTACT, CONTACT_LINKS } from '../../config/contact';
 import logoImg from '../../asset/img/logo.jpg';
 
 interface MobileMenuProps {
@@ -193,8 +194,8 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
             >
               <PhoneCall size={16} /> ĐĂNG KÝ TƯ VẤN NGAY
             </button>
-            <a href="tel:0824713789" className="flex items-center justify-center gap-2 text-xs text-slate-700 font-medium">
-              <Phone size={14} className="text-[#F37021]" /> Hotline: <strong className="text-slate-900">082 471 3789</strong>
+            <a href={CONTACT_LINKS.hotline} className="flex items-center justify-center gap-2 text-xs text-slate-700 font-medium">
+              <Phone size={14} className="text-[#F37021]" /> Hotline: <strong className="text-slate-900">{CONTACT.hotlineDisplay}</strong>
             </a>
           </div>
         </div>

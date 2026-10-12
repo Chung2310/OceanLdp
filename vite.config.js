@@ -15,7 +15,10 @@ export default defineConfig(({ mode }) => {
     ],
     server: {
       port,
-      open: true
+      open: true,
+      proxy: {
+        '/api': 'http://127.0.0.1:3013'
+      }
     },
     preview: { port },
     // Tailwind is handled by the Vite plugin; ignore parent PostCSS configs.

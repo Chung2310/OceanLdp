@@ -10,10 +10,27 @@ cp .env.example .env
 docker compose up -d --build --wait
 ```
 
-Open http://localhost:3010. Set PORT in .env and rerun Compose to change the host
-port. Missing .env, missing PORT or empty PORT defaults to 3010. Shell variables
-have priority over .env. Nginx listens on port 3013 inside the container.
-Vite dev and preview also read PORT from the environment or Vite env files.
+Before starting, replace `ADMIN_PASSWORD` and `SESSION_SECRET` in `.env` with
+strong, unique values. Open http://localhost:3010 and use `/admin` to manage
+news, courses, schedules, and library content. `ADMIN_USERNAME` and `ADMIN_PASSWORD` are
+used only to seed the administrator on the first run of a new data volume.
+
+Set PORT in .env and rerun Compose to change the host port. Missing PORT or an
+empty PORT defaults to 3010. Shell variables have priority over .env. The Node
+application listens on port 3013 inside the container and serves both the Vite
+build and `/api`. For local development, run `npm run dev:api` and `npm run dev`
+in two terminals; Vite uses `PORT`, while the API uses `API_PORT=3013`.
+
+Admin accounts and content are stored in MongoDB. The bundled MongoDB service
+persists `/data/db` in the named volume `ocean-mongodb`; keep this volume when
+updating the image and include it in the server backup plan. The application
+uses `MONGODB_URI`, `MONGODB_USER`, `MONGODB_PASSWORD`, and
+`MONGODB_AUTH_SOURCE` for its connection. `MONGODB_URI` may point to another
+MongoDB server if one is already managed outside this Compose stack.
+
+The admin account is inserted into the `admin_accounts` collection only when
+that username does not exist. Changing `ADMIN_PASSWORD` later does not overwrite
+an existing password hash.
 
 ## GitHub repository secrets and variables
 
@@ -30,11 +47,12 @@ SSH values below as repository secrets or secrets in the matching Environment:
 
 Configure the deployment environment as secrets (recommended if it contains
 sensitive values) or as variables under **Settings > Secrets and variables >
-Actions**. The workflow checks the matching secret first, then the variable:
+Actions**. The workflow checks the matching variable first, then falls back to
+the secret:
 
 | Staging (develop) | Production (production) | Value |
 | --- | --- | --- |
-| ENV_FILE | ENV_FILE_PROD | Required .env contents, including a valid PORT |
+| ENV_FILE | ENV_FILE_PROD | Required .env contents: PORT, admin variables, and all four MONGODB_* variables |
 
 Repository variables are not secret. Keep passwords, tokens, and other
 sensitive values in `ENV_FILE` or `ENV_FILE_PROD` only when they are secrets.
@@ -56,5 +74,5 @@ containers from retaining the published port. If startup still reports that a
 port is already allocated, inspect the container shown in the workflow log and
 either stop that unrelated service or assign this deployment a different PORT.
 
-The VPS .env configures Compose only. This is a static frontend; future VITE_*
-variables must be supplied at build time to change the generated JavaScript.
+The VPS .env configures Compose and the server-side admin login. Never prefix
+admin credentials with `VITE_`, because Vite variables are exposed to browsers.

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { Download } from 'lucide-react';
-import { resourcesData } from '../../data/resourcesData';
+import { useResources } from '../../services/contentService';
 import { ResourceItem } from '../../types';
 
 interface FreeResourcesSectionProps {
@@ -9,6 +9,7 @@ interface FreeResourcesSectionProps {
 }
 
 export default function FreeResourcesSection({ onOpenDownloadModal }: FreeResourcesSectionProps): JSX.Element {
+  const resourcesData = useResources();
   return (
     <section className="w-full bg-white py-16" aria-label="Thư viện tài liệu miễn phí">
       <div className="max-w-[1280px] mx-auto px-4">

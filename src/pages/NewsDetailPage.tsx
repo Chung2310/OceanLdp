@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
-import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, ChevronRight, Sparkles, BookOpen } from 'lucide-react';
-import { newsData } from '../data/newsData';
-import scholarshipBannerImg from '../asset/branches/banner_scholarship.png';
+import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, ChevronRight, BookOpen } from 'lucide-react';
+import { useNews } from '../services/contentService';
 import ConsultationForm from '../components/Common/ConsultationForm';
 
 export default function NewsDetailPage(): JSX.Element {
+  const newsData = useNews();
   const [, params] = useRoute<{ slug: string }>('/tin-tuc/:slug');
   const slug = params?.slug || '';
 
@@ -15,14 +15,9 @@ export default function NewsDetailPage(): JSX.Element {
   }, [slug]);
 
   const post = newsData.find((n) => n.slug === slug) || newsData[0];
-  const relatedPosts = newsData.filter((n) => n.id !== post.id).slice(0, 4);
+  const relatedPosts = post ? newsData.filter((n) => n.id !== post.id).slice(0, 4) : [];
 
-  const scrollToRegistration = () => {
-    const el = document.getElementById('form-tu-van-tin-tuc');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  if (!post) return <div className="min-h-[60vh] grid place-items-center text-slate-500">Bài viết không tồn tại.</div>;
 
   return (
     <div className="w-full bg-[#fafbfc] min-h-screen font-sans pb-16">
@@ -66,42 +61,16 @@ export default function NewsDetailPage(): JSX.Element {
           <span className="flex items-center gap-1.5"><Eye size={13} /> {post.views} lượt xem</span>
         </div>
 
-        {/* 2. Top Promotional Scholarship Banner (Screenshot 2) */}
-        <div className="mb-8 rounded-lg overflow-hidden border border-amber-200/80 shadow-md bg-gradient-to-br from-amber-50 to-orange-50 relative group">
-          <div className="relative">
-            <img 
-              src={scholarshipBannerImg} 
-              alt="Học bổng ưu đãi đặc biệt tại Green Ocean" 
-              className="w-full h-auto object-cover block"
+        {/* Ảnh đại diện riêng của bài viết */}
+        {post.image && (
+          <figure className="mb-8 rounded-lg overflow-hidden border border-slate-200 shadow-md bg-white">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full max-h-[560px] object-cover block"
             />
-            {/* Clickable Action Button */}
-            <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2">
-              <button
-                onClick={scrollToRegistration}
-                className="bg-gradient-to-r from-red-600 to-[#c82333] hover:from-red-700 hover:to-red-800 text-white font-black text-xs sm:text-sm uppercase tracking-wider px-6 sm:px-9 py-2.5 sm:py-3 rounded-md shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 flex items-center gap-2 cursor-pointer border border-white/30"
-              >
-                <Sparkles size={16} className="text-amber-300 animate-pulse" /> BẮT ĐẦU NGAY
-              </button>
-            </div>
-          </div>
-          
-          <div className="bg-gradient-to-r from-[#135830] to-[#1B7E45] p-3 sm:p-4 text-white flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <div className="flex items-center gap-2.5">
-              <span className="w-8 h-8 rounded-full bg-[#F37021] flex items-center justify-center font-black text-sm shrink-0">
-                🎁
-              </span>
-              <div className="text-xs sm:text-sm">
-                <span className="font-extrabold text-amber-300">Tặng Học Bổng Khủng Lên Đến 1.500.000đ</span> khi đăng ký khóa học tiếng Trung trong tháng này!
-              </div>
-            </div>
-            <button
-              onClick={scrollToRegistration}
-              className="px-4 py-1.5 rounded-md bg-[#F37021] hover:bg-[#d95d13] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-colors shadow-xs cursor-pointer"
-            >
-              Nhận Ưu Đãi
-            </button>
-          </div>
-        </div>
+          </figure>
+        )}
 
         {/* 3. Infographic Graphic (if available, e.g. Screenshot 2) */}
         {post.infographicImage && (

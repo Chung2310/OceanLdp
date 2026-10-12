@@ -28,6 +28,14 @@ jobs:
       - run: npm run build
       - name: Validate Compose
         run: docker compose config --quiet
+        env:
+          ADMIN_USERNAME: ci-admin
+          ADMIN_PASSWORD: ci-password-not-for-production
+          SESSION_SECRET: ci-session-secret-not-for-production-123456
+          MONGODB_URI: mongodb://mongodb/phone_retail
+          MONGODB_USER: ci-admin
+          MONGODB_PASSWORD: ci-mongodb-password
+          MONGODB_AUTH_SOURCE: admin
 
   build-image:
     name: Build and push Docker image
@@ -86,7 +94,7 @@ jobs:
       - name: Deploy exact commit and wait for health check
         uses: appleboy/ssh-action@v1.0.3
         env:
-          ENV_FILE_CONTENT: ${{ secrets[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] || vars[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] }}
+          ENV_FILE_CONTENT: ${{ vars[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] || secrets[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] }}
           IMAGE_NAME: ${{ needs.build-image.outputs.image }}
           IMAGE_TAG: ${{ github.sha }}
           COMPOSE_PROJECT_NAME: ocean-ldp-${{ github.ref_name }}

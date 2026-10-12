@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { MapPin, Phone, Clock, ExternalLink, ArrowRight } from 'lucide-react';
-import { branchRegions, branchesData } from '../../data/branchesData';
-import { Branch } from '../../types';
+import { branchRegions } from '../../data/branchesData';
+import { useBranches } from '../../services/contentService';
 
 export default function BranchMapSection(): JSX.Element {
+  const branchesData = useBranches();
   const [selectedRegion, setSelectedRegion] = useState<string>('bac-ninh');
-  const [activeBranch, setActiveBranch] = useState<Branch>(branchesData[0]);
+  const [activeBranchId, setActiveBranchId] = useState<string>(branchesData[0]?.id || '');
 
   const filteredBranches = branchesData.filter(b => b.region === selectedRegion);
+  const activeBranch = branchesData.find(branch => branch.id === activeBranchId) || filteredBranches[0] || branchesData[0];
+
+  useEffect(() => {
+    if (!activeBranchId && branchesData[0]) setActiveBranchId(branchesData[0].id);
+  }, [activeBranchId, branchesData]);
 
   return (
     <section className="w-full bg-[#f8fafc] py-16" aria-label="Hệ thống cơ sở">
@@ -38,7 +44,7 @@ export default function BranchMapSection(): JSX.Element {
               onClick={() => {
                 setSelectedRegion(region.id);
                 const firstInRegion = branchesData.find(b => b.region === region.id);
-                if (firstInRegion) setActiveBranch(firstInRegion);
+                if (firstInRegion) setActiveBranchId(firstInRegion.id);
               }}
             >
               {region.name}
@@ -51,7 +57,7 @@ export default function BranchMapSection(): JSX.Element {
           {/* Left Branch List */}
           <div className="space-y-3 max-h-[520px] overflow-y-auto pr-2">
             {filteredBranches.map((branch) => {
-              const isActive = activeBranch.id === branch.id;
+              const isActive = activeBranch?.id === branch.id;
               return (
                 <div 
                   key={branch.id} 
@@ -60,7 +66,7 @@ export default function BranchMapSection(): JSX.Element {
                       ? 'bg-white border-[#1B7E45] shadow-xs -translate-y-0.5' 
                       : 'bg-white border-slate-200 hover:border-slate-300'
                   }`}
-                  onClick={() => setActiveBranch(branch)}
+                  onClick={() => setActiveBranchId(branch.id)}
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <MapPin size={16} className={isActive ? 'text-[#1B7E45]' : 'text-slate-400'} />
@@ -86,7 +92,7 @@ export default function BranchMapSection(): JSX.Element {
           </div>
 
           {/* Right Branch Preview Detail */}
-          <div className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm flex flex-col">
+          {activeBranch && <div className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm flex flex-col">
             <div className="relative aspect-[16/9] bg-slate-900 overflow-hidden">
               <img src={activeBranch.image} alt={activeBranch.name} className="w-full h-full object-cover" />
               <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-md">
@@ -141,7 +147,7 @@ export default function BranchMapSection(): JSX.Element {
                 </a>
               </div>
             </div>
-          </div>
+          </div>}
         </div>
       </div>
     </section>

@@ -24,12 +24,13 @@ import FranchisePage from './pages/FranchisePage';
 import PlacementTestPage from './pages/PlacementTestPage';
 import ContactPage from './pages/ContactPage';
 import PolicyPage from './pages/PolicyPage';
-import AdminPage from './pages/AdminPage';
+import AdminPage from './pages/AdminContentPage';
 import MobileStickyBar from './components/Common/MobileStickyBar';
 import { ResourceItem } from './types';
 
 export default function App(): JSX.Element {
   const [location] = useLocation();
+  const isAdmin = location === '/admin' || location.startsWith('/admin/');
 
   // Lead modal state
   const [leadModalOpen, setLeadModalOpen] = useState<boolean>(false);
@@ -59,7 +60,7 @@ export default function App(): JSX.Element {
   return (
     <div className="app-root-layout">
       {/* Main Sticky Navbar & Mega Menu */}
-      <Navbar onOpenLeadModal={handleOpenLeadModal} />
+      {!isAdmin && <Navbar onOpenLeadModal={handleOpenLeadModal} />}
 
       {/* Main Router View */}
       <div className="main-content-view">
@@ -160,10 +161,10 @@ export default function App(): JSX.Element {
       </div>
 
       {/* Floating Action Buttons */}
-      <FloatingContact />
+      {!isAdmin && <FloatingContact />}
 
       {/* Mobile Sticky Bottom Action Bar */}
-      <MobileStickyBar onOpenLeadModal={() => handleOpenLeadModal()} />
+      {!isAdmin && <MobileStickyBar onOpenLeadModal={() => handleOpenLeadModal()} />}
 
       {/* Lead Registration Modal */}
       <LeadModal 
@@ -190,7 +191,7 @@ export default function App(): JSX.Element {
       )}
 
       {/* Main Footer */}
-      <Footer />
+      {!isAdmin && <Footer />}
     </div>
   );
 }

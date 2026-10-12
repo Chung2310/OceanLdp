@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, Clock, Facebook, Youtube, Send, Sparkles } from 'lucide-react';
+import { CONTACT, CONTACT_LINKS } from '../../config/contact';
 
 export default function Topbar(): JSX.Element {
   return (
@@ -8,9 +9,9 @@ export default function Topbar(): JSX.Element {
         <div className="flex items-center justify-between h-9">
           {/* Left info */}
           <div className="flex items-center gap-3">
-            <a href="tel:0824713789" className="inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
+            <a href={CONTACT_LINKS.hotline} className="inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
               <Phone size={13} className="text-[#F37021]" />
-              <span>Hotline: <strong className="text-white">082 471 3789</strong></span>
+              <span>Hotline: <strong className="text-white">{CONTACT.hotlineDisplay}</strong></span>
             </a>
             <span className="text-white/20 hidden sm:inline">|</span>
             <a href="mailto:contact@greenocean.edu.vn" className="hidden sm:inline-flex items-center gap-1.5 text-slate-200 hover:text-[#2da15e] transition-colors">
@@ -35,13 +36,13 @@ export default function Topbar(): JSX.Element {
           {/* Right socials */}
           <div className="flex items-center gap-2">
             <span className="hidden md:inline text-[11px] text-slate-400">Kết nối:</span>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#1B7E45] flex items-center justify-center text-white transition-all" title="Facebook">
+            <a href={CONTACT_LINKS.facebookPage} target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#1B7E45] flex items-center justify-center text-white transition-all" title="Facebook">
               <Facebook size={12} />
             </a>
             <a href="https://youtube.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full bg-white/10 hover:bg-red-600 flex items-center justify-center text-white transition-all" title="YouTube">
               <Youtube size={12} />
             </a>
-            <a href="https://zalo.me" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full bg-[#0068ff] flex items-center justify-center text-white transition-all" title="Zalo">
+            <a href={CONTACT_LINKS.zaloPrimary} target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full bg-[#0068ff] flex items-center justify-center text-white transition-all" title={`Zalo ${CONTACT.zaloPrimary}`}>
               <span className="text-[9px] font-black">Zalo</span>
             </a>
             <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full bg-white/10 hover:bg-[#1B7E45] flex items-center justify-center text-white transition-all" title="TikTok">

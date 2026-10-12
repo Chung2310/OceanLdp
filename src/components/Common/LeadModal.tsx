@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { X, Sparkles, CheckCircle2, PhoneCall } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { coursesData } from '../../data/coursesData';
-import { branchesData } from '../../data/branchesData';
+import { useBranches, useCourses } from '../../services/contentService';
 import { leadService } from '../../services/leadService';
 
 interface LeadModalProps {
@@ -22,6 +21,8 @@ interface LeadFormData {
 }
 
 export default function LeadModal({ isOpen, onClose, defaultCourse = '', onShowToast }: LeadModalProps): JSX.Element | null {
+  const coursesData = useCourses();
+  const branchesData = useBranches();
   const [formData, setFormData] = useState<LeadFormData>({
     name: '',
     phone: '',
@@ -153,7 +154,6 @@ export default function LeadModal({ isOpen, onClose, defaultCourse = '', onShowT
                     className="form-select"
                   >
                     <option value="">-- Chọn cơ sở gần bạn --</option>
-                    <option value="online">Toàn quốc (Học Trực Tuyến Online)</option>
                     {branchesData.map((b) => (
                       <option key={b.id} value={b.id}>{b.name}</option>
                     ))}
