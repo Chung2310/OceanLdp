@@ -1,20 +1,15 @@
 import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { MapPin, Phone, Mail, Clock, Calendar, CheckCircle2, ArrowRight, ExternalLink, ChevronRight, Sparkles, GraduationCap, Building2 } from 'lucide-react';
-import { branchesData } from '../data/branchesData';
+import { useBranches } from '../services/contentService';
 import ConsultationForm from '../components/Common/ConsultationForm';
-
-// Images
-import greenOceanStorefrontImg from '../asset/branches/green_ocean_storefront.jpg';
-import scholarshipBannerImg from '../asset/branches/banner_scholarship.png';
-import classroomPhotoImg from '../asset/branches/photo_classroom.png';
-import teacherPhotoImg from '../asset/branches/photo_teacher.png';
 
 interface BranchDetailPageProps {
   onOpenLeadModal?: (courseName?: string, branchName?: string) => void;
 }
 
 export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPageProps): JSX.Element {
+  const branchesData = useBranches();
   const [, params1] = useRoute<{ id: string }>('/he-thong-co-so/:id');
   const [, params2] = useRoute<{ id: string }>('/co-so/:id');
   const branchId = params1?.id || params2?.id || '';
@@ -25,6 +20,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
   }, [branchId]);
 
   const branch = branchesData.find(b => b.id === branchId || b.slug === branchId) || branchesData[0];
+  if (!branch) return <div className="py-20 text-center text-slate-500">Chưa có thông tin cơ sở.</div>;
   const otherBranches = branchesData.filter(b => b.id !== branch.id);
 
   const scrollToRegistration = () => {
@@ -52,7 +48,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
         {/* 2. Top Lead Paragraph (Screenshot 1) */}
         <div className="mb-6">
           <p className="text-slate-700 text-sm sm:text-[15px] leading-relaxed text-justify">
-            Lựa chọn một địa điểm học thuận tiện giúp người học duy trì lịch học đều đặn và hạn chế thời gian di chuyển, đặc biệt với những người đang học tập, sinh sống hoặc làm việc tại khu vực {branch.city}. <strong className="text-slate-900 font-bold">Trung tâm tiếng Trung Green Ocean {branch.shortName || branch.name}</strong> là một trong những địa điểm đào tạo trực tiếp thuộc hệ thống Green Ocean tại {branch.city}, đặt tại {branch.address}. Cơ sở hướng đến nhiều nhóm học viên với nhu cầu khác nhau, từ người bắt đầu học tiếng Trung, người muốn phát triển khả năng sử dụng ngôn ngữ đến học viên có mục tiêu luyện thi HSK, HSKK. Việc tìm hiểu trước thông tin cơ sở, môi trường học và lộ trình đào tạo sẽ giúp người học dễ dàng lựa chọn chương trình phù hợp hơn.
+            {branch.introText || `Trung tâm tiếng Trung Green Ocean ${branch.shortName || branch.name} là một địa điểm đào tạo thuộc hệ thống Green Ocean tại ${branch.city || branch.address}.`}
           </p>
         </div>
 
@@ -65,9 +61,9 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
         <div className="mb-8 rounded-lg overflow-hidden border border-amber-200/80 shadow-md bg-gradient-to-br from-amber-50 to-orange-50 relative group">
           <div className="relative">
             <img 
-              src={scholarshipBannerImg} 
-              alt={`Học bổng ưu đãi tại Trung tâm tiếng Trung Green Ocean ${branch.name}`} 
-              className="w-full h-auto object-cover block"
+              src={branch.image}
+              alt={`Trung tâm tiếng Trung Green Ocean ${branch.name}`}
+              className="w-full h-auto object-cover block max-h-[520px]"
             />
             {/* Clickable Action Overlay Button */}
             <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2">
@@ -164,7 +160,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
         <div className="mb-10">
           <div className="mb-5 rounded-lg overflow-hidden border border-slate-200 shadow-xs">
             <img 
-              src={greenOceanStorefrontImg} 
+              src={branch.storefrontImage || branch.image}
               alt={`Không gian đào tạo hiện đại tại Green Ocean ${branch.name}`} 
               className="w-full h-auto object-cover max-h-[460px]"
             />
@@ -186,18 +182,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
           </h2>
 
           <div className="space-y-4 text-slate-700 text-sm sm:text-[15px] leading-relaxed text-justify">
-            <p>
-              Một trong những điểm người học quan tâm khi lựa chọn cơ sở là trải nghiệm học trực tiếp. Khác với hình thức học online, lớp học tại trung tâm tạo điều kiện để học viên tương tác trực tiếp với giáo viên, luyện phản xạ ngôn ngữ và tham gia các hoạt động trên lớp cùng những người học khác.
-            </p>
-            <p>
-              Không gian lớp học tại cơ sở {branch.shortName} được sử dụng cho quá trình giảng dạy trực tiếp, nơi học viên có thể theo dõi bài giảng, ghi chép, thực hành và trao đổi ngay trong buổi học. Với tiếng Trung, việc được nghe phát âm, sửa lỗi và thực hành thường xuyên đặc biệt quan trọng trong giai đoạn đầu. Những lỗi về thanh mẫu, vận mẫu hoặc thanh điệu nếu được phát hiện sớm sẽ giúp người học hạn chế hình thành thói quen phát âm sai về sau.
-            </p>
-            <p>
-              Môi trường lớp học cũng tạo thêm tính kỷ luật cho quá trình học. Khi có lịch học cụ thể, nội dung bài được triển khai theo từng giai đoạn và có sự tương tác với giáo viên, học viên dễ theo dõi tiến độ hơn so với việc tự học hoàn toàn mà không có lộ trình rõ ràng.
-            </p>
-            <p>
-              Đối với người đang sinh sống và làm việc tại các khu vực khác, hệ thống Green Ocean còn có các cơ sở khác như <Link href="/he-thong-co-so/han-thuyen-bac-ninh" className="text-[#1B7E45] font-bold hover:underline">Cơ sở 1 Hàn Thuyên</Link>, <Link href="/he-thong-co-so/nga-6-dai-phuc" className="text-[#1B7E45] font-bold hover:underline">Cơ sở 2 Ngã 6 Đại Phúc</Link>, và <Link href="/he-thong-co-so/online-nationwide" className="text-[#1B7E45] font-bold hover:underline">Lớp Trực Tuyến Toàn Quốc</Link> để người học chủ động sắp xếp lịch trình.
-            </p>
+            {(branch.environmentText?.length ? branch.environmentText : ['Thông tin môi trường học tập tại cơ sở đang được cập nhật.']).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
           </div>
         </div>
 
@@ -207,13 +192,9 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
             {branch.curriculumTitle || 'Giảng dạy theo lộ trình thay vì học rời rạc từng nội dung'}
           </h2>
 
-          <p className="text-slate-700 text-sm sm:text-[15px] leading-relaxed text-justify mb-5">
-            Một vấn đề phổ biến của người mới học tiếng Trung là tiếp cận kiến thức theo kiểu rời rạc. Người học có thể biết một số từ vựng, mẫu câu hoặc chữ Hán nhưng lại chưa hình thành được hệ thống kiến thức để sử dụng ngôn ngữ trong những tình huống cụ thể.
-          </p>
-
           <div className="mb-5 rounded-lg overflow-hidden border border-slate-200 shadow-xs">
             <img 
-              src={classroomPhotoImg} 
+              src={branch.classroomImage || branch.image}
               alt={`Lớp học sôi nổi với giáo trình chuẩn tại Green Ocean ${branch.name}`} 
               className="w-full h-auto object-cover max-h-[460px]"
             />
@@ -223,18 +204,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
           </div>
 
           <div className="space-y-4 text-slate-700 text-sm sm:text-[15px] leading-relaxed text-justify">
-            <p>
-              Tại Trung tâm tiếng Trung Green Ocean {branch.shortName}, việc học nên được nhìn theo một lộ trình gồm nhiều giai đoạn liên tiếp. Với người bắt đầu từ con số 0, bước đầu tiên là xây dựng nền tảng phát âm, làm quen với chữ Hán, từ vựng và các cấu trúc ngữ pháp cơ bản. Khi nền tảng dần ổn định, người học tiếp tục mở rộng vốn từ, tăng khả năng nghe hiểu, đọc hiểu và sử dụng câu trong giao tiếp.
-            </p>
-            <p>
-              Việc học theo lộ trình cũng giúp học viên xác định được mình đang ở giai đoạn nào. Người mới bắt đầu không cần học ngay những cấu trúc quá phức tạp, trong khi người đã có kiến thức nền lại có thể tập trung nhiều hơn vào kỹ năng còn yếu.
-            </p>
-            <p>
-              HSKK lại tập trung nhiều hơn vào khả năng sử dụng tiếng Trung bằng lời nói. Vì vậy, ngoài kiến thức ngôn ngữ, người học cần luyện phát âm, phản xạ và khả năng diễn đạt nội dung bằng câu tương đối hoàn chỉnh. Đây cũng là lý do quá trình thực hành và được chỉnh sửa trực tiếp có ý nghĩa với người đang chuẩn bị cho phần đánh giá khẩu ngữ.
-            </p>
-            <p>
-              Tuy nhiên, lựa chọn lớp không nên chỉ dựa trên mong muốn đạt một cấp độ nhất định. Nếu nền tảng hiện tại còn cách khá xa mục tiêu, người học có thể cần một giai đoạn củng cố trước khi chuyển sang luyện thi chuyên sâu. Xác định đúng trình độ ban đầu sẽ giúp lộ trình thực tế hơn và hạn chế tình trạng chạy theo cấp độ nhưng thiếu kiến thức nền cần thiết.
-            </p>
+            {(branch.curriculumText?.length ? branch.curriculumText : ['Thông tin lộ trình đào tạo tại cơ sở đang được cập nhật.']).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
           </div>
         </div>
 
@@ -245,17 +215,12 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
           </h2>
 
           <div className="space-y-4 text-slate-700 text-sm sm:text-[15px] leading-relaxed text-justify mb-6">
-            <p>
-              Trước khi đăng ký tại Trung tâm tiếng Trung Green Ocean {branch.shortName}, người học có thể cân nhắc đồng thời ba yếu tố gồm trình độ hiện tại, mục tiêu sử dụng tiếng Trung và thời gian có thể dành cho việc học. Đây là những yếu tố trực tiếp ảnh hưởng đến việc lựa chọn chương trình và khả năng duy trì tiến độ trong thời gian dài.
-            </p>
-            <p>
-              Người mới học nên ưu tiên xây dựng nền tảng thay vì đặt mục tiêu cấp độ quá nhanh. Người đã có kiến thức có thể xác định rõ phần kỹ năng còn yếu để lựa chọn chương trình phù hợp hơn. Với học viên cần HSK hoặc HSKK cho kế hoạch học tập, công việc hay những mục tiêu cá nhân khác, việc xác định thời điểm cần chứng chỉ cũng giúp chủ động hơn khi xây dựng kế hoạch học.
-            </p>
+            {(branch.adviceText?.length ? branch.adviceText : ['Liên hệ Green Ocean để được tư vấn lớp học và lộ trình phù hợp.']).map((paragraph, index) => <p key={index}>{paragraph}</p>)}
           </div>
 
           <div className="mb-8 rounded-lg overflow-hidden border border-slate-200 shadow-xs">
             <img 
-              src={teacherPhotoImg} 
+              src={branch.teachingImage || branch.image}
               alt={`Giảng viên Green Ocean hướng dẫn bài bản khẩu hình và phát âm`} 
               className="w-full h-auto object-cover max-h-[460px]"
             />

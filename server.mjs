@@ -157,12 +157,12 @@ async function handleApi(req, res, url) {
     const session = getSession(req);
     return session ? sendJson(res, 200, { username: session.username }) : sendJson(res, 401, { message: 'Chưa đăng nhập.' });
   }
-  const publicMatch = url.pathname.match(/^\/api\/content\/(news|resources|schedules|courses)$/);
+  const publicMatch = url.pathname.match(/^\/api\/content\/(news|resources|schedules|courses|branches)$/);
   if (req.method === 'GET' && publicMatch) {
     const document = await contentCollections.findOne({ _id: publicMatch[1] });
     return sendJson(res, 200, { initialized: Boolean(document), items: document?.items || [] }, { 'Cache-Control': 'no-store' });
   }
-  const adminMatch = url.pathname.match(/^\/api\/admin\/content\/(news|resources|schedules|courses)$/);
+  const adminMatch = url.pathname.match(/^\/api\/admin\/content\/(news|resources|schedules|courses|branches)$/);
   if (adminMatch && req.method === 'PUT') {
     if (!getSession(req)) return sendJson(res, 401, { message: 'Phiên đăng nhập đã hết hạn.' });
     const body = await readBody(req);
