@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ChevronRight, Calendar, ArrowRight, BookOpen, Download, Eye } from 'lucide-react';
-import { resourceCategories, resourcesData } from '../data/resourcesData';
+import { resourceCategories } from '../data/resourcesData';
+import { useResources } from '../services/contentService';
 
 export default function ResourcesPage(): JSX.Element {
+  const resourcesData = useResources();
   const [selectedCat, setSelectedCat] = useState<string>('all');
   const [location] = useLocation();
 

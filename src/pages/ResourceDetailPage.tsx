@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, ChevronRight, Sparkles, BookOpen, Download } from 'lucide-react';
-import { resourcesData } from '../data/resourcesData';
+import { useResources } from '../services/contentService';
 import scholarshipBannerImg from '../asset/branches/banner_scholarship.png';
 import ConsultationForm from '../components/Common/ConsultationForm';
 
 export default function ResourceDetailPage(): JSX.Element {
+  const resourcesData = useResources();
   const [, params1] = useRoute<{ slug: string }>('/thu-vien-tai-lieu/:slug');
   const [, params2] = useRoute<{ slug: string }>('/thu-vien/:slug');
   const slug = params1?.slug || params2?.slug || '';
@@ -16,7 +17,7 @@ export default function ResourceDetailPage(): JSX.Element {
   }, [slug]);
 
   const item = resourcesData.find((r) => r.slug === slug || r.id === slug) || resourcesData[0];
-  const relatedItems = resourcesData.filter((r) => r.id !== item.id).slice(0, 4);
+  const relatedItems = item ? resourcesData.filter((r) => r.id !== item.id).slice(0, 4) : [];
 
   const scrollToRegistration = () => {
     const el = document.getElementById('form-tu-van-thu-vien');
@@ -24,6 +25,8 @@ export default function ResourceDetailPage(): JSX.Element {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (!item) return <div className="min-h-[60vh] grid place-items-center text-slate-500">Tài liệu không tồn tại.</div>;
 
   return (
     <div className="w-full bg-[#fafbfc] min-h-screen font-sans pb-16">

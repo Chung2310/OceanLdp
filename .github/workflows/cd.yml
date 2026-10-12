@@ -28,6 +28,14 @@ jobs:
       - run: npm run build
       - name: Validate Compose
         run: docker compose config --quiet
+        env:
+          ADMIN_USERNAME: ci-admin
+          ADMIN_PASSWORD: ci-password-not-for-production
+          SESSION_SECRET: ci-session-secret-not-for-production-123456
+          MONGODB_URI: mongodb://mongodb/phone_retail
+          MONGODB_USER: ci-admin
+          MONGODB_PASSWORD: ci-mongodb-password
+          MONGODB_AUTH_SOURCE: admin
 
   build-image:
     name: Build and push Docker image

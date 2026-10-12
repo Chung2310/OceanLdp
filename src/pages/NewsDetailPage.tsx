@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, ChevronRight, Sparkles, BookOpen } from 'lucide-react';
-import { newsData } from '../data/newsData';
+import { useNews } from '../services/contentService';
 import scholarshipBannerImg from '../asset/branches/banner_scholarship.png';
 import ConsultationForm from '../components/Common/ConsultationForm';
 
 export default function NewsDetailPage(): JSX.Element {
+  const newsData = useNews();
   const [, params] = useRoute<{ slug: string }>('/tin-tuc/:slug');
   const slug = params?.slug || '';
 
@@ -15,7 +16,7 @@ export default function NewsDetailPage(): JSX.Element {
   }, [slug]);
 
   const post = newsData.find((n) => n.slug === slug) || newsData[0];
-  const relatedPosts = newsData.filter((n) => n.id !== post.id).slice(0, 4);
+  const relatedPosts = post ? newsData.filter((n) => n.id !== post.id).slice(0, 4) : [];
 
   const scrollToRegistration = () => {
     const el = document.getElementById('form-tu-van-tin-tuc');
@@ -23,6 +24,8 @@ export default function NewsDetailPage(): JSX.Element {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  if (!post) return <div className="min-h-[60vh] grid place-items-center text-slate-500">Bài viết không tồn tại.</div>;
 
   return (
     <div className="w-full bg-[#fafbfc] min-h-screen font-sans pb-16">

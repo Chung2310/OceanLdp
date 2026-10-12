@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { ChevronRight, Calendar, ArrowRight, BookOpen } from 'lucide-react';
-import { newsCategories, newsData } from '../data/newsData';
+import { newsCategories } from '../data/newsData';
+import { useNews } from '../services/contentService';
 
 export default function NewsPage(): JSX.Element {
+  const newsData = useNews();
   const [selectedCat, setSelectedCat] = useState<string>('all');
 
   const currentCategory = newsCategories.find(c => c.id === selectedCat) || newsCategories[0];
