@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Sparkles, CheckCircle2, PhoneCall } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { coursesData } from '../../data/coursesData';
+import { useCourses } from '../../services/contentService';
 import { branchesData } from '../../data/branchesData';
 import { leadService } from '../../services/leadService';
 
@@ -22,6 +22,7 @@ interface LeadFormData {
 }
 
 export default function LeadModal({ isOpen, onClose, defaultCourse = '', onShowToast }: LeadModalProps): JSX.Element | null {
+  const coursesData = useCourses();
   const [formData, setFormData] = useState<LeadFormData>({
     name: '',
     phone: '',

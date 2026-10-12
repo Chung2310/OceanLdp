@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { Phone, Mail, MapPin, Clock, Facebook, Youtube, ShieldCheck, Award, Sparkles, Send } from 'lucide-react';
+import { CONTACT, CONTACT_LINKS } from '../../config/contact';
 import logoImg from '../../asset/img/logo.jpg';
 
 export default function Footer(): JSX.Element {
@@ -93,7 +94,7 @@ export default function Footer(): JSX.Element {
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Phone size={15} className="text-amber-300 shrink-0" />
-                  <span>Hotline tư vấn: <strong className="text-white font-extrabold text-sm tracking-wide">082 471 3789</strong></span>
+                  <span>Hotline tư vấn: <a href={CONTACT_LINKS.hotline} className="text-white font-extrabold text-sm tracking-wide hover:text-amber-300">{CONTACT.hotlineDisplay}</a></span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <Mail size={15} className="text-emerald-300 shrink-0" />
@@ -229,7 +230,7 @@ export default function Footer(): JSX.Element {
                 </div>
                 <div className="flex items-center gap-2">
                   <a 
-                    href="https://facebook.com" 
+                    href={CONTACT_LINKS.facebookPage}
                     target="_blank" 
                     rel="noreferrer" 
                     className="w-8 h-8 rounded-lg bg-white/15 hover:bg-[#F37021] border border-white/20 flex items-center justify-center text-white transition-all shadow-xs" 
@@ -247,13 +248,22 @@ export default function Footer(): JSX.Element {
                     <Youtube size={15} />
                   </a>
                   <a 
-                    href="https://zalo.me" 
+                    href={CONTACT_LINKS.zaloPrimary}
                     target="_blank" 
                     rel="noreferrer" 
                     className="w-8 h-8 rounded-lg bg-[#0068ff] hover:brightness-110 flex items-center justify-center text-white transition-all font-bold text-[10px] shadow-xs" 
-                    title="Zalo Green Ocean"
+                    title={`Zalo ${CONTACT.zaloPrimary}`}
                   >
-                    Zalo
+                    Zalo 1
+                  </a>
+                  <a
+                    href={CONTACT_LINKS.zaloSecondary}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-8 h-8 rounded-lg bg-[#0068ff] hover:brightness-110 flex items-center justify-center text-white transition-all font-bold text-[9px] shadow-xs"
+                    title={`Zalo ${CONTACT.zaloSecondary}`}
+                  >
+                    Zalo 2
                   </a>
                   <a 
                     href="https://tiktok.com" 
@@ -285,7 +295,7 @@ export default function Footer(): JSX.Element {
             <span>•</span>
             <span>Đào tạo Trực tuyến Toàn quốc</span>
             <span>•</span>
-            <span>Hotline: <strong className="text-white">082 471 3789</strong></span>
+            <span>Hotline: <a href={CONTACT_LINKS.hotline} className="text-white font-bold hover:text-amber-300">{CONTACT.hotlineDisplay}</a></span>
           </div>
         </div>
       </div>

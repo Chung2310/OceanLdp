@@ -5,7 +5,7 @@ import {
   BookOpen, Sparkles, Send, MapPin, Award, Headphones,
   MessageSquare, BookMarked, PenTool, Target, Calendar
 } from 'lucide-react';
-import { coursesData } from '../data/coursesData';
+import { useCourses } from '../services/contentService';
 import reason06 from '../asset/reasons/reason06.png';
 import banner4 from '../asset/banner/banner4.png';
 import ConsultationForm from '../components/Common/ConsultationForm';
@@ -15,6 +15,7 @@ interface CourseDetailPageProps {
 }
 
 export default function CourseDetailPage({ onOpenLeadModal }: CourseDetailPageProps): JSX.Element {
+  const coursesData = useCourses();
   const [, params] = useRoute<{ slug: string }>('/khoa-hoc/:slug');
   const rawSlug = params?.slug || '';
 
@@ -33,7 +34,9 @@ export default function CourseDetailPage({ onOpenLeadModal }: CourseDetailPagePr
   const course = coursesData.find((c) => c.slug === targetSlug) || coursesData[0];
 
   // Other related courses for navigation
-  const relatedCourses = coursesData.filter((c) => c.slug !== course.slug);
+  const relatedCourses = course ? coursesData.filter((c) => c.slug !== course.slug) : [];
+
+  if (!course) return <div className="min-h-[60vh] grid place-items-center text-slate-500">Khóa học không tồn tại.</div>;
 
   return (
     <div className="w-full bg-white min-h-screen text-slate-800 font-sans">

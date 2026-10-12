@@ -4,7 +4,7 @@ import {
   BookOpen, Sparkles, Send, MapPin, Award, Headphones,
   MessageSquare, BookMarked, PenTool, Target, Calendar
 } from 'lucide-react';
-import { coursesData } from '../data/coursesData';
+import { useCourses } from '../services/contentService';
 import reason06 from '../asset/reasons/reason06.png';
 import banner4 from '../asset/banner/banner4.png';
 import ConsultationForm from '../components/Common/ConsultationForm';
@@ -14,6 +14,7 @@ interface CoursesPageProps {
 }
 
 export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.Element {
+  const coursesData = useCourses();
   // Quick navigation between course sections
   const [activeTab, setActiveTab] = useState<string>('all');
 
