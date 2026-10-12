@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { Calendar, Eye, ArrowRight } from 'lucide-react';
-import { newsData } from '../../data/newsData';
+import { useNews } from '../../services/contentService';
 
 export default function LatestNewsSection(): JSX.Element {
+  const newsData = useNews();
   return (
     <section className="w-full bg-[#f8fafc] py-16" aria-label="Tin tức & sự kiện">
       <div className="max-w-[1280px] mx-auto px-4">

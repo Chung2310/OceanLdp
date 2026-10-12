@@ -28,6 +28,14 @@ jobs:
       - run: npm run build
       - name: Validate Compose
         run: docker compose config --quiet
+        env:
+          ADMIN_USERNAME: ci-admin
+          ADMIN_PASSWORD: ci-password-not-for-production
+          SESSION_SECRET: ci-session-secret-not-for-production-123456
+          MONGODB_URI: mongodb://mongodb/phone_retail
+          MONGODB_USER: ci-admin
+          MONGODB_PASSWORD: ci-mongodb-password
+          MONGODB_AUTH_SOURCE: admin
 
   build-image:
     name: Build and push Docker image
@@ -65,6 +73,7 @@ jobs:
     name: Deploy to VPS
     needs: build-image
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'production' && 'production' || 'staging' }}
     timeout-minutes: 15
     permissions:
       contents: read
@@ -85,7 +94,7 @@ jobs:
       - name: Deploy exact commit and wait for health check
         uses: appleboy/ssh-action@v1.0.3
         env:
-          ENV_FILE_CONTENT: ${{ vars[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] }}
+          ENV_FILE_CONTENT: ${{ secrets[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] || vars[github.ref_name == 'production' && 'ENV_FILE_PROD' || 'ENV_FILE'] }}
           IMAGE_NAME: ${{ needs.build-image.outputs.image }}
           IMAGE_TAG: ${{ github.sha }}
           COMPOSE_PROJECT_NAME: ocean-ldp-${{ github.ref_name }}
@@ -103,6 +112,14 @@ jobs:
             umask 077
             printf '%s\n' "$ENV_FILE_CONTENT" > .env
             chmod 600 .env
+            # Ensure values inherited by the remote shell cannot override .env.
+            unset PORT
+            DEPLOY_PORT="$(sed -n 's/^[[:space:]]*PORT[[:space:]]*=[[:space:]]*\([0-9][0-9]*\)[[:space:]]*$/\1/p' .env | tail -n 1)"
+            if [ -z "$DEPLOY_PORT" ] || [ "$DEPLOY_PORT" -lt 1 ] || [ "$DEPLOY_PORT" -gt 65535 ]; then
+              echo "ERROR: ENV_FILE must contain a valid PORT (for example PORT=3013)."
+              exit 1
+            fi
+            echo "Resolved deployment host port: $DEPLOY_PORT"
             export IMAGE_NAME IMAGE_TAG COMPOSE_PROJECT_NAME
             DOCKER_CONFIG=$(mktemp -d)
             export DOCKER_CONFIG

@@ -15,7 +15,8 @@ import {
   Send,
   AlertCircle
 } from 'lucide-react';
-import { campusScheduleCards, CampusScheduleCard, CampusScheduleRow } from '../data/scheduleData';
+import { CampusScheduleCard, CampusScheduleRow } from '../data/scheduleData';
+import { useScheduleCards } from '../services/contentService';
 import ConsultationForm from '../components/Common/ConsultationForm';
 import logoImg from '../asset/img/logo.jpg';
 import bookSoCap from '../asset/books/msutong_socap.jpg';
@@ -27,6 +28,7 @@ interface SchedulePageProps {
 }
 
 export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JSX.Element {
+  const campusScheduleCards = useScheduleCards();
   // Region & Filter States (Matching Green Ocean branches from Footer)
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
   const [selectedShift, setSelectedShift] = useState<string>('all');
