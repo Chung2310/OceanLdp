@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { MapPin, Phone, Mail, ExternalLink, ArrowRight, Building2, ChevronRight } from 'lucide-react';
-import { branchRegions, branchesData } from '../data/branchesData';
+import { branchRegions } from '../data/branchesData';
+import { useBranches } from '../services/contentService';
 
 export default function BranchesPage(): JSX.Element {
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
+  const branchesData = useBranches();
 
   const filteredBranches = selectedRegion === 'all' 
     ? branchesData 
