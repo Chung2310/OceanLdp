@@ -12,7 +12,7 @@ docker compose up -d --build --wait
 
 Before starting, replace `ADMIN_PASSWORD` and `SESSION_SECRET` in `.env` with
 strong, unique values. Open http://localhost:3010 and use `/admin` to manage
-news, schedules, and library content. `ADMIN_USERNAME` and `ADMIN_PASSWORD` are
+news, courses, schedules, and library content. `ADMIN_USERNAME` and `ADMIN_PASSWORD` are
 used only to seed the administrator on the first run of a new data volume.
 
 Set PORT in .env and rerun Compose to change the host port. Missing PORT or an

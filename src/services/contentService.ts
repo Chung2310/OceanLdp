@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { NewsPost, ResourceItem } from '../types';
+import { Course, NewsPost, ResourceItem } from '../types';
 import { newsData } from '../data/newsData';
 import { resourcesData } from '../data/resourcesData';
 import { CampusScheduleCard, campusScheduleCards } from '../data/scheduleData';
+import { coursesData } from '../data/coursesData';
 
-export type ContentType = 'news' | 'resources' | 'schedules';
+export type ContentType = 'news' | 'resources' | 'schedules' | 'courses';
 
 export interface ManagedSchedule {
   id: string;
@@ -61,7 +62,8 @@ export const groupSchedules = (rows: ManagedSchedule[]): CampusScheduleCard[] =>
 export const defaultContent = {
   news: newsData,
   resources: resourcesData,
-  schedules: flattenSchedules(campusScheduleCards)
+  schedules: flattenSchedules(campusScheduleCards),
+  courses: coursesData
 };
 
 export async function fetchContent<T>(type: ContentType, fallback: T[]): Promise<T[]> {
@@ -84,6 +86,7 @@ export function useManagedContent<T>(type: ContentType, fallback: T[]): T[] {
 export const useNews = () => useManagedContent<NewsPost>('news', newsData);
 export const useResources = () => useManagedContent<ResourceItem>('resources', resourcesData);
 export const useScheduleCards = () => groupSchedules(useManagedContent<ManagedSchedule>('schedules', defaultContent.schedules));
+export const useCourses = () => useManagedContent<Course>('courses', coursesData);
 
 async function adminRequest(path: string, options: RequestInit = {}) {
   const response = await fetch(path, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });

@@ -104,8 +104,19 @@ function cleanItem(item) {
   for (const [key, value] of Object.entries(item)) {
     if (typeof value === 'string') clean[key] = key === 'content' ? sanitizeHtml(value).slice(0, 8_000_000) : value.slice(0, 8_000_000);
     else if (typeof value === 'number' || typeof value === 'boolean' || value === null) clean[key] = value;
+    else if (Array.isArray(value)) clean[key] = value.slice(0, 500).map(cleanNested).filter(value => value !== undefined);
+    else if (typeof value === 'object') clean[key] = cleanNested(value);
   }
   return clean.id ? clean : null;
+}
+
+function cleanNested(value, depth = 0) {
+  if (depth > 4) return undefined;
+  if (typeof value === 'string') return value.slice(0, 100_000);
+  if (typeof value === 'number' || typeof value === 'boolean' || value === null) return value;
+  if (Array.isArray(value)) return value.slice(0, 500).map(item => cleanNested(item, depth + 1)).filter(item => item !== undefined);
+  if (typeof value === 'object' && value) return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, cleanNested(item, depth + 1)]).filter(([, item]) => item !== undefined));
+  return undefined;
 }
 
 async function handleApi(req, res, url) {
@@ -146,12 +157,12 @@ async function handleApi(req, res, url) {
     const session = getSession(req);
     return session ? sendJson(res, 200, { username: session.username }) : sendJson(res, 401, { message: 'Chưa đăng nhập.' });
   }
-  const publicMatch = url.pathname.match(/^\/api\/content\/(news|resources|schedules)$/);
+  const publicMatch = url.pathname.match(/^\/api\/content\/(news|resources|schedules|courses)$/);
   if (req.method === 'GET' && publicMatch) {
     const document = await contentCollections.findOne({ _id: publicMatch[1] });
     return sendJson(res, 200, { initialized: Boolean(document), items: document?.items || [] }, { 'Cache-Control': 'no-store' });
   }
-  const adminMatch = url.pathname.match(/^\/api\/admin\/content\/(news|resources|schedules)$/);
+  const adminMatch = url.pathname.match(/^\/api\/admin\/content\/(news|resources|schedules|courses)$/);
   if (adminMatch && req.method === 'PUT') {
     if (!getSession(req)) return sendJson(res, 401, { message: 'Phiên đăng nhập đã hết hạn.' });
     const body = await readBody(req);
