@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
-import reason01 from '../../asset/reasons/reason01.png';
-import reason02 from '../../asset/reasons/reason02.png';
-import reason03 from '../../asset/reasons/reason03.png';
-import reason04 from '../../asset/reasons/reason04.png';
-import reason05 from '../../asset/reasons/reason05.png';
-import reason06 from '../../asset/reasons/reason06.png';
+import reason01 from '../../asset/reasons/home-reason01.png';
+import reason02 from '../../asset/reasons/home-reason02.png';
+import reason03 from '../../asset/reasons/home-reason03.png';
+import reason04 from '../../asset/reasons/home-reason04.png';
+import reason05 from '../../asset/reasons/home-reason05.png';
+import reason06 from '../../asset/reasons/home-reason06.png';
 
 interface ReasonItem {
   id: string;

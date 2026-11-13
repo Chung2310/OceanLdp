@@ -3,7 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import banner1 from '../../asset/banner/banner1.png';
 import banner2 from '../../asset/banner/banner2.png';
-import banner3 from '../../asset/banner/banner3.png';
+import banner3 from '../../asset/banner/banner-1311.png';
 
 interface HeroSliderProps {
   onOpenLeadModal: () => void;
@@ -33,8 +33,8 @@ const bannerSlides: BannerSlide[] = [
   {
     id: 3,
     image: banner3,
-    title: '6 năm hơn 5.000 học viên đồng hành cùng Green Ocean',
-    alt: 'Banner Green Ocean - 6 năm hơn 5.000 học viên đồng hành'
+    title: 'Tiếng Trung mở ra thế giới mới',
+    alt: 'Green Ocean - Học tiếng Trung bắt đầu từ đây cùng đội ngũ giáo viên'
   }
 ];
 
@@ -108,7 +108,7 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
                 alt={slide.alt}
                 width={2006}
                 height={784}
-                className="w-full h-full object-cover block select-none pointer-events-none"
+                className={`w-full h-full ${idx === 2 ? 'object-fill' : 'object-cover'} block select-none pointer-events-none`}
                 loading={idx === 0 ? 'eager' : 'lazy'}
                 fetchPriority={idx === 0 ? 'high' : 'low'}
               />
