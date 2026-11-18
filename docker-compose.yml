@@ -4,6 +4,8 @@ services:
     build:
       context: .
     restart: unless-stopped
+    networks:
+      - default_network
     ports:
       - "${PORT:-3010}:3013"
     environment:
@@ -19,3 +21,7 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+networks:
+  default_network:
+    external: true

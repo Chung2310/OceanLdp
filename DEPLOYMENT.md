@@ -31,6 +31,22 @@ name, for example `mongodb://<mongo-host>:27017/ocean_ldp`. Inside the container
 another Docker stack, connect both services to a shared Docker network before
 using its service name. Database backups are managed with the shared MongoDB instance.
 
+Compose joins the existing external network `default_network`, matching the ERP
+deployment. It does not create a network. Verify the existing network on the VPS:
+
+```sh
+docker network inspect default_network
+```
+
+The shared MongoDB container and the app must both belong to this network.
+Use `MONGODB_URI=mongodb://mongodb:27017/ocean_ldp` with the
+appropriate database name and existing credentials. Keep the MongoDB host port
+bound to `127.0.0.1`; containers communicate directly over the shared network.
+Also declare this external network on the MongoDB service in its own deployment
+configuration so the attachment survives container recreation. Then deploy the app.
+`EAI_AGAIN mongodb` indicates a hostname lookup failure; verify that both containers
+are attached using `docker network inspect default_network`.
+
 The admin account is inserted into the `admin_accounts` collection only when
 that username does not exist. Changing `ADMIN_PASSWORD` later does not overwrite
 an existing password hash.
