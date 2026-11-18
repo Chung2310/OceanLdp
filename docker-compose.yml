@@ -5,7 +5,7 @@ services:
       context: .
     restart: unless-stopped
     networks:
-      - mongodb-shared
+      - default_network
     ports:
       - "${PORT:-3010}:3013"
     environment:
@@ -23,6 +23,5 @@ services:
         max-file: "3"
 
 networks:
-  mongodb-shared:
+  default_network:
     external: true
-    name: ${MONGODB_NETWORK:-mongodb-shared}
