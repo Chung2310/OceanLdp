@@ -13,7 +13,7 @@ docker compose up -d --build --wait
 Before starting, replace `ADMIN_PASSWORD` and `SESSION_SECRET` in `.env` with
 strong, unique values. Open http://localhost:3010 and use `/admin` to manage
 news, courses, schedules, and library content. `ADMIN_USERNAME` and `ADMIN_PASSWORD` are
-used only to seed the administrator on the first run of a new data volume.
+used to seed the administrator when that username does not exist in the database.
 
 Set PORT in .env and rerun Compose to change the host port. Missing PORT or an
 empty PORT defaults to 3010. Shell variables have priority over .env. The Node
@@ -21,12 +21,31 @@ application listens on port 3013 inside the container and serves both the Vite
 build and `/api`. For local development, run `npm run dev:api` and `npm run dev`
 in two terminals; Vite uses `PORT`, while the API uses `API_PORT=3013`.
 
-Admin accounts and content are stored in MongoDB. The bundled MongoDB service
-persists `/data/db` in the named volume `ocean-mongodb`; keep this volume when
-updating the image and include it in the server backup plan. The application
-uses `MONGODB_URI`, `MONGODB_USER`, `MONGODB_PASSWORD`, and
-`MONGODB_AUTH_SOURCE` for its connection. `MONGODB_URI` may point to another
-MongoDB server if one is already managed outside this Compose stack.
+Admin accounts and content are stored in the shared MongoDB instance on the VPS.
+Compose starts only the application; it does not create or manage MongoDB.
+Set `MONGODB_URI`, `MONGODB_USER`, `MONGODB_PASSWORD`, and
+`MONGODB_AUTH_SOURCE` in `.env` before starting. The URI must use an address
+reachable from the application container and include the application's database
+name, for example `mongodb://<mongo-host>:27017/ocean_ldp`. Inside the container,
+`localhost` refers to the application container, not the VPS. If MongoDB runs in
+another Docker stack, connect both services to a shared Docker network before
+using its service name. Database backups are managed with the shared MongoDB instance.
+
+Compose joins the existing external network `default_network`, matching the ERP
+deployment. It does not create a network. Verify the existing network on the VPS:
+
+```sh
+docker network inspect default_network
+```
+
+The shared MongoDB container and the app must both belong to this network.
+Use `MONGODB_URI=mongodb://mongodb:27017/ocean_ldp` with the
+appropriate database name and existing credentials. Keep the MongoDB host port
+bound to `127.0.0.1`; containers communicate directly over the shared network.
+Also declare this external network on the MongoDB service in its own deployment
+configuration so the attachment survives container recreation. Then deploy the app.
+`EAI_AGAIN mongodb` indicates a hostname lookup failure; verify that both containers
+are attached using `docker network inspect default_network`.
 
 The admin account is inserted into the `admin_accounts` collection only when
 that username does not exist. Changing `ADMIN_PASSWORD` later does not overwrite
