@@ -4,6 +4,8 @@ services:
     build:
       context: .
     restart: unless-stopped
+    networks:
+      - mongodb-shared
     ports:
       - "${PORT:-3010}:3013"
     environment:
@@ -19,3 +21,8 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+networks:
+  mongodb-shared:
+    external: true
+    name: ${MONGODB_NETWORK:-mongodb-shared}
