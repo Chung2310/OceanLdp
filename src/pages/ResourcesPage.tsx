@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ChevronRight, Calendar, ArrowRight, BookOpen, Download, Eye } from 'lucide-react';
@@ -86,7 +87,7 @@ export default function ResourcesPage(): JSX.Element {
                 href={`/thu-vien-tai-lieu/${item.slug || item.id}`} 
                 className="relative sm:w-[240px] md:w-[260px] aspect-[16/9] rounded-md overflow-hidden bg-slate-100 shrink-0 block"
               >
-                <img 
+                <SmartImage
                   src={item.image} 
                   alt={item.title} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

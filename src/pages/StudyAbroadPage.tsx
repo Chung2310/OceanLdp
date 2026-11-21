@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React from 'react';
 import { Award, Calendar, PhoneCall } from 'lucide-react';
 import { studyAbroadData } from '../data/studyAbroadData';
@@ -32,7 +33,7 @@ export default function StudyAbroadPage({ onOpenLeadModal }: StudyAbroadPageProp
               className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 grid grid-cols-1 md:grid-cols-[340px_1fr] items-start group"
             >
               <div className="relative aspect-[16/10] md:aspect-auto md:h-full bg-slate-100 overflow-hidden">
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <SmartImage src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 <span className="absolute top-3 left-3 bg-[#F37021] text-white text-[11px] font-extrabold px-3 py-1 rounded-full shadow-sm">
                   {item.badge}
                 </span>

@@ -68,25 +68,59 @@ export const defaultContent = {
   branches: branchesData
 };
 
+const cache = new Map<string, { value: any; expires: number }>();
+const pending = new Map<string, Promise<any>>();
+const CACHE_MS = 30000;
+async function publicRequest(url: string): Promise<any> {
+  const hit = cache.get(url);
+  if (hit && hit.expires > Date.now()) return hit.value;
+  if (pending.has(url)) return pending.get(url);
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
+  const work = fetch(url, { signal: controller.signal, cache: 'no-cache' }).then(async response => {
+    if (!response.ok) throw new Error('Content request failed');
+    const value = await response.json();
+    if (cache.size >= 100) cache.delete(cache.keys().next().value);
+    cache.set(url, { value, expires: Date.now() + CACHE_MS });
+    return value;
+  }).finally(() => { clearTimeout(timer); pending.delete(url); });
+  pending.set(url, work);
+  return work;
+}
 export async function fetchContent<T>(type: ContentType, fallback: T[]): Promise<T[]> {
   try {
-    const response = await fetch(`/api/content/${type}`, { cache: 'no-store' });
-    if (!response.ok) return fallback;
-    const result = await response.json();
+    const result = await publicRequest('/api/content/' + type + ((type === 'news' || type === 'resources') ? '?view=summary' : ''));
     return result.initialized ? result.items : fallback;
-  } catch {
-    return fallback;
-  }
+  } catch { return fallback; }
 }
-
 export function useManagedContent<T>(type: ContentType, fallback: T[]): T[] {
-  const [items, setItems] = useState<T[]>(fallback);
-  useEffect(() => { fetchContent(type, fallback).then(setItems); }, [type]);
+  const url = '/api/content/' + type + ((type === 'news' || type === 'resources') ? '?view=summary' : '');
+  const hit = cache.get(url);
+  const [items, setItems] = useState<T[]>(hit?.value.initialized ? hit.value.items : fallback);
+  useEffect(() => {
+    let active = true;
+    fetchContent(type, fallback).then(value => { if (active) setItems(value); });
+    return () => { active = false; };
+  }, [type]);
   return items;
 }
-
+function useContentDetail<T extends { id: string; slug?: string }>(type: ContentType, key: string, fallback: T[]): T | null | undefined {
+  const url = '/api/content/' + type + '/' + encodeURIComponent(key);
+  const [state, setState] = useState<{ key: string; item: T | null } | null>(null);
+  useEffect(() => {
+    let active = true;
+    publicRequest(url).then(result => {
+      if (active) setState({ key, item: result.initialized ? result.item : fallback.find(item => item.id === key || item.slug === key) || null });
+    }).catch(() => { if (active) setState({ key, item: fallback.find(item => item.id === key || item.slug === key) || null }); });
+    return () => { active = false; };
+  }, [url]);
+  if (state?.key === key) return state.item;
+  return fallback.find(item => item.id === key || item.slug === key);
+}
 export const useNews = () => useManagedContent<NewsPost>('news', newsData);
 export const useResources = () => useManagedContent<ResourceItem>('resources', resourcesData);
+export const useNewsDetail = (slug: string) => useContentDetail('news', slug, newsData);
+export const useResourceDetail = (slug: string) => useContentDetail('resources', slug, resourcesData);
 export const useScheduleCards = () => groupSchedules(useManagedContent<ManagedSchedule>('schedules', defaultContent.schedules));
 export const useCourses = () => useManagedContent<Course>('courses', coursesData);
 export const useBranches = () => useManagedContent<Branch>('branches', branchesData);
@@ -102,6 +136,13 @@ export const adminApi = {
   session: () => adminRequest('/api/admin/session'),
   login: (username: string, password: string) => adminRequest('/api/admin/login', { method: 'POST', body: JSON.stringify({ username, password }) }),
   logout: () => adminRequest('/api/admin/logout', { method: 'POST' }),
-  load: <T,>(type: ContentType, fallback: T[]) => fetchContent(type, fallback),
-  save: <T,>(type: ContentType, items: T[]) => adminRequest(`/api/admin/content/${type}`, { method: 'PUT', body: JSON.stringify({ items }) })
+  load: async <T,>(type: ContentType, fallback: T[]): Promise<T[]> => {
+    const result = await adminRequest('/api/admin/content/' + type);
+    return result.initialized ? result.items : fallback;
+  },
+  save: async <T,>(type: ContentType, items: T[]) => {
+    const result = await adminRequest(`/api/admin/content/${type}`, { method: 'PUT', body: JSON.stringify({ items }) });
+    cache.clear();
+    return result;
+  }
 };

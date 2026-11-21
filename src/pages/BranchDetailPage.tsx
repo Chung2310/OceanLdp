@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { MapPin, Phone, Mail, Clock, Calendar, CheckCircle2, ArrowRight, ExternalLink, ChevronRight, Sparkles, GraduationCap, Building2 } from 'lucide-react';
@@ -60,7 +61,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
         {/* 4. Hero Promotional Scholarship Banner (Screenshot 1 & 2) */}
         <div className="mb-8 rounded-lg overflow-hidden border border-amber-200/80 shadow-md bg-gradient-to-br from-amber-50 to-orange-50 relative group">
           <div className="relative">
-            <img 
+            <SmartImage
               src={branch.image}
               alt={`Trung tâm tiếng Trung Green Ocean ${branch.name}`}
               className="w-full h-auto object-cover block max-h-[520px]"
@@ -159,7 +160,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
         {/* 6. Section 2: Không gian học tập (Screenshot 3) */}
         <div className="mb-10">
           <div className="mb-5 rounded-lg overflow-hidden border border-slate-200 shadow-xs">
-            <img 
+            <SmartImage
               src={branch.storefrontImage || branch.image}
               alt={`Không gian đào tạo hiện đại tại Green Ocean ${branch.name}`} 
               className="w-full h-auto object-cover max-h-[460px]"
@@ -193,7 +194,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
           </h2>
 
           <div className="mb-5 rounded-lg overflow-hidden border border-slate-200 shadow-xs">
-            <img 
+            <SmartImage
               src={branch.classroomImage || branch.image}
               alt={`Lớp học sôi nổi với giáo trình chuẩn tại Green Ocean ${branch.name}`} 
               className="w-full h-auto object-cover max-h-[460px]"
@@ -219,7 +220,7 @@ export default function BranchDetailPage({ onOpenLeadModal }: BranchDetailPagePr
           </div>
 
           <div className="mb-8 rounded-lg overflow-hidden border border-slate-200 shadow-xs">
-            <img 
+            <SmartImage
               src={branch.teachingImage || branch.image}
               alt={`Giảng viên Green Ocean hướng dẫn bài bản khẩu hình và phát âm`} 
               className="w-full h-auto object-cover max-h-[460px]"

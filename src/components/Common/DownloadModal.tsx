@@ -1,3 +1,4 @@
+import SmartImage from './SmartImage';
 import React, { useState } from 'react';
 import { X, Download, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -73,7 +74,7 @@ export default function DownloadModal({ resource, isOpen, onClose, onShowToast }
         ) : (
           <div className="p-6 md:p-7">
             <div className="flex gap-4 items-center bg-slate-50 p-4 rounded-xl mb-5 border border-slate-200/80">
-              <img src={resource.image} alt={resource.title} className="w-20 h-24 object-cover rounded-lg shadow-md shrink-0" />
+              <SmartImage src={resource.image} alt={resource.title} className="w-20 h-24 object-cover rounded-lg shadow-md shrink-0" />
               <div>
                 <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-2.5 py-0.5 rounded-full mb-1">{resource.format}</span>
                 <h4 className="text-sm md:text-base font-bold text-neutral my-1 line-clamp-2 leading-snug">{resource.title}</h4>

@@ -1,3 +1,9 @@
+// Source: https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop
+import localRemoteImage0 from '../asset/remote/b52fe73674209da6.jpg';
+// Source: https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop
+import localRemoteImage1 from '../asset/remote/8b6867f03154c2b8.jpg';
+// Source: https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600&auto=format&fit=crop
+import localRemoteImage2 from '../asset/remote/d86a382abe041dae.jpg';
 import { CourseCategory, Course, MsutongBook } from '../types';
 import course01 from '../asset/courses/course01.png';
 import course02 from '../asset/courses/course02.png';
@@ -648,7 +654,7 @@ export const msutongBooks: MsutongBook[] = [
     price: 480000,
     salePrice: 385000,
     publisher: 'Đại Học Ngôn Ngữ Bắc Kinh',
-    image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600&auto=format&fit=crop',
+    image: localRemoteImage0,
     desc: 'Giáo trình độc quyền chuẩn New HSK 3.0 tích hợp ứng dụng đa phương tiện giúp người mới bắt đầu phát âm chuẩn và giao tiếp nhanh.'
   },
   {
@@ -658,7 +664,7 @@ export const msutongBooks: MsutongBook[] = [
     price: 540000,
     salePrice: 430000,
     publisher: 'Đại Học Ngôn Ngữ Bắc Kinh',
-    image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop',
+    image: localRemoteImage1,
     desc: 'Nâng cao vốn từ vựng và ngữ pháp HSK 4 - HSK 5 có kèm bài tập thực hành dịch thuật.'
   },
   {
@@ -668,7 +674,7 @@ export const msutongBooks: MsutongBook[] = [
     price: 320000,
     salePrice: 250000,
     publisher: 'Green Ocean & NXB Giáo Dục Hán Ngữ',
-    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600&auto=format&fit=crop',
+    image: localRemoteImage2,
     desc: 'Tuyển tập đề thi thử có lời giải chi tiết, phân tích ma trận bẫy điểm 9+ môn tiếng Trung.'
   }
 ];

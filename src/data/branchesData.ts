@@ -1,3 +1,9 @@
+// Source: https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop
+import localRemoteImage0 from '../asset/remote/3d2d9b1724ef8bd1.jpg';
+// Source: https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop
+import localRemoteImage1 from '../asset/remote/ddad7080d6ad5147.jpg';
+// Source: https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop
+import localRemoteImage2 from '../asset/remote/0be0b97e13c15e8a.jpg';
 import { BranchRegion, Branch } from '../types';
 
 export const branchRegions: BranchRegion[] = [
@@ -21,7 +27,7 @@ export const branchesData: Branch[] = [
     mapUrl: 'https://maps.google.com/?q=567+Han+Thuyen+Dai+Phuc+Bac+Ninh',
     format: 'Học trực tiếp tại cơ sở',
     targetAudience: 'Người mới bắt đầu, người học nâng cao năng lực tiếng Trung, học viên có mục tiêu HSK và HSKK',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop',
+    image: localRemoteImage0,
     facilities: [
       'Phòng học máy lạnh tiêu chuẩn hiện đại',
       'Bảng tương tác & thiết bị nghe nhìn chuyên sâu',
@@ -67,7 +73,7 @@ export const branchesData: Branch[] = [
     mapUrl: 'https://maps.google.com/?q=Nga+6+Dai+Phuc+Bac+Ninh',
     format: 'Học trực tiếp tại cơ sở',
     targetAudience: 'Người mới bắt đầu, người đi làm tại KCN Quế Võ, VSIP, Tiên Sơn, Yên Phong, sinh viên và người luyện thi HSK',
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop',
+    image: localRemoteImage1,
     facilities: [
       'Vị trí đắc địa tại nút giao thông trung tâm TP. Bắc Ninh',
       'Không gian học tập chuẩn sư phạm bài bản',
@@ -111,7 +117,7 @@ export const branchesData: Branch[] = [
     mapUrl: 'https://greenocean.edu.vn',
     format: 'Học trực tuyến tương tác 2 chiều (Google Meet)',
     targetAudience: 'Học viên 63 tỉnh thành, du học sinh, người đi làm bận rộn, người ở xa không có điều kiện đến lớp trực tiếp',
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop',
+    image: localRemoteImage2,
     facilities: [
       'Tương tác trực tiếp 100% cùng Giảng viên Thạc sĩ nòng cốt',
       'Video bài giảng lưu trữ xem lại trọn đời không giới hạn',

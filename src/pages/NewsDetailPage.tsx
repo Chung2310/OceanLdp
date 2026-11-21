@@ -1,7 +1,9 @@
+import { useEditorialHtml } from '../services/editorialHtml';
+import SmartImage from '../components/Common/SmartImage';
 import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, ChevronRight, BookOpen } from 'lucide-react';
-import { useNews } from '../services/contentService';
+import { useNews, useNewsDetail } from '../services/contentService';
 import ConsultationForm from '../components/Common/ConsultationForm';
 
 export default function NewsDetailPage(): JSX.Element {
@@ -14,8 +16,12 @@ export default function NewsDetailPage(): JSX.Element {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [slug]);
 
-  const post = newsData.find((n) => n.slug === slug) || newsData[0];
+  const post = useNewsDetail(slug);
   const relatedPosts = post ? newsData.filter((n) => n.id !== post.id).slice(0, 4) : [];
+
+  const editorialHtml = useEditorialHtml(post?.content);
+
+  if (post === undefined) return <div className="min-h-[60vh] grid place-items-center text-slate-500" role="status">?ang t?i n?i dung?</div>;
 
   if (!post) return <div className="min-h-[60vh] grid place-items-center text-slate-500">Bài viết không tồn tại.</div>;
 
@@ -64,7 +70,7 @@ export default function NewsDetailPage(): JSX.Element {
         {/* Ảnh đại diện riêng của bài viết */}
         {post.image && (
           <figure className="mb-8 rounded-lg overflow-hidden border border-slate-200 shadow-md bg-white">
-            <img
+            <SmartImage
               src={post.image}
               alt={post.title}
               className="w-full max-h-[560px] object-cover block"
@@ -75,7 +81,7 @@ export default function NewsDetailPage(): JSX.Element {
         {/* 3. Infographic Graphic (if available, e.g. Screenshot 2) */}
         {post.infographicImage && (
           <div className="my-8 rounded-lg overflow-hidden border border-slate-200 shadow-2xs max-w-lg mx-auto bg-white p-3">
-            <img 
+            <SmartImage
               src={post.infographicImage} 
               alt={post.title} 
               className="w-full h-auto object-contain block mx-auto"
@@ -89,7 +95,7 @@ export default function NewsDetailPage(): JSX.Element {
         {/* 4. Main Editorial Content Body */}
         <div 
           className="prose max-w-none text-slate-700 text-sm sm:text-[15px] leading-relaxed space-y-4 mb-10 text-justify"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: editorialHtml }}
         />
 
         {/* 5. Social Share Box */}
@@ -155,7 +161,7 @@ export default function NewsDetailPage(): JSX.Element {
                 className="flex items-start gap-3.5 p-3.5 bg-white rounded-lg border border-slate-200 hover:border-[#1B7E45] hover:shadow-xs transition-all group block"
               >
                 <div className="relative w-24 h-18 rounded-md overflow-hidden bg-slate-100 shrink-0">
-                  <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <SmartImage src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                   <div className="absolute top-1 left-1 bg-white/90 border border-red-500 rounded-[2px] px-1 py-0.2 text-center text-[9px] leading-tight font-black text-red-600">
                     {r.day || '08'}
                   </div>

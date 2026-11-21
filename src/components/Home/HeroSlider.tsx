@@ -1,9 +1,14 @@
+import SmartImage from '../Common/SmartImage';
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import banner1 from '../../asset/banner/banner1.png';
 import banner2 from '../../asset/banner/banner2.png';
 import banner3 from '../../asset/banner/banner-1311.png';
+
+import banner1Mobile from '../../asset/banner/banner1.png?width=768';
+import banner2Mobile from '../../asset/banner/banner2.png?width=768';
+import banner3Mobile from '../../asset/banner/banner-1311.png?width=768';
 
 interface HeroSliderProps {
   onOpenLeadModal: () => void;
@@ -13,6 +18,7 @@ interface HeroSliderProps {
 interface BannerSlide {
   id: number;
   image: string;
+  mobileImage: string;
   title: string;
   alt: string;
 }
@@ -21,18 +27,21 @@ const bannerSlides: BannerSlide[] = [
   {
     id: 1,
     image: banner1,
+    mobileImage: banner1Mobile,
     title: 'Học tiếng Trung hôm nay - Vững vàng tương lai',
     alt: 'Banner Green Ocean - Khóa học tiếng Trung chuẩn đầu ra HSK'
   },
   {
     id: 2,
     image: banner2,
+    mobileImage: banner2Mobile,
     title: 'Đội ngũ giáo viên - Nền tảng tạo nên chất lượng',
     alt: 'Banner Green Ocean - Đội ngũ giáo viên chất lượng cao'
   },
   {
     id: 3,
     image: banner3,
+    mobileImage: banner3Mobile,
     title: 'Tiếng Trung mở ra thế giới mới',
     alt: 'Green Ocean - Học tiếng Trung bắt đầu từ đây cùng đội ngũ giáo viên'
   }
@@ -43,22 +52,24 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
-  // Auto-advance banner every 5 seconds when not hovered
+  const [requestedSlide, setRequestedSlide] = useState(0);
+  const [readySlides, setReadySlides] = useState<number[]>([]);
+  const [pageVisible, setPageVisible] = useState(true);
   useEffect(() => {
-    if (isHovered) return;
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [isHovered]);
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
-  };
+    const update = () => setPageVisible(!document.hidden);
+    update(); document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
+  useEffect(() => {
+    if (readySlides.includes(requestedSlide)) setCurrentSlide(requestedSlide);
+  }, [requestedSlide, readySlides]);
+  useEffect(() => {
+    if (isHovered || !pageVisible || !readySlides.includes(currentSlide)) return;
+    const timer = setTimeout(() => setRequestedSlide((currentSlide + 1) % bannerSlides.length), 5000);
+    return () => clearTimeout(timer);
+  }, [isHovered, pageVisible, currentSlide, readySlides]);
+  const prevSlide = () => setRequestedSlide((currentSlide - 1 + bannerSlides.length) % bannerSlides.length);
+  const nextSlide = () => setRequestedSlide((currentSlide + 1) % bannerSlides.length);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.touches[0].clientX);
@@ -103,13 +114,17 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
               }}
               title="Nhấp để đăng ký nhận ưu đãi học phí lên tới 1.500.000đ"
             >
-              <img
+              <SmartImage
                 src={slide.image}
+                srcSet={`${slide.mobileImage} 768w, ${slide.image} 1920w`}
+                sizes="100vw"
+                decoding="async"
                 alt={slide.alt}
                 width={2006}
                 height={784}
                 className={`w-full h-full ${idx === 2 ? 'object-fill' : 'object-cover'} block select-none pointer-events-none`}
-                loading={idx === 0 ? 'eager' : 'lazy'}
+                onLoad={() => setReadySlides(prev => prev.includes(idx) ? prev : [...prev, idx])}
+                loading={idx === 0 || idx === requestedSlide ? 'eager' : 'lazy'}
                 fetchPriority={idx === 0 ? 'high' : 'low'}
               />
             </div>
@@ -162,7 +177,7 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
               }`}
               onClick={(e) => {
                 e.stopPropagation();
-                setCurrentSlide(idx);
+                setRequestedSlide(idx);
               }}
             />
           ))}

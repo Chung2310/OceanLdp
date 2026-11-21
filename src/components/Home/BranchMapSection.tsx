@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'wouter';
 import { MapPin, Phone, Clock, ExternalLink, ArrowRight } from 'lucide-react';
@@ -94,7 +95,7 @@ export default function BranchMapSection(): JSX.Element {
           {/* Right Branch Preview Detail */}
           {activeBranch && <div className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-sm flex flex-col">
             <div className="relative aspect-[16/9] bg-slate-900 overflow-hidden">
-              <img src={activeBranch.image} alt={activeBranch.name} className="w-full h-full object-cover" />
+              <SmartImage src={activeBranch.image} alt={activeBranch.name} className="w-full h-full object-cover" />
               <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-md">
                 GIỜ LÀM VIỆC: 08:00 - 21:30
               </div>

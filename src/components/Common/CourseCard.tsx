@@ -1,3 +1,4 @@
+import SmartImage from './SmartImage';
 import React from 'react';
 import { Link } from 'wouter';
 import { Clock, Users, ArrowRight, ShieldCheck, BookOpen } from 'lucide-react';
@@ -13,7 +14,7 @@ export default function CourseCard({ course, onOpenConsult }: CourseCardProps): 
     <div className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full group">
       {/* Thumbnail */}
       <div className="relative w-full h-48 overflow-hidden bg-slate-900">
-        <img 
+        <SmartImage
           src={course.thumbnail} 
           alt={course.title} 
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 

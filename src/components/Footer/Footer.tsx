@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import { Link } from 'wouter';
 import { Phone, Mail, MapPin, Clock, Facebook, Youtube, ShieldCheck, Award, Sparkles, Send } from 'lucide-react';
@@ -59,7 +60,7 @@ export default function Footer(): JSX.Element {
             {/* Col 1: Brand & Contact Info (4 cols) */}
             <div className="lg:col-span-4 space-y-4">
               <div className="inline-block bg-white p-2.5 rounded-2xl shadow-md border border-white/30">
-                <img 
+                <SmartImage
                   src={logoImg} 
                   alt="Trung tâm Ngoại ngữ Green Ocean" 
                   className="h-11 w-auto object-contain block"

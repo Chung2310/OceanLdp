@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React, { useState } from 'react';
 import { 
   Calendar, 
@@ -393,7 +394,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
               {/* Sách Sơ Cấp */}
               <div className="flex flex-col items-center text-center group">
                 <div className="relative w-full max-w-[260px] aspect-square rounded-lg overflow-hidden bg-white p-3 mb-4 shadow-sm hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1 border border-slate-100">
-                  <img 
+                  <SmartImage
                     src={bookSoCap} 
                     alt="Hán ngữ Msutong sơ cấp" 
                     className="w-full h-full object-contain rounded-md"
@@ -411,7 +412,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
               {/* Sách Trung Cấp */}
               <div className="flex flex-col items-center text-center group">
                 <div className="relative w-full max-w-[260px] aspect-square rounded-lg overflow-hidden bg-white p-3 mb-4 shadow-sm hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1 border border-slate-100">
-                  <img 
+                  <SmartImage
                     src={bookTrungCap} 
                     alt="Hán ngữ Msutong trung cấp" 
                     className="w-full h-full object-contain rounded-md"
@@ -429,7 +430,7 @@ export default function SchedulePage({ onOpenLeadModal }: SchedulePageProps): JS
               {/* Sách Cao Cấp */}
               <div className="flex flex-col items-center text-center group">
                 <div className="relative w-full max-w-[260px] aspect-square rounded-lg overflow-hidden bg-white p-3 mb-4 shadow-sm hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1 border border-slate-100">
-                  <img 
+                  <SmartImage
                     src={bookCaoCap} 
                     alt="Hán ngữ Msutong cao cấp" 
                     className="w-full h-full object-contain rounded-md"

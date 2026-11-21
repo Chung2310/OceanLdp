@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { ChevronRight, Calendar, ArrowRight, BookOpen } from 'lucide-react';
@@ -98,7 +99,7 @@ export default function NewsPage(): JSX.Element {
                   href={`/tin-tuc/${post.slug}`} 
                   className="relative sm:w-[220px] md:w-[240px] aspect-[16/9] rounded-md overflow-hidden bg-slate-100 shrink-0 block"
                 >
-                  <img 
+                  <SmartImage
                     src={post.image} 
                     alt={post.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

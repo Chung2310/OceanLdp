@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React, { useState, useEffect } from 'react';
 
 import teacher1 from '../../asset/teachers/1.jpg';
@@ -204,7 +205,7 @@ export default function TeachersSection(): JSX.Element {
                         : 'w-[96px] h-[96px] md:w-[150px] md:h-[150px] scale-100 border-4 border-white/90 shadow-[0_14px_30px_rgba(17,24,39,0.13)] hover:border-white'
                       }`}
                   >
-                    <img
+                    <SmartImage
                       src={item.image}
                       alt={item.name}
                       width={150}

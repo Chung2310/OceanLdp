@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Heart, X, PhoneCall, LayoutGrid, SlidersHorizontal } from 'lucide-react';
 import logoImg from '../../asset/img/logo.jpg';
@@ -310,13 +311,13 @@ export default function TeachersSection({ onOpenLeadModal }: TeachersSectionProp
                           
                           {/* Top Mini Brand Banner inside Card */}
                           <div className="pt-3 px-4 flex items-center justify-center gap-1.5 z-10">
-                            <img src={logoImg} alt="Green Ocean Logo" className="h-5 w-auto object-contain" />
+                            <SmartImage src={logoImg} alt="Green Ocean Logo" className="h-5 w-auto object-contain" />
                             <div className="h-px bg-[#1B7E45]/40 flex-1 ml-1" />
                           </div>
 
                           {/* Teacher Portrait Image */}
                           <div className="relative w-full flex-1 flex items-center justify-center overflow-hidden">
-                            <img
+                            <SmartImage
                               src={t.image}
                               alt={t.badgeName}
                               className="w-full h-full object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-105"
@@ -404,13 +405,13 @@ export default function TeachersSection({ onOpenLeadModal }: TeachersSectionProp
                   <div className="relative w-full h-full bg-white rounded-t-[70px] sm:rounded-t-[85px] rounded-b-2xl border-[3px] border-[#1B7E45] overflow-hidden shadow-lg flex flex-col justify-between transition-all duration-300 group-hover:shadow-2xl group-hover:border-[#156637]">
                     {/* Top Mini Brand Banner inside Card */}
                     <div className="pt-3 px-4 flex items-center justify-center gap-1.5 z-10">
-                      <img src={logoImg} alt="Green Ocean Logo" className="h-5 w-auto object-contain" />
+                      <SmartImage src={logoImg} alt="Green Ocean Logo" className="h-5 w-auto object-contain" />
                       <div className="h-px bg-[#1B7E45]/40 flex-1 ml-1" />
                     </div>
 
                     {/* Teacher Portrait Image */}
                     <div className="relative w-full flex-1 flex items-center justify-center overflow-hidden">
-                      <img
+                      <SmartImage
                         src={t.image}
                         alt={t.badgeName}
                         className="w-full h-full object-cover object-[center_15%] transition-transform duration-500 group-hover:scale-105"
@@ -491,13 +492,13 @@ export default function TeachersSection({ onOpenLeadModal }: TeachersSectionProp
                 
                 {/* Top Mini Brand Banner */}
                 <div className="pt-3 px-4 flex items-center justify-center gap-1.5 z-10">
-                  <img src={logoImg} alt="Green Ocean Logo" className="h-5 w-auto object-contain" />
+                  <SmartImage src={logoImg} alt="Green Ocean Logo" className="h-5 w-auto object-contain" />
                   <div className="h-px bg-[#1B7E45]/40 flex-1 ml-1" />
                 </div>
 
                 {/* Teacher Portrait */}
                 <div className="relative w-full flex-1 flex items-center justify-center overflow-hidden">
-                  <img
+                  <SmartImage
                     src={selectedTeacher.image}
                     alt={selectedTeacher.badgeName}
                     className="w-full h-full object-cover object-[center_15%]"

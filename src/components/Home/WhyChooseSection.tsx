@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React, { useState, useEffect } from 'react';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import reason01 from '../../asset/reasons/home-reason01.png';
@@ -199,7 +200,7 @@ export default function WhyChooseSection(): JSX.Element {
               {/* Right Column: Illustration Image (clean, aspect-square, NO overlay badge) */}
               <div className="lg:col-span-5 flex items-center justify-center">
                 <div className="relative w-full max-w-[380px] sm:max-w-[420px] aspect-square rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 bg-slate-50">
-                  <img 
+                  <SmartImage
                     src={currentReason.image} 
                     alt={currentReason.title} 
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-102"
