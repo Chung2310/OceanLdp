@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import { Link } from 'wouter';
 import { Calendar, Eye, ArrowRight } from 'lucide-react';
@@ -27,7 +28,7 @@ export default function LatestNewsSection(): JSX.Element {
               className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col group"
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-900">
-                <img 
+                <SmartImage
                   src={post.image} 
                   alt={post.title} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 

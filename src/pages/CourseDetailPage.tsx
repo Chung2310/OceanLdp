@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React from 'react';
 import { useRoute, Link } from 'wouter';
 import { 
@@ -236,7 +237,7 @@ export default function CourseDetailPage({ onOpenLeadModal }: CourseDetailPagePr
 
         {/* 9. Authentic Classroom Photo */}
         <div className="my-10 rounded-lg overflow-hidden border border-slate-200 shadow-md">
-          <img 
+          <SmartImage
             src={reason06} 
             alt="Lớp học tiếng Trung tại Green Ocean" 
             className="w-full h-auto object-cover max-h-[500px]"

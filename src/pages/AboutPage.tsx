@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React from 'react';
 import { Link } from 'wouter';
 import { PhoneCall, CheckCircle2, ArrowRight } from 'lucide-react';
@@ -51,7 +52,7 @@ export default function AboutPage({ onOpenLeadModal }: AboutPageProps): JSX.Elem
 
         {/* Featured Banner Image 1 */}
         <div className="my-8">
-          <img
+          <SmartImage
             src={banner2Img}
             alt="Green Ocean - 6 năm hơn 5.000 học viên đồng hành"
             className="w-full h-auto rounded-lg shadow-xs object-cover"
@@ -87,7 +88,7 @@ export default function AboutPage({ onOpenLeadModal }: AboutPageProps): JSX.Elem
           </p>
           
           <div className="my-6 max-w-[760px] mx-auto">
-            <img
+            <SmartImage
               src={reason03Img}
               alt="Chương trình đào tạo bài bản thực tế tại Green Ocean"
               className="w-full h-auto rounded-lg shadow-xs object-cover"
@@ -109,7 +110,7 @@ export default function AboutPage({ onOpenLeadModal }: AboutPageProps): JSX.Elem
           </p>
           
           <div className="my-6">
-            <img
+            <SmartImage
               src={banner1Img}
               alt="Lộ trình học tiếng Trung từ mất gốc đến HSK5"
               className="w-full h-auto rounded-lg shadow-xs object-cover"
@@ -131,7 +132,7 @@ export default function AboutPage({ onOpenLeadModal }: AboutPageProps): JSX.Elem
           </p>
           
           <div className="my-6">
-            <img
+            <SmartImage
               src={banner3Img}
               alt="Đội ngũ giáo viên Green Ocean - Nền tảng tạo nên chất lượng"
               className="w-full h-auto rounded-lg shadow-xs object-cover"
@@ -178,7 +179,7 @@ export default function AboutPage({ onOpenLeadModal }: AboutPageProps): JSX.Elem
           </ul>
 
           <div className="my-6 max-w-[760px] mx-auto">
-            <img
+            <SmartImage
               src={banner4Img}
               alt="Môi trường đào tạo năng động tại Green Ocean"
               className="w-full h-auto rounded-lg shadow-xs object-cover"

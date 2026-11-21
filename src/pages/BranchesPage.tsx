@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { MapPin, Phone, Mail, ExternalLink, ArrowRight, Building2, ChevronRight } from 'lucide-react';
@@ -71,7 +72,7 @@ export default function BranchesPage(): JSX.Element {
               className="bg-white rounded-lg overflow-hidden border border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1 flex flex-col group"
             >
               <Link href={`/he-thong-co-so/${branch.id}`} className="relative aspect-[16/10] overflow-hidden bg-slate-100 block">
-                <img 
+                <SmartImage
                   src={branch.image} 
                   alt={branch.name} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 

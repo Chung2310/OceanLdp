@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 
 import vinhDanh1 from '../../asset/achievers/vinh-danh-hoc-vien1_a-1.webp';
@@ -46,7 +47,7 @@ const row2Students: Achiever[] = [
 function StudentCard({ student }: { student: Achiever }) {
   return (
     <article className="w-[220px] sm:w-[240px] h-[300px] sm:h-[320px] shrink-0 rounded-2xl overflow-hidden relative shadow-lg select-none hover:scale-102 transition-transform duration-300 bg-white">
-      <img
+      <SmartImage
         src={student.img}
         alt={`Học viên ${student.name} đạt ${student.level}`}
         width={240}

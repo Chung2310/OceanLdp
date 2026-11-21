@@ -1,3 +1,6 @@
+// Source: https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop
+import localRemoteImage0 from '../../asset/remote/ddad7080d6ad5147.jpg';
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import { Link } from 'wouter';
 import { Sparkles } from 'lucide-react';
@@ -62,8 +65,8 @@ export default function MethodAndBookSection({ onOpenDownloadModal }: MethodAndB
 
           <div className="relative">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-xl bg-slate-100">
-              <img 
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" 
+              <SmartImage
+                src={localRemoteImage0}
                 alt="Lớp học tiếng Trung tích hợp" 
                 className="w-full h-full object-cover"
               />
@@ -106,7 +109,7 @@ export default function MethodAndBookSection({ onOpenDownloadModal }: MethodAndB
             {msutongBooks.map((book) => (
               <div key={book.id} className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col group">
                 <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-4 bg-slate-50 flex items-center justify-center p-3">
-                  <img src={book.image} alt={book.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                  <SmartImage src={book.image} alt={book.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                   <span className="absolute top-2 left-2 bg-[#F37021] text-white text-[10px] font-extrabold px-2 py-0.5 rounded shadow-sm">
                     {book.category}
                   </span>

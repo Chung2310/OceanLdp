@@ -1,12 +1,18 @@
 import http from 'node:http';
-import { createReadStream, existsSync } from 'node:fs';
+import { createReadStream, existsSync, statSync, mkdirSync, cpSync } from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { MongoClient } from 'mongodb';
+import { createMediaStore } from './media-store.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(root, 'dist');
+const assetDir = process.env.ASSET_DIR ? path.resolve(process.env.ASSET_DIR) : path.join(distDir, 'assets');
+if (process.env.ASSET_DIR) {
+  mkdirSync(assetDir, { recursive: true });
+  cpSync(path.join(distDir, 'assets'), assetDir, { recursive: true });
+}
 const port = Number(process.env.API_PORT || process.env.PORT || 3013);
 const username = process.env.ADMIN_USERNAME;
 const password = process.env.ADMIN_PASSWORD;
@@ -36,6 +42,22 @@ await mongoClient.connect();
 const database = mongoClient.db();
 const adminAccounts = database.collection('admin_accounts');
 const contentCollections = database.collection('content_collections');
+const mediaStore = createMediaStore(database);
+const contentCache = new Map();
+const contentPending = new Map();
+async function loadPublicContent(type) {
+  const cached = contentCache.get(type);
+  if (cached && cached.expires > Date.now()) return cached.value;
+  if (contentPending.has(type)) return contentPending.get(type);
+  const work = (async () => {
+    const document = await contentCollections.findOne({ _id: type });
+    const value = { initialized: Boolean(document), items: await mediaStore.externalize(document?.items || []) };
+    contentCache.set(type, { value, expires: Date.now() + 30000 });
+    return value;
+  })().finally(() => contentPending.delete(type));
+  contentPending.set(type, work);
+  return work;
+}
 await adminAccounts.createIndex({ username: 1 }, { unique: true });
 
 if (!await adminAccounts.findOne({ username })) {
@@ -157,22 +179,38 @@ async function handleApi(req, res, url) {
     const session = getSession(req);
     return session ? sendJson(res, 200, { username: session.username }) : sendJson(res, 401, { message: 'Chưa đăng nhập.' });
   }
-  const publicMatch = url.pathname.match(/^\/api\/content\/(news|resources|schedules|courses|branches)$/);
+  const mediaMatch = url.pathname.match(/^\/api\/media\/([a-f0-9]{64})$/);
+  if (mediaMatch && (req.method === 'GET' || req.method === 'HEAD')) return mediaStore.serve(req, res, mediaMatch[1]);
+  const publicMatch = url.pathname.match(/^\/api\/content\/(news|resources|schedules|courses|branches)(?:\/([^/]+))?$/);
   if (req.method === 'GET' && publicMatch) {
-    const document = await contentCollections.findOne({ _id: publicMatch[1] });
-    return sendJson(res, 200, { initialized: Boolean(document), items: document?.items || [] }, { 'Cache-Control': 'no-store' });
+    const result = await loadPublicContent(publicMatch[1]);
+    const cacheHeaders = { 'Cache-Control': 'public, max-age=30' };
+    if (publicMatch[2]) {
+      const key = decodeURIComponent(publicMatch[2]);
+      const item = result.items.find(item => item.id === key || item.slug === key);
+      return sendJson(res, 200, { initialized: result.initialized, item: item || null }, cacheHeaders);
+    }
+    const summary = url.searchParams.get('view') === 'summary';
+    const items = summary ? result.items.map(({ content, infographicImage, ...item }) => item) : result.items;
+    return sendJson(res, 200, { initialized: result.initialized, items }, cacheHeaders);
   }
   const adminMatch = url.pathname.match(/^\/api\/admin\/content\/(news|resources|schedules|courses|branches)$/);
+  if (adminMatch && req.method === 'GET') {
+    if (!getSession(req)) return sendJson(res, 401, { message: 'Unauthorized' });
+    const document = await contentCollections.findOne({ _id: adminMatch[1] });
+    return sendJson(res, 200, { initialized: Boolean(document), items: await mediaStore.externalize(document?.items || []) }, { 'Cache-Control': 'no-store' });
+  }
   if (adminMatch && req.method === 'PUT') {
     if (!getSession(req)) return sendJson(res, 401, { message: 'Phiên đăng nhập đã hết hạn.' });
     const body = await readBody(req);
     if (!Array.isArray(body.items) || body.items.length > 2000) return sendJson(res, 400, { message: 'Dữ liệu không hợp lệ.' });
-    const items = body.items.map(cleanItem).filter(Boolean);
+    const items = await mediaStore.externalize(body.items.map(cleanItem).filter(Boolean));
     await contentCollections.updateOne(
       { _id: adminMatch[1] },
       { $set: { items, updatedAt: new Date(), updatedBy: getSession(req).username } },
       { upsert: true }
     );
+    contentCache.delete(adminMatch[1]);
     return sendJson(res, 200, { items });
   }
   return sendJson(res, 404, { message: 'Không tìm thấy API.' });
@@ -185,10 +223,18 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname.startsWith('/api/')) return await handleApi(req, res, url);
     let requested = decodeURIComponent(url.pathname);
     if (requested === '/') requested = '/index.html';
-    const target = path.resolve(distDir, `.${requested}`);
-    const safeTarget = target.startsWith(distDir) && existsSync(target) ? target : path.join(distDir, 'index.html');
+    const staticRoot = requested.startsWith('/assets/') ? assetDir : distDir;
+    const relative = requested.startsWith('/assets/') ? requested.slice('/assets'.length) : requested;
+    const target = path.resolve(staticRoot, `.${relative}`);
+    const insideDist = target.startsWith(staticRoot + path.sep);
+    const isFile = insideDist && existsSync(target) && statSync(target).isFile();
+    if (!isFile && (requested.startsWith('/assets/') || path.extname(requested))) {
+      res.writeHead(404, { 'Cache-Control': 'no-store', 'Content-Type': 'text/plain; charset=utf-8' });
+      return res.end('Not found');
+    }
+    const safeTarget = isFile ? target : path.join(distDir, 'index.html');
     const ext = path.extname(safeTarget).toLowerCase();
-    res.writeHead(200, { 'Content-Type': mime[ext] || 'application/octet-stream', 'Cache-Control': ext === '.html' ? 'no-cache' : 'public, max-age=31536000, immutable' });
+    res.writeHead(200, { 'Content-Type': mime[ext] || 'application/octet-stream', 'Cache-Control': ext === '.html' ? 'no-cache' : requested.startsWith('/assets/') ? 'public, max-age=31536000, immutable' : 'public, max-age=3600' });
     createReadStream(safeTarget).pipe(res);
   } catch (error) {
     const status = error.message === 'PAYLOAD_TOO_LARGE' ? 413 : 500;

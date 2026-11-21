@@ -1,3 +1,9 @@
+// Local replacement for a removed Unsplash education image (HTTP 404).
+import educationFallback from '../asset/remote/462c08f6a06e75a3.jpg';
+// Source: https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop
+import localRemoteImage0 from '../asset/remote/4c4bdaaaf7c643b7.jpg';
+// Source: https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop
+import localRemoteImage1 from '../asset/remote/98a7c032ea7dd3ff.jpg';
 import { NewsPost } from '../types';
 
 import thumbTapSan1 from '../asset/news/thumb_tap_san_1.png';
@@ -40,7 +46,7 @@ export const newsData: NewsPost[] = [
     date: '18/08/2026',
     author: 'Ban Chuyên Môn Green Ocean',
     views: '15.420',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop',
+    image: localRemoteImage0,
     layoutType: 'standard',
     excerpt: 'Bộ Giáo dục Trung Quốc đã ban hành chuẩn đánh giá mới New HSK 3 cấp 9 bậc. Cùng Green Ocean tìm hiểu lộ trình học và thay đổi kỹ năng để tự tin đạt điểm cao.',
     content: `
@@ -112,7 +118,7 @@ export const newsData: NewsPost[] = [
     date: '15/08/2026',
     author: 'Nguyễn Thu Trang (Học viên CSC)',
     views: '18.900',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop',
+    image: educationFallback,
     layoutType: 'standard',
     excerpt: 'Chia sẻ từng bước chuẩn bị kế hoạch học tập (Study Plan), thư giới thiệu giáo sư và cách vượt qua vòng phỏng vấn xin học bổng toàn phần.',
     content: `
@@ -177,7 +183,7 @@ export const newsData: NewsPost[] = [
     date: '05/09/2025',
     author: 'Ban Tư Vấn Du Học Green Ocean',
     views: '11.340',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop',
+    image: localRemoteImage1,
     layoutType: 'text-only',
     excerpt: 'Học bổng Giáo viên Tiếng Trung Quốc Tế (CIS) là một trong những học bổng danh giá và có đãi ngộ tốt nhất dành cho các bạn trẻ đam mê ngành Ngôn ngữ Trung.',
     content: `

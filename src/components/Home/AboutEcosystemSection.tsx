@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import { Flag, Heart, LayoutGrid, Star, ChevronRight, PhoneCall } from 'lucide-react';
 import defaultIntroImg from '../../asset/banner/banner4.png';
@@ -55,7 +56,7 @@ export default function AboutEcosystemSection({
 
           {/* Left Column: Image Card (Chiều cao bằng chính xác 100% khung bên phải) */}
           <div className="lg:col-span-5 relative w-full h-full min-h-[340px] rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 bg-white group flex">
-            <img
+            <SmartImage
               src={introImage}
               alt="Trung tâm Ngoại ngữ Green Ocean"
               className="w-full h-full object-cover rounded-3xl transition-transform duration-500 group-hover:scale-105 block"
@@ -76,7 +77,7 @@ export default function AboutEcosystemSection({
               {/* Kicker with Logo Badge */}
               <div className="flex items-center gap-2.5 mb-3">
                 <div className="w-7 h-7 rounded-full overflow-hidden shrink-0 border border-slate-200">
-                  <img src={logo} alt="Logo Green Ocean" className="w-full h-full object-contain" />
+                  <SmartImage src={logo} alt="Logo Green Ocean" className="w-full h-full object-contain" />
                 </div>
                 <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1B7E45]">
                   TRUNG TÂM TIẾNG TRUNG
