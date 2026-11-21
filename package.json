@@ -9,7 +9,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "start": "node --env-file-if-exists=.env server.mjs",
-    "test:performance": "node scripts/test-performance.mjs"
+    "test:performance": "node scripts/test-performance.mjs",
+    "test:mobile": "node scripts/test-mobile-images.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -18,11 +19,12 @@
     "mongodb": "^7.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3",
-    "wouter": "^3.5.0",
-    "sharp": "^0.35.4"
+    "wouter": "^3.5.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.1",
     "@types/canvas-confetti": "^1.9.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",

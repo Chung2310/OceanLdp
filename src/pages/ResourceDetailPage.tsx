@@ -28,7 +28,7 @@ export default function ResourceDetailPage(): JSX.Element {
     }
   };
 
-  const editorialHtml = useEditorialHtml(item?.content);
+  const { html: editorialHtml, ref: editorialRef } = useEditorialHtml(item?.content);
 
   if (item === undefined) return <div className="min-h-[60vh] grid place-items-center text-slate-500" role="status">?ang t?i n?i dung?</div>;
 
@@ -124,7 +124,8 @@ export default function ResourceDetailPage(): JSX.Element {
         {item.content ? (
           <div 
             className="prose max-w-none text-slate-700 text-sm sm:text-[15px] leading-relaxed space-y-4 mb-10 text-justify"
-            dangerouslySetInnerHTML={{ __html: editorialHtml }}
+            ref={editorialRef}
+          dangerouslySetInnerHTML={{ __html: editorialHtml }}
           />
         ) : (
           <div className="text-slate-700 text-sm sm:text-[15px] leading-relaxed space-y-4 mb-10">

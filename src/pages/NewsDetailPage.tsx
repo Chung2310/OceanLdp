@@ -19,7 +19,7 @@ export default function NewsDetailPage(): JSX.Element {
   const post = useNewsDetail(slug);
   const relatedPosts = post ? newsData.filter((n) => n.id !== post.id).slice(0, 4) : [];
 
-  const editorialHtml = useEditorialHtml(post?.content);
+  const { html: editorialHtml, ref: editorialRef } = useEditorialHtml(post?.content);
 
   if (post === undefined) return <div className="min-h-[60vh] grid place-items-center text-slate-500" role="status">?ang t?i n?i dung?</div>;
 
@@ -95,6 +95,7 @@ export default function NewsDetailPage(): JSX.Element {
         {/* 4. Main Editorial Content Body */}
         <div 
           className="prose max-w-none text-slate-700 text-sm sm:text-[15px] leading-relaxed space-y-4 mb-10 text-justify"
+          ref={editorialRef}
           dangerouslySetInnerHTML={{ __html: editorialHtml }}
         />
 

@@ -116,8 +116,8 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
             >
               <SmartImage
                 src={slide.image}
-                srcSet={`${slide.mobileImage} 768w, ${slide.image} 1920w`}
-                sizes="100vw"
+                mobileSrc={slide.mobileImage}
+                defer={idx !== 0 && idx !== requestedSlide && !readySlides.includes(idx)}
                 decoding="async"
                 alt={slide.alt}
                 width={2006}

@@ -1,3 +1,5 @@
+import { useNearViewport } from '../../services/useNearViewport';
+import { getImageVariant } from '../../services/imageVariants';
 import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import leadBg from '../../asset/poster/background.png';
@@ -9,6 +11,8 @@ interface LeadBannerSectionProps {
 }
 
 export default function LeadBannerSection({ onShowToast }: LeadBannerSectionProps): JSX.Element {
+  const { ref: sectionRef, nearViewport } = useNearViewport<HTMLElement>();
+  const background = nearViewport && window.matchMedia('(max-width: 767px)').matches ? getImageVariant(leadBg) || leadBg : leadBg;
   const branchOptions = [
     { label: 'Cơ sở 1: Số 567 đường Hàn Thuyên, P. Đại Phúc, TP. Bắc Ninh', value: 'Cơ sở 1: Hàn Thuyên – Đại Phúc' },
     { label: 'Cơ sở 2: Ngã 6 Phường Đại Phúc, TP. Bắc Ninh', value: 'Cơ sở 2: Ngã 6 Đại Phúc' },
@@ -25,9 +29,9 @@ export default function LeadBannerSection({ onShowToast }: LeadBannerSectionProp
   ];
 
   return (
-    <section 
+    <section ref={sectionRef}
       className="relative w-full py-10 sm:py-14 md:py-18 lg:py-22 bg-cover bg-center border-y border-slate-200/60"
-      style={{ backgroundImage: `url(${leadBg})` }}
+      style={{ backgroundImage: nearViewport ? `url(${background})` : undefined }}
       aria-label="Đăng ký nhận tư vấn khóa học Green Ocean"
     >
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -22,6 +22,17 @@ export default function optimizedImages() {
         : image.jpeg({ quality: 82, progressive: true, mozjpeg: true })).toBuffer();
       const name = `${path.basename(file, path.extname(file))}${requestedWidth ? `-${requestedWidth}` : ''}.${extension}`;
       const reference = this.emitFile({ type: 'asset', name, source });
+      if (!requestedWidth && (metadata.autoOrient?.width || metadata.width) > 768) {
+        const small = sharp(file).rotate().resize({ width: 768, height: 768, fit: 'inside', withoutEnlargement: true });
+        const mobileSource = await (metadata.hasAlpha
+          ? small.png({ palette: true, quality: 85, compressionLevel: 9 })
+          : small.jpeg({ quality: 78, progressive: true, mozjpeg: true })).toBuffer();
+        const mobileReference = this.emitFile({ type: 'asset', name: path.basename(file, path.extname(file)) + '-mobile.' + extension, source: mobileSource });
+        return `import { registerImageVariant } from '/src/services/imageVariants.ts';
+          const original = import.meta.ROLLUP_FILE_URL_${reference};
+          registerImageVariant(original, import.meta.ROLLUP_FILE_URL_${mobileReference});
+          export default original;`;
+      }
       return `export default import.meta.ROLLUP_FILE_URL_${reference};`;
     }
   };

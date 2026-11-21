@@ -121,3 +121,10 @@ deployment using this configuration; it cannot restore assets already removed.
 Validate with `npm run build` and `npm run test:performance`. The latter exercises
 API handlers with an in-memory database, actual image encoding and BSON values;
 it does not replace an end-to-end check against production MongoDB or Safari.
+
+For the mobile image regression check, run `npx playwright install webkit`, then
+`npm run build` and `npm run test:mobile`. It tests WebKit with an iPhone viewport:
+small mobile sources, no duplicate desktop banner request, deferred offscreen
+images, loading on scroll, slider changes, and sources updating on resize.
+This checks the browser engine locally; validate network latency separately on
+production and on an actual iPhone. Mobile variants are generated during build.
