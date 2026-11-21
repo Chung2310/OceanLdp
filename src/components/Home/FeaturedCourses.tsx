@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import { Menu } from 'lucide-react';
 import { Link } from 'wouter';
@@ -39,7 +40,7 @@ export default function FeaturedCourses({ onOpenLeadModal }: FeaturedCoursesProp
             >
               {/* Poster Image Frame */}
               <div className="w-full aspect-[720/490] rounded-2xl overflow-hidden bg-slate-50 shadow-[0_2px_12px_rgba(0,0,0,0.06)] group-hover:shadow-[0_8px_26px_rgba(27,126,69,0.18)] group-hover:scale-[1.02] transition-all duration-300">
-                <img
+                <SmartImage
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover block"

@@ -1,3 +1,4 @@
+import SmartImage from '../components/Common/SmartImage';
 import React, { useState } from 'react';
 import {
   CheckCircle2, ChevronRight,
@@ -63,7 +64,7 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
 
           {/* Photo 1: Authentic Classroom photo matching screenshot */}
           <div className="my-6 rounded-xl overflow-hidden border border-slate-200 shadow-sm">
-            <img 
+            <SmartImage
               src={reason06} 
               alt="Lớp học tiếng Trung tích hợp 4 kỹ năng tại Green Ocean" 
               className="w-full h-auto object-cover max-h-[500px]"
@@ -106,7 +107,7 @@ export default function CoursesPage({ onOpenLeadModal }: CoursesPageProps): JSX.
 
           {/* Photo 2: Students in classroom */}
           <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm mb-8">
-            <img 
+            <SmartImage
               src={banner4} 
               alt="Môi trường học tiếng Trung thực tế tại Green Ocean Bắc Ninh" 
               className="w-full h-auto object-cover max-h-[480px]"

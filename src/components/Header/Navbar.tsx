@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ChevronDown, Menu } from 'lucide-react';
@@ -28,7 +29,7 @@ export default function Navbar({ onOpenLeadModal }: NavbarProps): JSX.Element {
         <div className={`max-w-[1360px] mx-auto px-6 flex items-center justify-between transition-all duration-200 ${isScrolled ? 'min-h-[72px] py-2' : 'min-h-[95px] py-3'}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <img
+            <SmartImage loading="eager"
               src={logoImg}
               alt="GREEN OCEAN"
               style={{ maxHeight: isScrolled ? '52px' : '62px', width: 'auto' }}

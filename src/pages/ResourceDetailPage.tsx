@@ -1,7 +1,9 @@
+import { useEditorialHtml } from '../services/editorialHtml';
+import SmartImage from '../components/Common/SmartImage';
 import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, ChevronRight, Sparkles, BookOpen, Download } from 'lucide-react';
-import { useResources } from '../services/contentService';
+import { useResources, useResourceDetail } from '../services/contentService';
 import scholarshipBannerImg from '../asset/branches/banner_scholarship.png';
 import ConsultationForm from '../components/Common/ConsultationForm';
 
@@ -16,7 +18,7 @@ export default function ResourceDetailPage(): JSX.Element {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [slug]);
 
-  const item = resourcesData.find((r) => r.slug === slug || r.id === slug) || resourcesData[0];
+  const item = useResourceDetail(slug);
   const relatedItems = item ? resourcesData.filter((r) => r.id !== item.id).slice(0, 4) : [];
 
   const scrollToRegistration = () => {
@@ -25,6 +27,10 @@ export default function ResourceDetailPage(): JSX.Element {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const editorialHtml = useEditorialHtml(item?.content);
+
+  if (item === undefined) return <div className="min-h-[60vh] grid place-items-center text-slate-500" role="status">?ang t?i n?i dung?</div>;
 
   if (!item) return <div className="min-h-[60vh] grid place-items-center text-slate-500">Tài liệu không tồn tại.</div>;
 
@@ -80,7 +86,7 @@ export default function ResourceDetailPage(): JSX.Element {
         {/* 2. Top Promotional Scholarship Banner (Screenshots 2 & 4) */}
         <div className="mb-8 rounded-lg overflow-hidden border border-amber-200/80 shadow-md bg-gradient-to-br from-amber-50 to-orange-50 relative group">
           <div className="relative">
-            <img 
+            <SmartImage
               src={scholarshipBannerImg} 
               alt="Học bổng ưu đãi đặc biệt tại Green Ocean" 
               className="w-full h-auto object-cover block"
@@ -118,7 +124,7 @@ export default function ResourceDetailPage(): JSX.Element {
         {item.content ? (
           <div 
             className="prose max-w-none text-slate-700 text-sm sm:text-[15px] leading-relaxed space-y-4 mb-10 text-justify"
-            dangerouslySetInnerHTML={{ __html: item.content }}
+            dangerouslySetInnerHTML={{ __html: editorialHtml }}
           />
         ) : (
           <div className="text-slate-700 text-sm sm:text-[15px] leading-relaxed space-y-4 mb-10">
@@ -189,7 +195,7 @@ export default function ResourceDetailPage(): JSX.Element {
                 className="flex items-start gap-3.5 p-3.5 bg-white rounded-lg border border-slate-200 hover:border-[#1B7E45] hover:shadow-xs transition-all group block"
               >
                 <div className="relative w-24 h-18 rounded-md overflow-hidden bg-slate-100 shrink-0">
-                  <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <SmartImage src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                   <div className="absolute top-1 left-1 bg-white/90 border border-red-500 rounded-[2px] px-1 py-0.2 text-center text-[9px] leading-tight font-black text-red-600">
                     {r.day || '15'}
                   </div>

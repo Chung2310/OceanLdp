@@ -1,3 +1,9 @@
+// Local replacement for a removed Unsplash education image (HTTP 404).
+import educationFallback from '../asset/remote/462c08f6a06e75a3.jpg';
+// Source: https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop
+import localRemoteImage0 from '../asset/remote/462c08f6a06e75a3.jpg';
+// Source: https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=800&auto=format&fit=crop
+import localRemoteImage1 from '../asset/remote/25c676fdaff4e2f5.jpg';
 import { StudyAbroadProgram } from '../types';
 
 export const studyAbroadData: StudyAbroadProgram[] = [
@@ -28,7 +34,7 @@ export const studyAbroadData: StudyAbroadProgram[] = [
       'Đại học Nhân dân Trung Quốc'
     ],
     deadline: 'Tháng 10 - Tháng 3 hàng năm',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop',
+    image: localRemoteImage0,
     desc: 'Học bổng danh giá và quyền lực nhất do Bộ Giáo dục Trung Quốc cấp nhằm hỗ trợ sinh viên quốc tế xuất sắc theo học tại các trường đại học trọng điểm Top đầu.'
   },
   {
@@ -57,7 +63,7 @@ export const studyAbroadData: StudyAbroadProgram[] = [
       'Đại học Sư phạm Hoa Trung'
     ],
     deadline: 'Tháng 11 - Tháng 4 hàng năm',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop',
+    image: educationFallback,
     desc: 'Chương trình học bổng chuyên biệt đào tạo đội ngũ giáo viên, giảng viên tiếng Hán xuất sắc trên toàn cầu với tỷ lệ đỗ cực cao tại Green Ocean.'
   },
   {
@@ -85,7 +91,7 @@ export const studyAbroadData: StudyAbroadProgram[] = [
       'Đại học Vân Nam'
     ],
     deadline: 'Tiếp nhận hồ sơ quanh năm cho kỳ mùa Xuân (tháng 3) & mùa Thu (tháng 9)',
-    image: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=800&auto=format&fit=crop',
+    image: localRemoteImage1,
     desc: 'Lựa chọn hoàn hảo cho các bạn trẻ muốn trải nghiệm cuộc sống du học, rèn phản xạ ngôn ngữ thực tế trước khi học lên Đại học hoặc làm việc quốc tế.'
   }
 ];

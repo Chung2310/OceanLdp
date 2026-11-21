@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { Route, Switch, useLocation } from 'wouter';
 import Navbar from './components/Header/Navbar';
 import Footer from './components/Footer/Footer';
@@ -8,23 +8,23 @@ import DownloadModal from './components/Common/DownloadModal';
 import Toast from './components/Common/Toast';
 
 import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import CoursesPage from './pages/CoursesPage';
-import CourseDetailPage from './pages/CourseDetailPage';
-import SchedulePage from './pages/SchedulePage';
-import TeachersPage from './pages/TeachersPage';
-import BranchesPage from './pages/BranchesPage';
-import BranchDetailPage from './pages/BranchDetailPage';
-import StudyAbroadPage from './pages/StudyAbroadPage';
-import ResourcesPage from './pages/ResourcesPage';
-import ResourceDetailPage from './pages/ResourceDetailPage';
-import NewsPage from './pages/NewsPage';
-import NewsDetailPage from './pages/NewsDetailPage';
-import FranchisePage from './pages/FranchisePage';
-import PlacementTestPage from './pages/PlacementTestPage';
-import ContactPage from './pages/ContactPage';
-import PolicyPage from './pages/PolicyPage';
-import AdminPage from './pages/AdminContentPage';
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const CoursesPage = lazy(() => import('./pages/CoursesPage'));
+const CourseDetailPage = lazy(() => import('./pages/CourseDetailPage'));
+const SchedulePage = lazy(() => import('./pages/SchedulePage'));
+const TeachersPage = lazy(() => import('./pages/TeachersPage'));
+const BranchesPage = lazy(() => import('./pages/BranchesPage'));
+const BranchDetailPage = lazy(() => import('./pages/BranchDetailPage'));
+const StudyAbroadPage = lazy(() => import('./pages/StudyAbroadPage'));
+const ResourcesPage = lazy(() => import('./pages/ResourcesPage'));
+const ResourceDetailPage = lazy(() => import('./pages/ResourceDetailPage'));
+const NewsPage = lazy(() => import('./pages/NewsPage'));
+const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'));
+const FranchisePage = lazy(() => import('./pages/FranchisePage'));
+const PlacementTestPage = lazy(() => import('./pages/PlacementTestPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PolicyPage = lazy(() => import('./pages/PolicyPage'));
+const AdminPage = lazy(() => import('./pages/AdminContentPage'));
 import MobileStickyBar from './components/Common/MobileStickyBar';
 import { ResourceItem } from './types';
 
@@ -64,6 +64,7 @@ export default function App(): JSX.Element {
 
       {/* Main Router View */}
       <div className="main-content-view">
+        <Suspense fallback={<div className="min-h-[60vh] grid place-items-center text-slate-500" role="status">?ang t?i trang?</div>}>
         <Switch>
           <Route path="/">
             <HomePage 
@@ -158,6 +159,7 @@ export default function App(): JSX.Element {
             </div>
           </Route>
         </Switch>
+        </Suspense>
       </div>
 
       {/* Floating Action Buttons */}

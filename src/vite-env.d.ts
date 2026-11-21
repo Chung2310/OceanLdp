@@ -24,3 +24,5 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+
+declare module "*?width=768" { const src: string; export default src; }

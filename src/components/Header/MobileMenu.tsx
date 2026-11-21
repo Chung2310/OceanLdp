@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { X, ChevronRight, Phone, Calendar, MapPin, BookOpen, GraduationCap, HelpCircle, PhoneCall } from 'lucide-react';
@@ -25,7 +26,7 @@ export default function MobileMenu({ isOpen, onClose, onOpenLeadModal }: MobileM
         {/* Drawer Header */}
         <div className="flex items-center justify-between p-4 border-b border-slate-200">
           <div className="flex items-center gap-2">
-            <img
+            <SmartImage loading="eager"
               src={logoImg}
               alt="GREEN OCEAN"
               style={{ maxHeight: '36px', width: 'auto' }}

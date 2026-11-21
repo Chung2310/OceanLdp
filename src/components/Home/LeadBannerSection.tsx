@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import leadBg from '../../asset/poster/background.png';
 import leadCutout from '../../asset/poster/img.png';
@@ -35,7 +36,7 @@ export default function LeadBannerSection({ onShowToast }: LeadBannerSectionProp
           {/* CỘT BÊN TRÁI: Hình ảnh tách nền tự nhiên (img.png) */}
           <div className="lg:col-span-6 flex justify-center items-center w-full">
             <div className="w-full max-w-[640px] flex justify-center items-center p-2 sm:p-4">
-              <img 
+              <SmartImage
                 src={leadCutout} 
                 alt="Đến Green Ocean - Bứt phá tiếng Trung" 
                 className="w-full h-auto max-h-[640px] lg:max-h-[720px] block object-contain drop-shadow-[0_20px_35px_rgba(20,90,50,0.18)]"

@@ -1,3 +1,4 @@
+import SmartImage from '../Common/SmartImage';
 import React from 'react';
 import { ArrowRight, BookOpen, CheckCircle } from 'lucide-react';
 import roadmapImg from '../../asset/img/roadmap/roadmap.png';
@@ -16,7 +17,7 @@ export default function HSKRoadmapSection({ onOpenLeadModal }: HSKRoadmapSection
           
           {/* Main Roadmap Image */}
           <div className="w-full bg-slate-50">
-            <img 
+            <SmartImage
               src={roadmapImg} 
               alt="Lộ trình tổng quan chinh phục HSK 3.0 Green Ocean" 
               className="w-full h-auto block object-cover"

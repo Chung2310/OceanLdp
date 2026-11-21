@@ -95,3 +95,29 @@ either stop that unrelated service or assign this deployment a different PORT.
 
 The VPS .env configures Compose and the server-side admin login. Never prefix
 admin credentials with `VITE_`, because Vite variables are exposed to browsers.
+
+## Image performance and deployment assets
+
+Production builds optimize source images automatically. Default remote images are
+vendored in `src/asset/remote`; source URLs are recorded beside their imports.
+Public news/resource lists use `?view=summary`; detail pages request one item.
+Client/server content caches last up to 30 seconds. Admin reads bypass the public
+cache and successful saves invalidate the application caches.
+
+Legacy base64 images are copied into MongoDB `media_assets` on access; existing
+content records are preserved until the next admin save replaces base64 with URLs.
+The first image request normalizes and resizes the stored media; subsequent requests
+reuse it. Include `media_assets` alongside `content_collections` in database backups.
+Do not delete media records simply because a post was deleted: other posts may share
+an image. Arbitrary external image URLs entered by admins still use their original host.
+
+Compose mounts the named `static_assets` volume at `/app/shared-assets`. Each startup
+copies the current hashed assets into it and retains previous versions for open tabs.
+Normal `docker compose down` preserves this volume. Do not pass `--volumes` during
+routine deploys. The volume grows with releases; remove old files only after the
+support window for open tabs has expired. This retention takes effect from the first
+deployment using this configuration; it cannot restore assets already removed.
+
+Validate with `npm run build` and `npm run test:performance`. The latter exercises
+API handlers with an in-memory database, actual image encoding and BSON values;
+it does not replace an end-to-end check against production MongoDB or Safari.

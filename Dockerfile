@@ -11,7 +11,7 @@ FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production PORT=3013
 COPY --from=builder /app/dist ./dist
-COPY server.mjs ./server.mjs
+COPY server.mjs media-store.mjs ./
 COPY package.json package-lock.json ./
 COPY --from=builder /app/node_modules ./node_modules
 EXPOSE 3013
