@@ -6,8 +6,8 @@ import {
   MessageSquare, BookMarked, PenTool, Target, Calendar
 } from 'lucide-react';
 import { useCourses } from '../services/contentService';
-import reason06 from '../asset/reasons/reason06.png';
-import banner4 from '../asset/banner/banner4.png';
+import reason06 from '../asset/reasons/optimized/reason06-960.webp';
+import banner4 from '../asset/banner/optimized/banner4-1254.webp';
 import ConsultationForm from '../components/Common/ConsultationForm';
 
 interface CourseDetailPageProps {

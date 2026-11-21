@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, BookOpen, CheckCircle } from 'lucide-react';
-import roadmapImg from '../../asset/img/roadmap/roadmap.png';
+import roadmapImg from '../../asset/img/roadmap/optimized/roadmap-1280.webp';
 
 interface HSKRoadmapSectionProps {
   onOpenLeadModal: () => void;

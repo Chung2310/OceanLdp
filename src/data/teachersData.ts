@@ -1,9 +1,9 @@
 import { Teacher } from '../types';
-import teacher1 from '../asset/teachers/1.jpg';
-import teacher2 from '../asset/teachers/2.jpg';
-import teacher3 from '../asset/teachers/3.jpg';
-import teacher4 from '../asset/teachers/4.jpg';
-import teacher5 from '../asset/teachers/5.jpg';
+import teacher1 from '../asset/teachers/optimized/1-768.webp';
+import teacher2 from '../asset/teachers/optimized/2-768.webp';
+import teacher3 from '../asset/teachers/optimized/3-768.webp';
+import teacher4 from '../asset/teachers/optimized/4-768.webp';
+import teacher5 from '../asset/teachers/optimized/5-768.webp';
 
 export const teachersData: Teacher[] = [
   {

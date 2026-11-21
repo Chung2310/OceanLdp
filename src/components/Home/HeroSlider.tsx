@@ -4,6 +4,18 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import banner1 from '../../asset/banner/banner1.png';
 import banner2 from '../../asset/banner/banner2.png';
 import banner3 from '../../asset/banner/banner-1311.png';
+import banner1_480 from '../../asset/banner/optimized/banner1-480.webp';
+import banner1_768 from '../../asset/banner/optimized/banner1-768.webp';
+import banner1_1280 from '../../asset/banner/optimized/banner1-1280.webp';
+import banner1_1920 from '../../asset/banner/optimized/banner1-1920.webp';
+import banner2_480 from '../../asset/banner/optimized/banner2-480.webp';
+import banner2_768 from '../../asset/banner/optimized/banner2-768.webp';
+import banner2_1280 from '../../asset/banner/optimized/banner2-1280.webp';
+import banner2_1920 from '../../asset/banner/optimized/banner2-1920.webp';
+import banner3_480 from '../../asset/banner/optimized/banner-1311-480.webp';
+import banner3_768 from '../../asset/banner/optimized/banner-1311-768.webp';
+import banner3_1280 from '../../asset/banner/optimized/banner-1311-1280.webp';
+import banner3_1920 from '../../asset/banner/optimized/banner-1311-1920.webp';
 
 interface HeroSliderProps {
   onOpenLeadModal: () => void;
@@ -13,6 +25,7 @@ interface HeroSliderProps {
 interface BannerSlide {
   id: number;
   image: string;
+  webpSrcSet: string;
   title: string;
   alt: string;
 }
@@ -21,18 +34,21 @@ const bannerSlides: BannerSlide[] = [
   {
     id: 1,
     image: banner1,
+    webpSrcSet: `${banner1_480} 480w, ${banner1_768} 768w, ${banner1_1280} 1280w, ${banner1_1920} 1920w`,
     title: 'Học tiếng Trung hôm nay - Vững vàng tương lai',
     alt: 'Banner Green Ocean - Khóa học tiếng Trung chuẩn đầu ra HSK'
   },
   {
     id: 2,
     image: banner2,
+    webpSrcSet: `${banner2_480} 480w, ${banner2_768} 768w, ${banner2_1280} 1280w, ${banner2_1920} 1920w`,
     title: 'Đội ngũ giáo viên - Nền tảng tạo nên chất lượng',
     alt: 'Banner Green Ocean - Đội ngũ giáo viên chất lượng cao'
   },
   {
     id: 3,
     image: banner3,
+    webpSrcSet: `${banner3_480} 480w, ${banner3_768} 768w, ${banner3_1280} 1280w, ${banner3_1920} 1920w`,
     title: 'Tiếng Trung mở ra thế giới mới',
     alt: 'Green Ocean - Học tiếng Trung bắt đầu từ đây cùng đội ngũ giáo viên'
   }
@@ -40,24 +56,52 @@ const bannerSlides: BannerSlide[] = [
 
 export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.Element {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [previousSlide, setPreviousSlide] = useState<number | null>(null);
+  const [loadedSlides, setLoadedSlides] = useState<Set<number>>(() => new Set());
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
-  // Auto-advance banner every 5 seconds when not hovered
+  const changeSlide = (nextSlide: number) => {
+    if (nextSlide === currentSlide) return;
+    setPreviousSlide(currentSlide);
+    setCurrentSlide(nextSlide);
+  };
+
+  // Start the carousel timer only after the active image is ready.
   useEffect(() => {
-    if (isHovered) return;
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
+    if (isHovered || !loadedSlides.has(currentSlide)) return;
+    const timer = window.setTimeout(() => {
+      changeSlide((currentSlide + 1) % bannerSlides.length);
     }, 5000);
-    return () => clearInterval(timer);
-  }, [isHovered]);
+    return () => window.clearTimeout(timer);
+  }, [currentSlide, isHovered, loadedSlides]);
+
+  // Warm one next slide at a time, at low priority, after the current image loads.
+  useEffect(() => {
+    if (!loadedSlides.has(currentSlide)) return;
+    const nextSlide = bannerSlides[(currentSlide + 1) % bannerSlides.length];
+    const preload = new Image();
+    preload.fetchPriority = 'low';
+    preload.sizes = '100vw';
+    preload.srcset = nextSlide.webpSrcSet;
+    preload.src = nextSlide.image;
+  }, [currentSlide, loadedSlides]);
+
+  const markSlideLoaded = (slideIndex: number) => {
+    setLoadedSlides((loaded) => {
+      if (loaded.has(slideIndex)) return loaded;
+      const next = new Set(loaded);
+      next.add(slideIndex);
+      return next;
+    });
+  };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
+    changeSlide((currentSlide - 1 + bannerSlides.length) % bannerSlides.length);
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
+    changeSlide((currentSlide + 1) % bannerSlides.length);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -91,11 +135,23 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
             <div
               key={slide.id}
               className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-out cursor-pointer ${
-                idx === currentSlide ? 'opacity-100 z-10 visible' : 'opacity-0 z-0 invisible pointer-events-none'
+                (idx === currentSlide && loadedSlides.has(idx)) || (idx === previousSlide && !loadedSlides.has(currentSlide))
+                  ? 'opacity-100 z-10'
+                  : 'opacity-0 z-0 pointer-events-none'
               }`}
+              onTransitionEnd={(event) => {
+                if (
+                  event.target === event.currentTarget &&
+                  event.propertyName === 'opacity' &&
+                  idx === previousSlide &&
+                  loadedSlides.has(currentSlide)
+                ) {
+                  setPreviousSlide((previous) => previous === idx ? null : previous);
+                }
+              }}
               onClick={onOpenLeadModal}
               role="button"
-              tabIndex={0}
+              tabIndex={idx === currentSlide ? 0 : -1}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   onOpenLeadModal();
@@ -103,15 +159,22 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
               }}
               title="Nhấp để đăng ký nhận ưu đãi học phí lên tới 1.500.000đ"
             >
-              <img
-                src={slide.image}
-                alt={slide.alt}
-                width={2006}
-                height={784}
-                className={`w-full h-full ${idx === 2 ? 'object-fill' : 'object-cover'} block select-none pointer-events-none`}
-                loading={idx === 0 ? 'eager' : 'lazy'}
-                fetchPriority={idx === 0 ? 'high' : 'low'}
-              />
+              {(idx === currentSlide || idx === previousSlide) && (
+                <picture>
+                  <source type="image/webp" srcSet={slide.webpSrcSet} sizes="100vw" />
+                  <img
+                    src={slide.image}
+                    alt={slide.alt}
+                    width={2006}
+                    height={784}
+                    className={`w-full h-full ${idx === 2 ? 'object-fill' : 'object-cover'} block select-none pointer-events-none`}
+                    loading="eager"
+                    fetchPriority={idx === currentSlide ? 'high' : 'low'}
+                    decoding="async"
+                    onLoad={() => markSlideLoaded(idx)}
+                  />
+                </picture>
+              )}
             </div>
           ))}
         </div>
@@ -162,7 +225,7 @@ export default function HeroSlider({ onOpenLeadModal }: HeroSliderProps): JSX.El
               }`}
               onClick={(e) => {
                 e.stopPropagation();
-                setCurrentSlide(idx);
+                changeSlide(idx);
               }}
             />
           ))}

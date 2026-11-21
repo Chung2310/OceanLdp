@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Heart, X, PhoneCall, LayoutGrid, SlidersHorizontal } from 'lucide-react';
 import logoImg from '../../asset/img/logo.jpg';
 
-import teacherQuang from '../../asset/teachers/3.jpg';
-import teacherLinh from '../../asset/teachers/4.jpg';
-import teacherThuy from '../../asset/teachers/5.jpg';
-import teacherTrung from '../../asset/teachers/2.jpg';
-import teacherNgocAnh from '../../asset/teachers/1.jpg';
+import teacherQuang from '../../asset/teachers/optimized/3-768.webp';
+import teacherLinh from '../../asset/teachers/optimized/4-768.webp';
+import teacherThuy from '../../asset/teachers/optimized/5-768.webp';
+import teacherTrung from '../../asset/teachers/optimized/2-768.webp';
+import teacherNgocAnh from '../../asset/teachers/optimized/1-768.webp';
 
 export interface TeacherItem {
   id: string;

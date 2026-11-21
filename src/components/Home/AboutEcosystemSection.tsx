@@ -1,6 +1,9 @@
 import React from 'react';
 import { Flag, Heart, LayoutGrid, Star, ChevronRight, PhoneCall } from 'lucide-react';
 import defaultIntroImg from '../../asset/banner/banner4.png';
+import intro480 from '../../asset/banner/optimized/banner4-480.webp';
+import intro768 from '../../asset/banner/optimized/banner4-768.webp';
+import intro1254 from '../../asset/banner/optimized/banner4-1254.webp';
 import logo from '../../asset/img/logo.jpg';
 
 interface AboutEcosystemSectionProps {
@@ -55,11 +58,22 @@ export default function AboutEcosystemSection({
 
           {/* Left Column: Image Card (Chiều cao bằng chính xác 100% khung bên phải) */}
           <div className="lg:col-span-5 relative w-full h-full min-h-[340px] rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 bg-white group flex">
-            <img
-              src={introImage}
+            <picture className="block w-full h-full">
+              {!customImage && (
+                <source
+                  type="image/webp"
+                  srcSet={`${intro480} 480w, ${intro768} 768w, ${intro1254} 1254w`}
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+              )}
+              <img
+                src={introImage}
               alt="Trung tâm Ngoại ngữ Green Ocean"
-              className="w-full h-full object-cover rounded-3xl transition-transform duration-500 group-hover:scale-105 block"
-            />
+                className="w-full h-full object-cover rounded-3xl transition-transform duration-500 group-hover:scale-105 block"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
 
           {/* Right Column: Introduction & Features Content Card (Rộng rãi, thoáng, khớp chiều cao) */}

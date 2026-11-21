@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'wouter';
 import { PhoneCall, CheckCircle2, ArrowRight } from 'lucide-react';
 
-import banner1Img from '../asset/banner/banner1.png';
-import banner2Img from '../asset/banner/banner2.png';
-import banner3Img from '../asset/banner/banner3.png';
-import banner4Img from '../asset/banner/banner4.png';
-import reason02Img from '../asset/reasons/reason02.png';
-import reason03Img from '../asset/reasons/reason03.png';
+import banner1Img from '../asset/banner/optimized/banner1-1280.webp';
+import banner2Img from '../asset/banner/optimized/banner2-1280.webp';
+import banner3Img from '../asset/banner/optimized/banner3-1280.webp';
+import banner4Img from '../asset/banner/optimized/banner4-1254.webp';
+import reason02Img from '../asset/reasons/optimized/reason02-960.webp';
+import reason03Img from '../asset/reasons/optimized/reason03-960.webp';
 
 interface AboutPageProps {
   onOpenLeadModal: () => void;

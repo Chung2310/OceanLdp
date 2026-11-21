@@ -19,9 +19,9 @@ import { CampusScheduleCard, CampusScheduleRow } from '../data/scheduleData';
 import { useScheduleCards } from '../services/contentService';
 import ConsultationForm from '../components/Common/ConsultationForm';
 import logoImg from '../asset/img/logo.jpg';
-import bookSoCap from '../asset/books/msutong_socap.jpg';
-import bookTrungCap from '../asset/books/msutong_trungcap.jpg';
-import bookCaoCap from '../asset/books/msutong_caocap.jpg';
+import bookSoCap from '../asset/books/optimized/msutong_socap-640.webp';
+import bookTrungCap from '../asset/books/optimized/msutong_trungcap-640.webp';
+import bookCaoCap from '../asset/books/optimized/msutong_caocap-640.webp';
 
 interface SchedulePageProps {
   onOpenLeadModal: (courseTitle?: string) => void;

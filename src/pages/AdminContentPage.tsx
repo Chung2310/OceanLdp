@@ -108,8 +108,51 @@ function EditorModal({ type, item, saving, onClose, onSave }: { type: Tab; item:
   });
   const dateChanged = (value: string) => { const formatted = dateFromInput(value); setDraft((current: any) => ({ ...current, date: formatted, ...dateParts(formatted) })); };
   const categoryChanged = (value: string) => { const categories = type === 'news' ? newsCategories : resourceCategories; setDraft((current: any) => ({ ...current, category: value, categoryName: categories.find(c => c.id === value)?.name || value })); };
-  const imageFile = (file?: File, field = 'image') => { if (!file) return; if (file.size > 3 * 1024 * 1024) return void window.alert('Ảnh không được vượt quá 3 MB.'); const reader = new FileReader(); reader.onload = () => { set(field, String(reader.result)); if (type === 'courses' && field === 'image') set('thumbnail', String(reader.result)); }; reader.readAsDataURL(file); };
-  const submitDraft = () => {
+  const saveImageData = (dataUrl: string, field: string) => {
+    set(field, dataUrl);
+    if (type === 'courses' && field === 'image') set('thumbnail', dataUrl);
+  };
+  const imageFile = (file?: File, field = 'image') => {
+    if (!file) return;
+    if (file.size > 3 * 1024 * 1024) return void window.alert('Ảnh không được vượt quá 3 MB.');
+
+    const readOriginal = () => {
+      const reader = new FileReader();
+      reader.onload = () => saveImageData(String(reader.result), field);
+      reader.readAsDataURL(file);
+    };
+
+    if (file.type === 'image/gif' || file.type === 'image/svg+xml') {
+      readOriginal();
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      try {
+        const maxDimension = 1600;
+        const scale = Math.min(1, maxDimension / Math.max(1, image.naturalWidth, image.naturalHeight));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+        canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+        const context = canvas.getContext('2d');
+        if (!context) throw new Error('Canvas is unavailable.');
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        const optimized = canvas.toDataURL('image/webp', 0.82);
+        if (!optimized.startsWith('data:image/webp;')) return readOriginal();
+        saveImageData(optimized, field);
+      } catch {
+        readOriginal();
+      }
+    };
+    image.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      readOriginal();
+    };
+    image.src = objectUrl;
+  };  const submitDraft = () => {
     const result = { ...draft };
     if (type === 'courses') {
       try {

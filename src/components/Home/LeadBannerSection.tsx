@@ -1,6 +1,6 @@
 import React from 'react';
-import leadBg from '../../asset/poster/background.png';
-import leadCutout from '../../asset/poster/img.png';
+import leadBg from '../../asset/poster/optimized/background-1920.webp';
+import leadCutout from '../../asset/poster/optimized/img-1217.webp';
 import ConsultationForm from '../Common/ConsultationForm';
 
 interface LeadBannerSectionProps {

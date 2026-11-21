@@ -4,11 +4,11 @@ import thumbThoiTiet from '../asset/library/thumb_thoi_tiet.png';
 import thumbNguPhapHsk1 from '../asset/library/thumb_ngu_phap_hsk1.png';
 import thumb214BoThu from '../asset/library/thumb_214_bo_thu.png';
 import thumbQuyTacViet from '../asset/library/thumb_quy_tac_viet.png';
-import photoThienTai from '../asset/library/photo_thien_tai.png';
-import photoDongChi from '../asset/library/photo_dong_chi.png';
-import msutongSocap from '../asset/books/msutong_socap.jpg';
-import msutongTrungcap from '../asset/books/msutong_trungcap.jpg';
-import msutongCaocap from '../asset/books/msutong_caocap.jpg';
+import photoThienTai from '../asset/library/optimized/photo_thien_tai-340.webp';
+import photoDongChi from '../asset/library/optimized/photo_dong_chi-498.webp';
+import msutongSocap from '../asset/books/optimized/msutong_socap-640.webp';
+import msutongTrungcap from '../asset/books/optimized/msutong_trungcap-640.webp';
+import msutongCaocap from '../asset/books/optimized/msutong_caocap-640.webp';
 
 export const resourceCategories = [
   { 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { Calendar, User, Eye, ArrowLeft, Share2, Facebook, ChevronRight, Sparkles, BookOpen, Download } from 'lucide-react';
 import { useResources } from '../services/contentService';
-import scholarshipBannerImg from '../asset/branches/banner_scholarship.png';
+import scholarshipBannerImg from '../asset/branches/optimized/banner_scholarship-820.webp';
 import ConsultationForm from '../components/Common/ConsultationForm';
 
 export default function ResourceDetailPage(): JSX.Element {

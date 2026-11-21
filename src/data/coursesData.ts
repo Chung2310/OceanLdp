@@ -1,7 +1,7 @@
 import { CourseCategory, Course, MsutongBook } from '../types';
-import course01 from '../asset/courses/course01.png';
-import course02 from '../asset/courses/course02.png';
-import course03 from '../asset/courses/course03.png';
+import course01 from '../asset/courses/optimized/course01-960.webp';
+import course02 from '../asset/courses/optimized/course02-960.webp';
+import course03 from '../asset/courses/optimized/course03-960.webp';
 
 export const courseCategories: CourseCategory[] = [
   { id: 'all', name: 'Tất cả khóa học', count: 7 },
